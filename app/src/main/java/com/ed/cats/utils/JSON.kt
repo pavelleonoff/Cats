@@ -39,7 +39,7 @@ class JSON {
         private val IMAGE_URL : String = "url"
 
 
-        fun getCatsFromJSON ():ArrayList<Cats> {
+        suspend fun getCatsFromJSON ():ArrayList<Cats> {
             val catsJSON: JSONArray? = Network.getJSONFromNetwork()
             val catsArray = ArrayList<Cats>()
             if (catsJSON != null) {

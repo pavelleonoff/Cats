@@ -28,13 +28,11 @@ class Network {
                 .build()
             return URL(url.toString())
         }
-
-        open class JSONLoadTask : AsyncTask<URL, Void, JSONArray>() {
-            override fun doInBackground(vararg p0: URL?): JSONArray? {
-                var connection: HttpURLConnection? = null
-                var resultt : JSONArray? = null
+        suspend fun JSONLoadCoroutines(url:URL):JSONArray?{
+            var connection: HttpURLConnection? = null
+                var result : JSONArray? = null
                 try {
-                    connection = p0[0]?.openConnection() as HttpURLConnection
+                    connection = url?.openConnection() as HttpURLConnection
                     val inputStream : InputStream = connection.getInputStream();
                     val inputStreamReader = InputStreamReader(inputStream);
                     val reader = BufferedReader(inputStreamReader);
@@ -44,7 +42,7 @@ class Network {
                         builder.append(line);
                         line = reader.readLine();
                     }
-                    resultt = JSONArray(builder.toString())
+                    result = JSONArray(builder.toString())
                 } catch (e:IOException ) {
                     e.printStackTrace();
                 } catch (e:JSONException ) {
@@ -54,14 +52,41 @@ class Network {
                         connection.disconnect();
                     }
                 }
-                return resultt;
-            }
+                return result;
         }
-        fun getJSONFromNetwork(): JSONArray? {
+//        open class JSONLoadTask : AsyncTask<URL, Void, JSONArray>() {
+//            override fun doInBackground(vararg p0: URL?): JSONArray? {
+//                var connection: HttpURLConnection? = null
+//                var resultt : JSONArray? = null
+//                try {
+//                    connection = p0[0]?.openConnection() as HttpURLConnection
+//                    val inputStream : InputStream = connection.getInputStream();
+//                    val inputStreamReader = InputStreamReader(inputStream);
+//                    val reader = BufferedReader(inputStreamReader);
+//                    var builder : StringBuilder = StringBuilder();
+//                    var line : String? = reader.readLine();
+//                    while (line != null) {
+//                        builder.append(line);
+//                        line = reader.readLine();
+//                    }
+//                    resultt = JSONArray(builder.toString())
+//                } catch (e:IOException ) {
+//                    e.printStackTrace();
+//                } catch (e:JSONException ) {
+//                    e.printStackTrace();
+//                } finally {
+//                    if (connection != null) {
+//                        connection.disconnect();
+//                    }
+//                }
+//                return resultt;
+//            }
+//        }
+        suspend fun getJSONFromNetwork(): JSONArray? {
 
             var result:JSONArray? = null
             try {
-                result = JSONLoadTask().execute(buildURL()).get()
+                result = JSONLoadCoroutines(buildURL())
             }
             catch (e: ExecutionException){
                 e.printStackTrace()

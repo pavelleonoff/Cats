@@ -11,6 +11,8 @@ import com.ed.cats.data.Cats
 import com.ed.cats.data.CatsAdapter
 import com.ed.cats.data.MainViewModel
 import com.ed.cats.utils.JSON
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 
 class MainActivity : AppCompatActivity() {
@@ -26,7 +28,10 @@ class MainActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
-        downLoadDataFromNetwork()
+        runBlocking {
+            launch { downLoadDataFromNetwork() }
+        }
+
 
         catsRecyclerView = findViewById(R.id.catsRecyclerView)
         catsRecyclerView.layoutManager =  LinearLayoutManager(this, LinearLayoutManager.VERTICAL ,false)
@@ -49,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun downLoadDataFromNetwork(){
+    suspend fun downLoadDataFromNetwork(){
         if(!viewModel.isExist()) {
             val cats : List<Cats> = JSON.getCatsFromJSON()
             viewModel.insertCatsToDb(cats)
