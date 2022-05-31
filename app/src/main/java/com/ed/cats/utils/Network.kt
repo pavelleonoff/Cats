@@ -28,7 +28,7 @@ class Network {
                 .build()
             return URL(url.toString())
         }
-        suspend fun JSONLoadCoroutines(url:URL):JSONArray?{
+        fun JSONLoad(url:URL):JSONArray?{
             var connection: HttpURLConnection? = null
                 var result : JSONArray? = null
                 try {
@@ -54,39 +54,11 @@ class Network {
                 }
                 return result;
         }
-//        open class JSONLoadTask : AsyncTask<URL, Void, JSONArray>() {
-//            override fun doInBackground(vararg p0: URL?): JSONArray? {
-//                var connection: HttpURLConnection? = null
-//                var resultt : JSONArray? = null
-//                try {
-//                    connection = p0[0]?.openConnection() as HttpURLConnection
-//                    val inputStream : InputStream = connection.getInputStream();
-//                    val inputStreamReader = InputStreamReader(inputStream);
-//                    val reader = BufferedReader(inputStreamReader);
-//                    var builder : StringBuilder = StringBuilder();
-//                    var line : String? = reader.readLine();
-//                    while (line != null) {
-//                        builder.append(line);
-//                        line = reader.readLine();
-//                    }
-//                    resultt = JSONArray(builder.toString())
-//                } catch (e:IOException ) {
-//                    e.printStackTrace();
-//                } catch (e:JSONException ) {
-//                    e.printStackTrace();
-//                } finally {
-//                    if (connection != null) {
-//                        connection.disconnect();
-//                    }
-//                }
-//                return resultt;
-//            }
-//        }
-        suspend fun getJSONFromNetwork(): JSONArray? {
+            fun getJSONFromNetwork(): JSONArray? {
 
             var result:JSONArray? = null
             try {
-                result = JSONLoadCoroutines(buildURL())
+                result = JSONLoad(buildURL())
             }
             catch (e: ExecutionException){
                 e.printStackTrace()
