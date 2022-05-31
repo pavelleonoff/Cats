@@ -32,7 +32,7 @@ class Network {
         open class JSONLoadTask : AsyncTask<URL, Void, JSONArray>() {
             override fun doInBackground(vararg p0: URL?): JSONArray? {
                 var connection: HttpURLConnection? = null
-                var result : JSONArray? = null
+                var resultt : JSONArray? = null
                 try {
                     connection = p0[0]?.openConnection() as HttpURLConnection
                     val inputStream : InputStream = connection.getInputStream();
@@ -44,7 +44,7 @@ class Network {
                         builder.append(line);
                         line = reader.readLine();
                     }
-                    result = JSONArray(builder.toString())
+                    resultt = JSONArray(builder.toString())
                 } catch (e:IOException ) {
                     e.printStackTrace();
                 } catch (e:JSONException ) {
@@ -54,7 +54,7 @@ class Network {
                         connection.disconnect();
                     }
                 }
-                return result;
+                return resultt;
             }
         }
         fun getJSONFromNetwork(): JSONArray? {
