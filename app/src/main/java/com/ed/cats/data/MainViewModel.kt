@@ -26,6 +26,7 @@ open class MainViewModel(application: Application) : AndroidViewModel(applicatio
         private lateinit var cats : LiveData<List<Cat>>
         private lateinit var cat : MutableLiveData<Cat>
 
+
         private class DeleteDBTask : AsyncTask<Unit,Unit,Unit>() {
             override fun doInBackground(vararg params: Unit?) {
                 catsDB.catsDao().delete()
@@ -63,17 +64,12 @@ open class MainViewModel(application: Application) : AndroidViewModel(applicatio
 
     }
     fun isExist():Boolean{
-        try {
-            return isExistsTask().execute().get()
-        }
-        catch (e:InterruptedException){
-            e.printStackTrace()
-        }
-        return false
+            return catsDB.catsDao().isExists()
     }
     fun getCatById(catId:String):LiveData<Cat> {
         viewModelScope.launch {
             cat.postValue(catsDB.catsDao().getCatById(catId))
+
         }
         return cat
     }
@@ -87,7 +83,10 @@ open class MainViewModel(application: Application) : AndroidViewModel(applicatio
     }
     fun getCatsFromDb():LiveData<List<Cat>>? {
         try {
-            return GetCatsFromDbTask().execute().get()
+            viewModelScope.launch {
+                cats = catsDB.catsDao().getAllCats()
+            }
+            return cats
         }
         catch (e:InterruptedException){
             e.printStackTrace()

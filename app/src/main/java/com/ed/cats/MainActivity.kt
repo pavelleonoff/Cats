@@ -61,11 +61,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun downLoadDataFromNetwork(){
-        if(!viewModel.isExist()) {
-            val catsJSON: JSONArray? = Network.getJSONFromNetwork()
-            val cats : List<Cat> = JSON.getCatsFromJSON(catsJSON)
-            viewModel.insertCatsToDb(cats)
-       }
+            if (!viewModel.isExist()) {
+                val catsJSON: JSONArray? = Network.getJSONFromNetwork()
+                val cats: List<Cat> = JSON.getCatsFromJSON(catsJSON)
+                viewModel.insertCatsToDb(cats)
+            }
+
     }
 
     private fun getDataFromDb(): LiveData<List<Cat>>? {
