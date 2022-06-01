@@ -1,13 +1,8 @@
 package com.ed.cats.utils
 
 import android.net.Uri
-import android.os.AsyncTask
-import android.os.AsyncTask.execute
-import android.util.Log
-import androidx.loader.content.AsyncTaskLoader
 import org.json.JSONArray
 import org.json.JSONException
-import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStream
@@ -28,13 +23,11 @@ class Network {
                 .build()
             return URL(url.toString())
         }
-
-        open class JSONLoadTask : AsyncTask<URL, Void, JSONArray>() {
-            override fun doInBackground(vararg p0: URL?): JSONArray? {
-                var connection: HttpURLConnection? = null
-                var resultt : JSONArray? = null
+        fun JSONLoad(url:URL):JSONArray?{
+            var connection: HttpURLConnection? = null
+                var result : JSONArray? = null
                 try {
-                    connection = p0[0]?.openConnection() as HttpURLConnection
+                    connection = url?.openConnection() as HttpURLConnection
                     val inputStream : InputStream = connection.getInputStream();
                     val inputStreamReader = InputStreamReader(inputStream);
                     val reader = BufferedReader(inputStreamReader);
@@ -44,7 +37,7 @@ class Network {
                         builder.append(line);
                         line = reader.readLine();
                     }
-                    resultt = JSONArray(builder.toString())
+                    result = JSONArray(builder.toString())
                 } catch (e:IOException ) {
                     e.printStackTrace();
                 } catch (e:JSONException ) {
@@ -54,14 +47,13 @@ class Network {
                         connection.disconnect();
                     }
                 }
-                return resultt;
-            }
+                return result;
         }
-        fun getJSONFromNetwork(): JSONArray? {
+            fun getJSONFromNetwork(): JSONArray? {
 
             var result:JSONArray? = null
             try {
-                result = JSONLoadTask().execute(buildURL()).get()
+                result = JSONLoad(buildURL())
             }
             catch (e: ExecutionException){
                 e.printStackTrace()

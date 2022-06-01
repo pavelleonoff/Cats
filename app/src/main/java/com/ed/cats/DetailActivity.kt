@@ -12,9 +12,13 @@ import android.widget.RatingBar
 import android.widget.TextView
 
 import androidx.lifecycle.ViewModelProvider
+import com.ed.cats.data.Cat
 
 import com.ed.cats.data.MainViewModel
 import com.squareup.picasso.Picasso
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 class DetailActivity : AppCompatActivity() {
@@ -78,15 +82,20 @@ class DetailActivity : AppCompatActivity() {
         id = getIntent().getStringExtra("id").toString()
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         val cat = viewModel.getCatById(id)
+        if (cat != null) {
+            cat.observe(this) { t -> putDataToFields(t as Cat) }
+        }
+
+    }
+    fun putDataToFields(cat: Cat?){
         if(cat!=null){
-            Picasso.get().load(cat.image).into(image);
+            Picasso.get().load(cat.image).resize(MainActivity.screenWidth,0).placeholder(R.drawable.placeholder).into(image);
             name.setText(cat.name)
             description.setText(cat.description)
             life_span.setText(life_span.text.toString() + cat.life_span)
             temperament.setText(temperament.text.toString() + cat.temperament)
             origin.setText(origin.text.toString() + cat.origin)
-
-            adaptability.rating = 3f
+            adaptability.rating = cat.adaptability.toFloat()
             affection_level.rating = cat.affection_level.toFloat()
             child_friendly.rating = cat.child_friendly.toFloat()
             grooming.rating = cat.grooming.toFloat()
@@ -107,6 +116,5 @@ class DetailActivity : AppCompatActivity() {
             wikipedia_url.setText(cat.wikipedia_url)
             wikipedia_url.setMovementMethod(LinkMovementMethod.getInstance());
         }
-
     }
 }
