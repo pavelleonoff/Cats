@@ -82,12 +82,14 @@ class DetailActivity : AppCompatActivity() {
         id = getIntent().getStringExtra("id").toString()
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         val cat = viewModel.getCatById(id)
-        cat.observe(this) { t -> putDataToFields(t as Cat) }
+        if (cat != null) {
+            cat.observe(this) { t -> putDataToFields(t as Cat) }
+        }
 
     }
     fun putDataToFields(cat: Cat?){
         if(cat!=null){
-            Picasso.get().load(cat.image).into(image);
+            Picasso.get().load(cat.image).resize(MainActivity.screenWidth,0).placeholder(R.drawable.placeholder).into(image);
             name.setText(cat.name)
             description.setText(cat.description)
             life_span.setText(life_span.text.toString() + cat.life_span)

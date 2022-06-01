@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.ed.cats.MainActivity
 import com.ed.cats.R
 import com.squareup.picasso.Picasso
 
@@ -48,7 +49,8 @@ class CatsAdapter: RecyclerView.Adapter<CatsAdapter.CatsViewHolder>() {
         val nameTextView: TextView = holder.cat_item_name
         val img = cats.get(position).image
         val imgImageView: ImageView = holder.cat_item_image
-        Picasso.get().load(img).into(imgImageView);
+        MainActivity.screenWidth
+        Picasso.get().load(img).resize(MainActivity.screenWidth,0).onlyScaleDown().placeholder(R.drawable.placeholder).into(imgImageView);
         nameTextView.setText(name)
     }
     override fun getItemCount(): Int {

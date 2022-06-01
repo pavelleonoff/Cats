@@ -1,5 +1,6 @@
 package com.ed.cats
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -21,11 +22,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var catsAdapter: CatsAdapter
     private lateinit var viewModel : MainViewModel
 
-
-
+    companion object{
+        var screenWidth = 0
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        screenWidth = resources.displayMetrics.widthPixels
 
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
@@ -59,6 +62,7 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
 
     private fun downLoadDataFromNetwork(){
             if (!viewModel.isExist()) {
