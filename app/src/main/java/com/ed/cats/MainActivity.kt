@@ -7,11 +7,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.ed.cats.data.Cats
+import com.ed.cats.data.Cat
 import com.ed.cats.data.CatsAdapter
 import com.ed.cats.data.MainViewModel
 import com.ed.cats.utils.JSON
+import com.ed.cats.utils.Network
 import kotlinx.coroutines.*
+import org.json.JSONArray
 
 
 class MainActivity : AppCompatActivity() {
@@ -28,13 +30,20 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
         val scope = CoroutineScope(Dispatchers.IO)
-        scope.launch { downLoadDataFromNetwork() }
+
+        scope.launch {
+            downLoadDataFromNetwork()
+        }
 
         catsRecyclerView = findViewById(R.id.catsRecyclerView)
-        catsRecyclerView.layoutManager =  LinearLayoutManager(this, LinearLayoutManager.VERTICAL ,false)
+        catsRecyclerView.layoutManager =  LinearLayoutManager(
+            this,
+            LinearLayoutManager.VERTICAL ,
+            false)
         catsAdapter = CatsAdapter()
 
-        getDataFromDb()?.let { it.observe(this) { t -> catsAdapter.setCats(t as ArrayList<Cats>) } }
+        getDataFromDb()?.let { it.observe(this) {
+                t -> catsAdapter.setCats(t as ArrayList<Cat>) } }
 
         catsRecyclerView.adapter = catsAdapter
 
@@ -51,14 +60,16 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun downLoadDataFromNetwork(){
+    private fun downLoadDataFromNetwork(){
         if(!viewModel.isExist()) {
-            val cats : List<Cats> = JSON.getCatsFromJSON()
+            val catsJSON: JSONArray? = Network.getJSONFromNetwork()
+            val cats : List<Cat> = JSON.getCatsFromJSON(catsJSON)
             viewModel.insertCatsToDb(cats)
        }
     }
-    fun getDataFromDb(): LiveData<List<Cats>>? {
-        var cats = viewModel.getCatsFromDb()
+
+    private fun getDataFromDb(): LiveData<List<Cat>>? {
+        val cats = viewModel.getCatsFromDb()
         if (cats != null) {
 
             return cats

@@ -8,13 +8,13 @@ import androidx.room.Query
 @Dao
 interface CatsDao {
     @Query("SELECT * FROM cats")
-    fun getAllCats (): LiveData<List<Cats>>
+    fun getAllCats (): LiveData<List<Cat>>
 
     @Query("SELECT * FROM cats WHERE id == :catId")
-    fun getCatById(catId : String) : Cats
+    fun getCatById(catId : String) : Cat
 
     @Insert
-    fun insertCats(cats: List<Cats>)
+    fun insertCats(cats: List<Cat>)
 
     @Query("SELECT EXISTS(SELECT * FROM cats)")
     fun isExists(): Boolean

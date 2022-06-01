@@ -2,8 +2,8 @@ package com.ed.cats.utils
 
 
 import android.util.Log
+import com.ed.cats.data.Cat
 
-import com.ed.cats.data.Cats
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -39,9 +39,8 @@ class JSON {
         private val IMAGE_URL : String = "url"
 
 
-        fun getCatsFromJSON ():ArrayList<Cats> {
-            val catsJSON: JSONArray? = Network.getJSONFromNetwork()
-            val catsArray = ArrayList<Cats>()
+        fun getCatsFromJSON (catsJSON: JSONArray?):ArrayList<Cat> {
+            val catsArray = ArrayList<Cat>()
             if (catsJSON != null) {
                 var id : String
                 var name : String
@@ -98,7 +97,7 @@ class JSON {
                         if(jString.has(SUPPRESSED_TAIL)) suppressed_tail = jString.get(SUPPRESSED_TAIL) as Int else continue
                         if(jString.has(SHORT_LEGS)) short_legs = jString.get(SHORT_LEGS) as Int else continue
                         if(jString.has(HYPOALLERGENIC)) hypoallergenic = jString.get(HYPOALLERGENIC) as Int else continue
-                            val cat = Cats(
+                            val cat = Cat(
                                 id,
                                 name,
                                 description,
@@ -130,12 +129,10 @@ class JSON {
                         }
                 }
                 catch(e: JSONException){
-                    Log.i("Test", e.toString())
                     e.printStackTrace()
                 }
 
             }
-            Log.i("Test",catsArray.size.toString())
             return catsArray
         }
     }

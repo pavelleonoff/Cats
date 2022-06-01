@@ -11,7 +11,7 @@ import com.squareup.picasso.Picasso
 
 
 class CatsAdapter: RecyclerView.Adapter<CatsAdapter.CatsViewHolder>() {
-    private var cats : ArrayList<Cats>
+    private var cats : ArrayList<Cat>
     private var onCatClickListener: OnCatClickListener? = null
 
     interface OnCatClickListener{
@@ -54,14 +54,14 @@ class CatsAdapter: RecyclerView.Adapter<CatsAdapter.CatsViewHolder>() {
     override fun getItemCount(): Int {
         return cats.size
     }
-    fun setCats(catsArr: ArrayList<Cats>) {
+    fun setCats(catsArr: ArrayList<Cat>) {
         cats.addAll(catsArr)
         notifyDataSetChanged()
     }
-    fun getCats(): ArrayList<Cats> {
+    fun getCats(): ArrayList<Cat> {
         return cats
     }
-    fun addCats(catArr: ArrayList<Cats>){
+    fun addCats(catArr: ArrayList<Cat>){
         cats.addAll(catArr)
         notifyDataSetChanged()
     }

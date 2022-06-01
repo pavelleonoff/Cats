@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import com.ed.cats.utils.JSON
 
 @Entity(tableName = "cats")
-class Cats(
+class Cat(
     @PrimaryKey
     val id : String,
     val name : String,
