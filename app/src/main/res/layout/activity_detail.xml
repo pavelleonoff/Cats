@@ -39,71 +39,66 @@
             android:layout_marginStart="@dimen/catIdMarginLeft"
             app:cardElevation="0dp">
 
-            <TableLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
                     <TextView
                         android:id="@+id/experimental"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/catIdMarginLeft"
+                        android:layout_marginEnd="@dimen/catTagMarginLeft"
                         android:layout_marginTop="20dp"
                         android:background="@color/tagColor"
                         android:padding="@dimen/tagPadding"
                         android:text="@string/experimental"
                         android:textColor="@color/white"
-                        android:visibility="gone" />
+                        android:visibility="gone"
+                         />
 
                     <TextView
                         android:id="@+id/hairless"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/catTagMarginLeft"
+                        android:layout_marginEnd="@dimen/catTagMarginLeft"
                         android:layout_marginTop="20dp"
                         android:background="@color/tagColor"
                         android:padding="@dimen/tagPadding"
                         android:text="@string/hairless"
                         android:textColor="@color/white"
-                        android:visibility="gone" />
+                        android:visibility="gone"
+                         />
 
                     <TextView
                         android:id="@+id/natural"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/catTagMarginLeft"
+                        android:layout_marginEnd="@dimen/catTagMarginLeft"
                         android:layout_marginTop="20dp"
                         android:background="@color/tagColor"
                         android:padding="@dimen/tagPadding"
                         android:text="@string/natural"
                         android:textColor="@color/white"
                         android:visibility="gone"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/hairless"
-                        app:layout_constraintTop_toTopOf="parent" />
+                         />
 
                     <TextView
                         android:id="@+id/rare"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/catTagMarginLeft"
+                        android:layout_marginEnd="@dimen/catTagMarginLeft"
                         android:layout_marginTop="20dp"
                         android:background="@color/tagColor"
                         android:padding="@dimen/tagPadding"
                         android:text="@string/rare"
                         android:textColor="@color/white"
-                        android:visibility="gone"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/natural"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:visibility="gone" />
 
                     <TextView
                         android:id="@+id/rex"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/catTagMarginLeft"
+                        android:layout_marginEnd="@dimen/catTagMarginLeft"
                         android:layout_marginTop="20dp"
                         android:background="@color/tagColor"
                         android:padding="@dimen/tagPadding"
@@ -115,7 +110,7 @@
                         android:id="@+id/suppressed_tail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/catTagMarginLeft"
+                        android:layout_marginEnd="@dimen/catTagMarginLeft"
                         android:layout_marginTop="20dp"
                         android:background="@color/tagColor"
                         android:padding="@dimen/tagPadding"
@@ -127,19 +122,20 @@
                         android:id="@+id/short_legs"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/catIdMarginLeft"
+                        android:layout_marginEnd="@dimen/catTagMarginLeft"
                         android:layout_marginTop="20dp"
                         android:background="@color/tagColor"
                         android:padding="@dimen/tagPadding"
                         android:text="@string/short_legs"
                         android:textColor="@color/white"
-                        android:visibility="gone" />
+                        android:visibility="gone"
+                         />
 
                     <TextView
                         android:id="@+id/hypoallergenic"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/catIdMarginLeft"
+                        android:layout_marginEnd="@dimen/catTagMarginLeft"
                         android:layout_marginTop="20dp"
                         android:background="@color/tagColor"
                         android:padding="@dimen/tagPadding"
@@ -147,7 +143,6 @@
                         android:textColor="@color/white"
                         android:visibility="gone" />
                 </TableRow>
-            </TableLayout>
 
         </androidx.cardview.widget.CardView>
 
