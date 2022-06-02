@@ -20,5 +20,5 @@ interface CatsDao {
     fun isExists(): Boolean
 
     @Query("DELETE FROM cats")
-    fun delete():Unit
+    fun delete()
 }
