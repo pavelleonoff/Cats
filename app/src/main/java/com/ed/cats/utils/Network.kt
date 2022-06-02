@@ -13,9 +13,7 @@ import java.util.concurrent.ExecutionException
 
 class Network {
     companion object {
-        val API_KEY = "54d58c14-8dd5-4adc-a2a4-d1c5ba8af8e4"
-        val BREEDS = "https://api.thecatapi.com/v1/breeds"
-        //val BREEDS = "?limit=1"
+        private const val BREEDS = "https://api.thecatapi.com/v1/breeds"
 
         private fun buildURL(): URL {
             val url = Uri.parse(BREEDS)
@@ -23,37 +21,35 @@ class Network {
                 .build()
             return URL(url.toString())
         }
-        fun JSONLoad(url:URL):JSONArray?{
+        private fun jsonLoad(url:URL):JSONArray?{
             var connection: HttpURLConnection? = null
                 var result : JSONArray? = null
                 try {
-                    connection = url?.openConnection() as HttpURLConnection
-                    val inputStream : InputStream = connection.getInputStream();
-                    val inputStreamReader = InputStreamReader(inputStream);
-                    val reader = BufferedReader(inputStreamReader);
-                    var builder : StringBuilder = StringBuilder();
-                    var line : String? = reader.readLine();
+                    connection = url.openConnection() as HttpURLConnection
+                    val inputStream : InputStream = connection.inputStream
+                    val inputStreamReader = InputStreamReader(inputStream)
+                    val reader = BufferedReader(inputStreamReader)
+                    val builder : StringBuilder = StringBuilder()
+                    var line : String? = reader.readLine()
                     while (line != null) {
-                        builder.append(line);
-                        line = reader.readLine();
+                        builder.append(line)
+                        line = reader.readLine()
                     }
                     result = JSONArray(builder.toString())
                 } catch (e:IOException ) {
-                    e.printStackTrace();
+                    e.printStackTrace()
                 } catch (e:JSONException ) {
-                    e.printStackTrace();
+                    e.printStackTrace()
                 } finally {
-                    if (connection != null) {
-                        connection.disconnect();
-                    }
+                    connection?.disconnect()
                 }
-                return result;
+                return result
         }
             fun getJSONFromNetwork(): JSONArray? {
 
             var result:JSONArray? = null
             try {
-                result = JSONLoad(buildURL())
+                result = jsonLoad(buildURL())
             }
             catch (e: ExecutionException){
                 e.printStackTrace()

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <style name="CustomRatingBarStyle" parent="@android:style/Widget.RatingBar">
         <item name="android:progressDrawable">@drawable/cat_ratingbar</item>
-<!--        <item name="android:minHeight">24dp</item>-->
-<!--        <item name="android:maxHeight">24dp</item>-->
-<!--        <item name="android:layout_marginLeft">20dp</item>-->
+        <item name="android:minHeight">18dp</item>
+        <item name="android:maxHeight">24dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
     </style>
 </resources>

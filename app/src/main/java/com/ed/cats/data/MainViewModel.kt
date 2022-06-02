@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
 
-open class MainViewModel(application: Application) : AndroidViewModel(application) {
+class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     init {
         catsDB = CatsDB.getInstance(getApplication())
@@ -22,41 +22,6 @@ open class MainViewModel(application: Application) : AndroidViewModel(applicatio
         private lateinit var cats : LiveData<List<Cat>>
         private lateinit var cat : MutableLiveData<Cat>
 
-
-//        private class DeleteDBTask : AsyncTask<Unit,Unit,Unit>() {
-//            override fun doInBackground(vararg params: Unit?) {
-//                catsDB.catsDao().delete()
-//            }
-//        }
-//        private class GetCatByIdTask : AsyncTask<String,Unit,Cat>() {
-//            override fun doInBackground(vararg p0: String): Cat? {
-//                if (p0 != null && p0.size>0){
-//                    return catsDB.catsDao().getCatById(p0[0])
-//                }
-//                return null
-//            }
-//        }
-//        private class GetCatsFromDbTask : AsyncTask<Unit,Unit,LiveData<List<Cat>>>() {
-//            override fun doInBackground(vararg p0: Unit?): LiveData<List<Cat>>? {
-//                    return catsDB.catsDao().getAllCats()
-//            }
-//
-//        }
-//        private class InsertCatsTask : AsyncTask<List<Cat>,Unit,Unit>() {
-//            override fun doInBackground(vararg p0: List<Cat>) {
-//                if (p0 != null && p0.size>0){
-//                    catsDB.catsDao().insertCats(p0[0])
-//                }
-//            }
-//
-//        }
-//        private class isExistsTask : AsyncTask<Unit,Unit,Boolean>() {
-//            override fun doInBackground(vararg params: Unit?): Boolean {
-//                    return catsDB.catsDao().isExists()
-//            }
-//
-//
-//        }
 
     }
     fun isExist():Boolean{
