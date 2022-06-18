@@ -40,6 +40,9 @@
     <string name="filters">Filters</string>
     <string name="tags">Tags:</string>
     <string name="clean_filters">clean filters</string>
+    <string name="tagsText">Tags</string>
+    <string name="sort_by_Text">Sort by:</string>
+    <string name="ok_Text">Ok</string>
     <string-array name="tags">
         <item>experimental</item>
         <item>hairless</item>

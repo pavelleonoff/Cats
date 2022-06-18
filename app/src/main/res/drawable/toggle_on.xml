@@ -1,0 +1,11 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@color/white"/>
+    <item android:gravity="bottom">
+        <shape android:shape="rectangle">
+            <size android:height="3dp"/>
+            <solid android:color="@color/buttonOk"/>
+        </shape>
+    </item>
+
+</layer-list>

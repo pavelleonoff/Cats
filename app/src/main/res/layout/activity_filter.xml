@@ -1,0 +1,197 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FilterActivity">
+
+    <TextView
+        android:id="@+id/filterTagsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/tagsText"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/flexboxLayout"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/flexboxLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:alignContent="flex_start"
+        app:alignItems="flex_start"
+        app:flexWrap="wrap"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/filterTagsTextView"
+        app:showDivider="beginning|middle">
+
+        <ToggleButton
+            android:id="@+id/filterHairless"
+            style="@style/FiltersTagsSelected"
+            android:textOff="@string/hairless"
+            android:textOn="@string/hairless"
+            />
+
+        <ToggleButton
+            android:id="@+id/filterNatural"
+            style="@style/FiltersTagsSelected"
+            android:textOff="@string/natural"
+            android:textOn="@string/natural"
+            />
+
+        <ToggleButton
+            android:id="@+id/filterRare"
+            style="@style/FiltersTagsSelected"
+            android:textOn="@string/rare"
+            android:textOff="@string/rare"
+            />
+
+        <ToggleButton
+            android:id="@+id/filterRex"
+            style="@style/FiltersTagsSelected"
+            android:textOn="@string/rex"
+            android:textOff="@string/rex"/>
+
+        <ToggleButton
+            android:id="@+id/filterSuppressed_tail"
+            style="@style/FiltersTagsSelected"
+            android:textOn="@string/suppressed_tail"
+            android:textOff="@string/suppressed_tail"/>
+
+        <ToggleButton
+            android:id="@+id/filterShort_legs"
+            style="@style/FiltersTagsSelected"
+            android:textOn="@string/short_legs"
+            android:textOff="@string/short_legs"
+            />
+
+        <ToggleButton
+            android:id="@+id/filterHypoallergenic"
+            style="@style/FiltersTagsSelected"
+            android:textOn="@string/hypoallergenic"
+            android:textOff="@string/hypoallergenic"/>
+    </com.google.android.flexbox.FlexboxLayout>
+
+    <TextView
+        android:id="@+id/filterSortBy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/sort_by_Text"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/flexboxLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/flexboxLayout" />
+
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/flexboxLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/filtersMargin"
+        app:alignContent="flex_start"
+        app:alignItems="flex_start"
+        app:flexWrap="wrap"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/flexboxLayout"
+        app:layout_constraintTop_toBottomOf="@+id/filterSortBy"
+        app:showDivider="beginning|middle">
+
+        <ToggleButton
+            android:id="@+id/filterAdaptability"
+            android:textOn="@string/adaptabilityFilter"
+            android:textOff="@string/adaptabilityFilter"
+            style="@style/FiltersSortBySelected"
+             />
+
+
+        <ToggleButton
+            android:id="@+id/filterAffection_level"
+            android:textOn="@string/affection_levelFilter"
+            android:textOff="@string/affection_levelFilter"
+            style="@style/FiltersSortBySelected"
+             />
+
+
+        <ToggleButton
+            android:id="@+id/filterChild_friendly"
+            android:textOn="@string/child_friendlyFilter"
+            android:textOff="@string/child_friendlyFilter"
+            style="@style/FiltersSortBySelected"
+             />
+
+
+        <ToggleButton
+            android:id="@+id/filterGrooming"
+            android:textOn="@string/groomingFilter"
+            android:textOff="@string/groomingFilter"
+            style="@style/FiltersSortBySelected"
+             />
+
+
+        <ToggleButton
+            android:id="@+id/filterHealth_issues"
+            android:textOn="@string/health_issuesFilter"
+            android:textOff="@string/health_issuesFilter"
+            style="@style/FiltersSortBySelected"
+            />
+
+
+        <ToggleButton
+            android:id="@+id/filterIntelligence"
+            android:textOn="@string/intelligenceFilter"
+            android:textOff="@string/intelligenceFilter"
+            style="@style/FiltersSortBySelected"
+             />
+
+
+        <ToggleButton
+            android:id="@+id/filterShedding_level"
+            android:textOn="@string/shedding_levelFilter"
+            android:textOff="@string/shedding_levelFilter"
+            style="@style/FiltersSortBySelected"/>
+
+
+        <ToggleButton
+            android:id="@+id/filterSocial_needs"
+            android:textOn="@string/social_needsFilter"
+            android:textOff="@string/social_needsFilter"
+            style="@style/FiltersSortBySelected"
+            />
+
+
+        <ToggleButton
+            android:id="@+id/filterStranger_friendly"
+            android:textOn="@string/stranger_friendlyFilter"
+            android:textOff="@string/stranger_friendlyFilter"
+            style="@style/FiltersSortBySelected"
+            />
+
+
+        <ToggleButton
+            android:id="@+id/filterVocalisation"
+            android:textOn="@string/vocalisationFilter"
+            android:textOff="@string/vocalisationFilter"
+            style="@style/FiltersSortBySelected"
+            />
+    </com.google.android.flexbox.FlexboxLayout>
+
+    <Button
+        android:id="@+id/filterButtonOk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/buttonOk"
+
+        android:text="@string/ok_Text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/flexboxLayout2" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
