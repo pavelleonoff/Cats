@@ -248,7 +248,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center|start"
                                 android:layout_marginStart="@dimen/catIdMarginLeft"
-                                android:text="@string/adaptability" />
+                                android:text="@string/adaptability"/>
 
                             <RatingBar
                                 android:id="@+id/adaptability_rb"

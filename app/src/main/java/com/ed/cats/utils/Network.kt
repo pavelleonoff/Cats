@@ -11,13 +11,18 @@ import java.net.HttpURLConnection
 import java.net.URL
 import java.util.concurrent.ExecutionException
 
+
 class Network {
     companion object {
-        private const val BREEDS = "https://api.thecatapi.com/v1/breeds"
-
+        internal const val BASE = "https://api.thecatapi.com/v1"
+        internal const val BREEDS = "breeds"
+        internal const val IMAGES = "images"
+        internal const val KEY = "aeecb068-4f7f-4851-91df-03a3c5b8367f"
+    }
         private fun buildURL(): URL {
-            val url = Uri.parse(BREEDS)
+            val url = Uri.parse(BASE)
                 .buildUpon()
+                .appendPath(BREEDS)
                 .build()
             return URL(url.toString())
         }
@@ -26,6 +31,7 @@ class Network {
                 var result : JSONArray? = null
                 try {
                     connection = url.openConnection() as HttpURLConnection
+                    connection.setRequestProperty("x-api-key",KEY)
                     val inputStream : InputStream = connection.inputStream
                     val inputStreamReader = InputStreamReader(inputStream)
                     val reader = BufferedReader(inputStreamReader)
@@ -45,7 +51,7 @@ class Network {
                 }
                 return result
         }
-            fun getJSONFromNetwork(): JSONArray? {
+            internal fun getJSONFromNetwork(): JSONArray? {
 
             var result:JSONArray? = null
             try {
@@ -63,4 +69,3 @@ class Network {
     }
 
 
-}

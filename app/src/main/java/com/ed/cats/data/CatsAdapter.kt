@@ -54,6 +54,7 @@ class CatsAdapter: RecyclerView.Adapter<CatsAdapter.CatsViewHolder>() {
         return cats.size
     }
     fun setCats(catsArr: ArrayList<Cat>) {
+        cats.clear()
         cats.addAll(catsArr)
         notifyDataSetChanged()
     }

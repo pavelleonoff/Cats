@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import androidx.sqlite.db.SimpleSQLiteQuery
 import kotlinx.coroutines.launch
 
 
@@ -55,6 +56,18 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         try {
             viewModelScope.launch {
                 cats = catsDB.catsDao().getAllCats()
+            }
+            return cats
+        }
+        catch (e:InterruptedException){
+            e.printStackTrace()
+        }
+        return null
+    }
+    fun getFilteredCats(query:SimpleSQLiteQuery):LiveData<List<Cat>>?{
+        try {
+            viewModelScope.launch {
+                cats = catsDB.catsDao().getFilteredCats(query)
             }
             return cats
         }

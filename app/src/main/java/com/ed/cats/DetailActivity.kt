@@ -4,6 +4,7 @@ package com.ed.cats
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.RatingBar
@@ -47,6 +48,7 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
+
         image = findViewById(R.id.image_catId)
         name = findViewById(R.id.name)
         description = findViewById(R.id.description)
@@ -79,6 +81,7 @@ class DetailActivity : AppCompatActivity() {
     }
     private fun putDataToFields(cat: Cat?){
         if(cat!=null){
+            Log.i("id",cat.id)
             Picasso.get().load(cat.image).resize(MainActivity.screenWidth,0).
             placeholder(R.drawable.placeholder).into(image)
             name.text = cat.name

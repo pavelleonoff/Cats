@@ -7,37 +7,36 @@ import org.json.JSONException
 import org.json.JSONObject
 
 class JSON {
-    companion object{
-        private const val ID = "id"
-        private const val TEMPERAMENT = "temperament"
-        private const val ORIGIN = "origin"
-        private const val ADAPTABILITY = "adaptability"
-        private const val AFFECTION_LEVEL = "affection_level"
-        private const val CHILD_FRIENDLY = "child_friendly"
-        private const val GROOMING = "grooming"
-        private const val HEALTH_ISSUES = "health_issues"
-        private const val INTELLIGENCE = "intelligence"
-        private const val SHEDDING_LEVEL = "shedding_level"
-        private const val SOCIAL_NEEDS = "social_needs"
-        private const val STRANGER_FRIENDLY = "stranger_friendly"
-        private const val VOCALISATION = "vocalisation"
-        private const val EXPERIMANTAL = "experimental"
-        private const val HAIRLESS = "hairless"
-        private const val NATURAL = "natural"
-        private const val RARE = "rare"
-        private const val REX = "rex"
-        private const val SUPPRESSED_TAIL = "suppressed_tail"
-        private const val SHORT_LEGS = "short_legs"
-        private const val WIKI = "wikipedia_url"
-        private const val HYPOALLERGENIC = "hypoallergenic"
-        private const val NAME : String = "name"
-        private const val LIFE_SPAN : String = "life_span"
-        private const val DESCRIPTION : String = "description"
-        private const val IMAGE : String = "image"
-        private const val IMAGE_URL : String = "url"
+        private val ID = "id"
+        private val TEMPERAMENT = "temperament"
+        private val ORIGIN = "origin"
+        private val ADAPTABILITY = "adaptability"
+        private val AFFECTION_LEVEL = "affection_level"
+        private val CHILD_FRIENDLY = "child_friendly"
+        private val GROOMING = "grooming"
+        private val HEALTH_ISSUES = "health_issues"
+        private val INTELLIGENCE = "intelligence"
+        private val SHEDDING_LEVEL = "shedding_level"
+        private val SOCIAL_NEEDS = "social_needs"
+        private val STRANGER_FRIENDLY = "stranger_friendly"
+        private val VOCALISATION = "vocalisation"
+        private val EXPERIMANTAL = "experimental"
+        private val HAIRLESS = "hairless"
+        private val NATURAL = "natural"
+        private val RARE = "rare"
+        private val REX = "rex"
+        private val SUPPRESSED_TAIL = "suppressed_tail"
+        private val SHORT_LEGS = "short_legs"
+        private val WIKI = "wikipedia_url"
+        private val HYPOALLERGENIC = "hypoallergenic"
+        private val NAME : String = "name"
+        private val LIFE_SPAN : String = "life_span"
+        private val DESCRIPTION : String = "description"
+        private val IMAGE : String = "image"
+        private val IMAGE_URL : String = "url"
 
 
-        fun getCatsFromJSON (catsJSON: JSONArray?):ArrayList<Cat> {
+        internal fun getCatsFromJSON (catsJSON: JSONArray?):ArrayList<Cat> {
             val catsArray = ArrayList<Cat>()
             if (catsJSON != null) {
                 var id : String
@@ -134,4 +133,3 @@ class JSON {
             return catsArray
         }
     }
-}

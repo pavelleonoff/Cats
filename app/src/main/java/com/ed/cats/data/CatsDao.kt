@@ -4,6 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.RawQuery
+import androidx.sqlite.db.SimpleSQLiteQuery
+import androidx.sqlite.db.SupportSQLiteQuery
 
 @Dao
 interface CatsDao {
@@ -12,6 +15,9 @@ interface CatsDao {
 
     @Query("SELECT * FROM cats WHERE id == :catId")
     fun getCatById(catId : String) : Cat
+
+    @RawQuery(observedEntities = [Cat::class])
+    fun getFilteredCats(query: SimpleSQLiteQuery):LiveData<List<Cat>>
 
     @Insert
     fun insertCats(cats: List<Cat>)
