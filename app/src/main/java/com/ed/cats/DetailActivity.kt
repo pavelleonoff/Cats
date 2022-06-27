@@ -5,22 +5,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
-import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.viewpager.widget.ViewPager
-import androidx.viewpager2.widget.ViewPager2
 import com.ed.cats.data.*
 import com.squareup.picasso.Picasso
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
 
 
 class DetailActivity : AppCompatActivity(){
@@ -96,7 +88,7 @@ class DetailActivity : AppCompatActivity(){
         cat?.observe(this) { t -> putDataToFields(t as Cat)}
         catImagesButton.setOnClickListener {
             val intent = Intent(this, CatImagesActivity::class.java)
-            intent.putExtra("id",id.toString())
+            intent.putExtra("id",id)
             intent.putExtra("image",image.toString())
             startActivity(intent)
         }

@@ -1,13 +1,11 @@
 package com.ed.cats.utils
 
 
-import android.util.Log
 import com.ed.cats.data.Cat
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 
-import kotlin.text.StringBuilder
 
 class JSON {
         private val ID = "id"

@@ -2,9 +2,6 @@ package com.ed.cats
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.ed.cats.adapters.ImagesAdapter
@@ -13,7 +10,6 @@ import com.ed.cats.animation.PageImageTransform
 import com.ed.cats.data.DBQueries
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 class CatImagesActivity : AppCompatActivity() {
@@ -35,7 +31,7 @@ class CatImagesActivity : AppCompatActivity() {
         if (!viewModel.isImagesExist(id!!)) {
             val scope = CoroutineScope(Dispatchers.IO)
             scope.launch {
-                DBQueries.downloadCatImagesFromNetwork(viewModel, id!!, image)
+                DBQueries.downloadCatImagesFromNetwork(viewModel, id, image)
                 setImages(id,adapter)
             }
         }
@@ -46,9 +42,9 @@ class CatImagesActivity : AppCompatActivity() {
     }
     private fun setImages(id:String,adapter:ImagesAdapter){
         CoroutineScope(Dispatchers.Main).launch {
-                viewModel.getCatImages(id.toString()).let {
+                viewModel.getCatImages(id).let {
                     it?.observe(this@CatImagesActivity) { it ->
-                        adapter.addImages(it.split(","));
+                        adapter.addImages(it.split(","))
                     }
             }
         }

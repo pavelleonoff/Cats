@@ -1,22 +1,11 @@
 package com.ed.cats.data
 
 import android.content.SharedPreferences
-import android.graphics.drawable.Drawable
 import android.util.Log
-import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.ui.text.substring
-import androidx.compose.ui.text.toUpperCase
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModelProvider
 import androidx.sqlite.db.SimpleSQLiteQuery
-import com.ed.cats.R
 import com.ed.cats.utils.JSON
 import com.ed.cats.utils.Network
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 import org.json.JSONArray
 import java.util.*
 
@@ -24,7 +13,7 @@ class DBQueries {
     companion object {
         internal const val rawQuery = "rawQuery"
         internal const val filterOn = "filterOn"
-        internal val tags = listOf<String>(
+        internal val tags = listOf(
             "hairless",
             "natural",
             "rare",
@@ -33,7 +22,7 @@ class DBQueries {
             "shortLegs",
             "hypoallergenic"
         )
-        internal val sortBy = listOf<String>(
+        internal val sortBy = listOf(
             "adaptability",
             "affectionLevel",
             "childFriendly",
@@ -106,7 +95,7 @@ class DBQueries {
             return null
         }
 
-        private fun queryBulder(pref: SharedPreferences): String {
+        private fun queryBuilder(pref: SharedPreferences): String {
             val str = StringBuilder()
             str.append("SELECT * FROM cats WHERE")
             pref.all.forEach { i ->
@@ -129,7 +118,7 @@ class DBQueries {
         }
 
         internal fun setFilterStatus(pref: SharedPreferences): String {
-            var str = StringBuilder()
+            val str = StringBuilder()
             var str2 = String()
             var tags = false
             var sortBy = false
@@ -139,7 +128,7 @@ class DBQueries {
                         str.append("Tags: ")
                         tags = true
                     }
-                    str.append(i.key.toString().substring(0 until 1).toUpperCase())
+                    str.append(i.key.toString().substring(0 until 1).uppercase(Locale.ROOT))
                     str.append(i.key.toString().substring(1 until i.key.toString().length))
                     str.append(", ")
                 }
@@ -159,7 +148,7 @@ class DBQueries {
                         }
                         sortBy = true
                     }
-                    str.append(i.key.toString().substring(0 until 1).toUpperCase())
+                    str.append(i.key.toString().substring(0 until 1).uppercase(Locale.ROOT))
                     str.append(i.key.toString().substring(1 until i.key.toString().length))
                     str.append(", ")
                 }
@@ -179,7 +168,7 @@ class DBQueries {
         ): LiveData<List<Cat>>? {
             if (pref.getBoolean(filterOn, false)) {
                 Log.i("filter", "on")
-                val res = queryBulder(pref)
+                val res = queryBuilder(pref)
                 if (pref.getString(rawQuery, "").toString() != res) {
                     Log.i("filter", "newQuery")
                     pref.edit().putString(rawQuery, res).apply()

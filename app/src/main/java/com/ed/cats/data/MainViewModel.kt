@@ -15,7 +15,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         catsDB = CatsDB.getInstance(getApplication())
         cats = catsDB.catsDao().getAllCats()
         cat = MutableLiveData<Cat>()
-        images = MutableLiveData<String>()
+        images = MutableLiveData()
     }
 
     companion object{

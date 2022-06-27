@@ -83,7 +83,7 @@ class FilterActivity : AppCompatActivity(), View.OnClickListener {
         buttonsSet()
     }
 
-    fun buttonsSet(){
+    private fun buttonsSet(){
         pref.all.forEach { i ->
             if(i.value==true){
                 queryString[i.key]?.isChecked = true
@@ -91,7 +91,7 @@ class FilterActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    fun buttonsCheck(){
+    private fun buttonsCheck(){
         var filterOn = 0
         for(i in queryString){
             if(i.value.isChecked){pref.edit().putBoolean(i.key,true).apply();filterOn++}

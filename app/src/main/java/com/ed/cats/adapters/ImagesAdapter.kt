@@ -13,8 +13,8 @@ import com.squareup.picasso.Picasso
 
 
 
-class ImagesAdapter(private val images: String):RecyclerView.Adapter<ImagesAdapter.ImagesHolder>()  {
-    private var catImages = mutableListOf<String>(images)
+class ImagesAdapter(images: String):RecyclerView.Adapter<ImagesAdapter.ImagesHolder>()  {
+    private var catImages = mutableListOf(images)
     inner class ImagesHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
         var catDetailImages : ImageView
         init {
