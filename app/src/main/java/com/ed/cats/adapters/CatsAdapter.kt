@@ -1,4 +1,4 @@
-package com.ed.cats.data
+package com.ed.cats.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.ed.cats.MainActivity
 import com.ed.cats.R
+import com.ed.cats.data.Cat
 import com.squareup.picasso.Picasso
 
 
@@ -45,7 +46,6 @@ class CatsAdapter: RecyclerView.Adapter<CatsAdapter.CatsViewHolder>() {
         val nameTextView: TextView = holder.cat_item_name
         val img = cats[position].image
         val imgImageView: ImageView = holder.cat_item_image
-        MainActivity.screenWidth
         Picasso.get().load(img).resize(MainActivity.screenWidth,0).
         onlyScaleDown().placeholder(R.drawable.placeholder).into(imgImageView)
         nameTextView.text = name

@@ -53,4 +53,5 @@
         <item>shortLegs</item>
         <item>hypoallergenic</item>
     </string-array>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

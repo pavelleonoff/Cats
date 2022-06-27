@@ -1,10 +1,13 @@
 package com.ed.cats.utils
 
 
+import android.util.Log
 import com.ed.cats.data.Cat
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
+
+import kotlin.text.StringBuilder
 
 class JSON {
         private val ID = "id"
@@ -65,6 +68,7 @@ class JSON {
                 var short_legs : Int
                 var wikipedia_url : String
                 var hypoallergenic : Int
+                var images : String
                 try{
                     for(x in 0 until catsJSON.length()){
                         val jString = JSONObject(catsJSON.getString(x))
@@ -94,6 +98,7 @@ class JSON {
                         if(jString.has(SUPPRESSED_TAIL)) suppressed_tail = jString.get(SUPPRESSED_TAIL) as Int else continue
                         if(jString.has(SHORT_LEGS)) short_legs = jString.get(SHORT_LEGS) as Int else continue
                         if(jString.has(HYPOALLERGENIC)) hypoallergenic = jString.get(HYPOALLERGENIC) as Int else continue
+                        images = ""
                             val cat = Cat(
                                 id,
                                 name,
@@ -120,7 +125,8 @@ class JSON {
                                 rex,
                                 suppressed_tail,
                                 short_legs,
-                                hypoallergenic
+                                hypoallergenic,
+                                images
                             )
                             catsArray.add(cat)
                         }
@@ -132,4 +138,21 @@ class JSON {
             }
             return catsArray
         }
+        internal fun getCatImagesFromJSON (catsJSON: JSONArray?):ArrayList<String>{
+        val imagesArr = ArrayList<String>()
+        if (catsJSON != null) {
+            try{
+                for(x in 0 until catsJSON.length()){
+                    val jString = JSONObject(catsJSON.getString(x))
+                    if(jString.has(IMAGE_URL)&&!jString.get(IMAGE_URL).equals("")){
+                        imagesArr.add(jString.get(IMAGE_URL)as String)
+                    } else {continue}
+                }
+            }
+            catch(e: JSONException){
+                e.printStackTrace()
+            }
+        }
+        return imagesArr
+    }
     }

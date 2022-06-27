@@ -1,6 +1,7 @@
 package com.ed.cats.utils
 
 import android.net.Uri
+import android.util.Log
 import org.json.JSONArray
 import org.json.JSONException
 import java.io.BufferedReader
@@ -17,13 +18,29 @@ class Network {
         internal const val BASE = "https://api.thecatapi.com/v1"
         internal const val BREEDS = "breeds"
         internal const val IMAGES = "images"
+        internal const val SEARCH = "search"
+        internal const val ORDER = "order"
+        internal const val BREEDSID = "breed_id"
+        internal const val LIMIT = "limit"
         internal const val KEY = "aeecb068-4f7f-4851-91df-03a3c5b8367f"
     }
-        private fun buildURL(): URL {
+        private fun buildBreedsURL(): URL {
             val url = Uri.parse(BASE)
                 .buildUpon()
                 .appendPath(BREEDS)
                 .build()
+            return URL(url.toString())
+        }
+        private fun buildBreedImagesURL(id:String): URL {
+            val url = Uri.parse(BASE)
+                .buildUpon()
+                .appendPath(IMAGES)
+                .appendPath(SEARCH)
+                .appendQueryParameter(ORDER, "ASC")
+                .appendQueryParameter(LIMIT, "20")
+                .appendQueryParameter(BREEDSID, id)
+                .build()
+            Log.i("Test",url.toString())
             return URL(url.toString())
         }
         private fun jsonLoad(url:URL):JSONArray?{
@@ -51,11 +68,11 @@ class Network {
                 }
                 return result
         }
-            internal fun getJSONFromNetwork(): JSONArray? {
+        internal fun getCatsJSONFromNetwork(): JSONArray? {
 
             var result:JSONArray? = null
             try {
-                result = jsonLoad(buildURL())
+                result = jsonLoad(buildBreedsURL())
             }
             catch (e: ExecutionException){
                 e.printStackTrace()
@@ -65,6 +82,20 @@ class Network {
             }
             return result
         }
+
+        internal fun getCatsImagesJSONFromNetwork(id:String): JSONArray? {
+            var result:JSONArray? = null
+            try {
+                result = jsonLoad(buildBreedImagesURL(id))
+            }
+            catch (e: ExecutionException){
+                e.printStackTrace()
+            }
+            catch (e:InterruptedException){
+                e.printStackTrace()
+            }
+            return result
+    }
 
     }
 

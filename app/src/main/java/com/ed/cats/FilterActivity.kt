@@ -1,21 +1,12 @@
 package com.ed.cats
 
 import android.content.SharedPreferences
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
 import android.widget.ToggleButton
-import androidx.annotation.RequiresApi
-import androidx.sqlite.db.SimpleSQLiteQuery
-import androidx.sqlite.db.SupportSQLiteQuery
-import com.ed.cats.data.CatsAdapter
 import com.ed.cats.data.DBQueries
-import java.lang.StringBuilder
 
 
 class FilterActivity : AppCompatActivity(), View.OnClickListener {

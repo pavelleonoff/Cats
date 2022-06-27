@@ -1,22 +1,32 @@
 package com.ed.cats
 
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
-import com.ed.cats.data.Cat
-import com.ed.cats.data.MainViewModel
+import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
+import com.ed.cats.data.*
 import com.squareup.picasso.Picasso
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 
 
-class DetailActivity : AppCompatActivity() {
+class DetailActivity : AppCompatActivity(){
     private lateinit var viewModel : MainViewModel
+
+
 
     private lateinit var id : String
     private lateinit var name:TextView
@@ -44,12 +54,12 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var suppressedTail : TextView
     private lateinit var shortLegs : TextView
     private lateinit var hypoallergenic : TextView
+    private lateinit var catImagesButton : Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-
-        image = findViewById(R.id.image_catId)
         name = findViewById(R.id.name)
         description = findViewById(R.id.description)
         lifeSpan = findViewById(R.id.life_span)
@@ -74,14 +84,27 @@ class DetailActivity : AppCompatActivity() {
         suppressedTail = findViewById(R.id.suppressed_tail)
         shortLegs = findViewById(R.id.short_legs)
         hypoallergenic = findViewById(R.id.hypoallergenic)
+        image = findViewById(R.id.detailImage)
+        catImagesButton = findViewById(R.id.catImagesButton)
         id = intent.getStringExtra("id").toString()
+        val data = getIntent()
+        val image = data.getStringExtra("image")
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+
+
         val cat = viewModel.getCatById(id)
-        cat?.observe(this) { t -> putDataToFields(t as Cat) }
+        cat?.observe(this) { t -> putDataToFields(t as Cat)}
+        catImagesButton.setOnClickListener {
+            val intent = Intent(this, CatImagesActivity::class.java)
+            intent.putExtra("id",id.toString())
+            intent.putExtra("image",image.toString())
+            startActivity(intent)
+        }
     }
+
+
     private fun putDataToFields(cat: Cat?){
         if(cat!=null){
-            Log.i("id",cat.id)
             Picasso.get().load(cat.image).resize(MainActivity.screenWidth,0).
             placeholder(R.drawable.placeholder).into(image)
             name.text = cat.name
@@ -109,6 +132,9 @@ class DetailActivity : AppCompatActivity() {
             if(cat.hypoallergenic==1) hypoallergenic.visibility = View.VISIBLE
             wikipediaUrl.text = cat.wikipediaUrl
             wikipediaUrl.movementMethod = LinkMovementMethod.getInstance()
+
+
+            }
+
         }
     }
-}

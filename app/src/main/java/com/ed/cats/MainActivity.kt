@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ed.cats.data.Cat
-import com.ed.cats.data.CatsAdapter
+import com.ed.cats.adapters.CatsAdapter
 import com.ed.cats.data.DBQueries
 import com.ed.cats.data.MainViewModel
 import kotlinx.coroutines.*
@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var filtersButtonClear : ImageView
     companion object{
         var screenWidth = 0
+        var screenHeight = 0
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,13 +38,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         pref.edit().putString(DBQueries.rawQuery, "").apply()
 
         screenWidth = resources.displayMetrics.widthPixels
+        screenHeight = resources.displayMetrics.heightPixels
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         filtersButton = findViewById(R.id.filtersButton)
         filterStatus = findViewById(R.id.filterStatus)
         filtersButtonClear = findViewById(R.id.filtersButtonClear)
-        val scope = CoroutineScope(Dispatchers.IO)
-        scope.launch {
-            DBQueries.downLoadDataFromNetwork(viewModel)
+        if (!viewModel.isExist()) {
+            val scope = CoroutineScope(Dispatchers.IO)
+            scope.launch {
+                DBQueries.downloadCatsFromNetwork(viewModel)
+            }
         }
         catsRecyclerView = findViewById(R.id.catsRecyclerView)
         catsRecyclerView.layoutManager =  LinearLayoutManager(
@@ -60,8 +64,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         catsAdapter.setOnCatClickListener(object : CatsAdapter.OnCatClickListener {
             override fun onCatClick(id: Int) {
                 val catId:String = catsAdapter.getCats()[id].id
+                val image:String = catsAdapter.getCats()[id].image
                 val intent = Intent(this@MainActivity,DetailActivity::class.java)
                 intent.putExtra("id",catId)
+                intent.putExtra("image",image)
                 startActivity(intent)
             }
         })

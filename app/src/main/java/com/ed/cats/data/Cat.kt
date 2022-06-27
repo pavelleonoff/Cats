@@ -31,4 +31,5 @@ class Cat(
     val rex : Int,
     val suppressedTail : Int,
     val shortLegs : Int,
-    val hypoallergenic : Int)
+    val hypoallergenic : Int,
+    val images : String)
