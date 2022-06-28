@@ -1,4 +1,4 @@
-package com.ed.cats.utils
+package com.redprism.cats.utils
 
 import android.net.Uri
 import android.util.Log

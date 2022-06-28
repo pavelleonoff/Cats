@@ -1,4 +1,4 @@
-package com.ed.cats.adapters
+package com.redprism.cats.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,10 +6,13 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.ed.cats.MainActivity
-import com.ed.cats.R
-import com.ed.cats.data.Cat
+import com.redprism.cats.MainActivity
+import com.redprism.cats.R
+import com.redprism.cats.data.Cat
+import com.squareup.picasso.Callback
+import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
+import java.lang.Exception
 
 
 class CatsAdapter: RecyclerView.Adapter<CatsAdapter.CatsViewHolder>() {
@@ -46,9 +49,23 @@ class CatsAdapter: RecyclerView.Adapter<CatsAdapter.CatsViewHolder>() {
         val nameTextView: TextView = holder.cat_item_name
         val img = cats[position].image
         val imgImageView: ImageView = holder.cat_item_image
-        Picasso.get().load(img).resize(MainActivity.screenWidth,0).
-        onlyScaleDown().placeholder(R.drawable.placeholder).into(imgImageView)
         nameTextView.text = name
+        Picasso.get().load(img).resize(MainActivity.screenWidth,0)
+            .onlyScaleDown()
+            .placeholder(R.drawable.infinitive_progressbar)
+            .into(imgImageView,object: Callback {
+                override fun onSuccess() {
+                }
+
+                override fun onError(e: Exception?) {
+                    Picasso.get().load(img)
+                        .resize(MainActivity.screenWidth,0)
+                        .centerCrop()
+                        .placeholder(R.drawable.infinitive_progressbar).into(imgImageView)
+                }
+
+            })
+
     }
     override fun getItemCount(): Int {
         return cats.size

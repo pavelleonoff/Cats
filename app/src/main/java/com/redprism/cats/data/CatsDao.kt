@@ -1,4 +1,4 @@
-package com.ed.cats.data
+package com.redprism.cats.data
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao

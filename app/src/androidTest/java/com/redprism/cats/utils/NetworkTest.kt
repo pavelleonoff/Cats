@@ -1,4 +1,4 @@
-package com.ed.cats.utils
+package com.redprism.cats.utils
 
 import org.junit.Before
 import org.junit.Test

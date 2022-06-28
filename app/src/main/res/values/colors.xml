@@ -10,7 +10,7 @@
     <color name="tagColor">#6900E1</color>
     <color name="sortColor">#0092E1</color>
     <color name="main">#C86D0C</color>
-    <color name="buttonOk">#448C2A</color>
+    <color name="buttonOk">#6900E1</color>
     <color name="buttonCancel">#773124</color>
     <color name="gray">#9C9C9C</color>
 </resources>

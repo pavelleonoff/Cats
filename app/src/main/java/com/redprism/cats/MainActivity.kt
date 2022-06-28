@@ -1,7 +1,9 @@
-package com.ed.cats
+package com.redprism.cats
 
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
@@ -11,12 +13,11 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.ed.cats.data.Cat
-import com.ed.cats.adapters.CatsAdapter
-import com.ed.cats.data.DBQueries
-import com.ed.cats.data.MainViewModel
+import com.redprism.cats.adapters.CatsAdapter
+import com.redprism.cats.data.Cat
+import com.redprism.cats.data.DBQueries
+import com.redprism.cats.data.MainViewModel
 import kotlinx.coroutines.*
-
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -108,7 +109,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onDestroy()
         pref.edit().putString(DBQueries.rawQuery, "").apply()
     }
-
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.filtersButton ->{

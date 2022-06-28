@@ -1,4 +1,4 @@
-package com.ed.cats.data
+package com.redprism.cats.data
 
 import android.content.Context
 import androidx.room.Database

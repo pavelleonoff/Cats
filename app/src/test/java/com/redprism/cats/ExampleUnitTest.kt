@@ -1,4 +1,4 @@
-package com.ed.cats
+package com.redprism.cats
 
 import org.junit.Test
 

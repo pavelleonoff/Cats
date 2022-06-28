@@ -1,4 +1,4 @@
-package com.ed.cats.data
+package com.redprism.cats.data
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

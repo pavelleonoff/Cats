@@ -1,4 +1,4 @@
-package com.ed.cats.data
+package com.redprism.cats.data
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

@@ -1,4 +1,4 @@
-package com.ed.cats.adapters
+package com.redprism.cats.adapters
 
 
 import android.util.Log
@@ -6,11 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ProgressBar
 import androidx.recyclerview.widget.RecyclerView
-import com.ed.cats.MainActivity
-import com.ed.cats.R
+import com.redprism.cats.MainActivity
+import com.redprism.cats.R
+import com.squareup.picasso.Callback
+import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
-
+import kotlinx.coroutines.flow.callbackFlow
+import java.lang.Exception
 
 
 class ImagesAdapter(images: String):RecyclerView.Adapter<ImagesAdapter.ImagesHolder>()  {
@@ -28,14 +32,27 @@ class ImagesAdapter(images: String):RecyclerView.Adapter<ImagesAdapter.ImagesHol
     }
 
     override fun onBindViewHolder(holder: ImagesHolder, position: Int) {
+
         val curImg = catImages[position]
         val image = holder.catDetailImages
-        Log.i("Cats","2")
-        Log.i("Cats","CatsArrSize-"+catImages.size.toString())
         Picasso.get().load(curImg)
             .resize(MainActivity.screenWidth,0)
-            .onlyScaleDown()
-            .placeholder(R.drawable.placeholder).into(image)
+            .centerCrop()
+            .networkPolicy(NetworkPolicy.OFFLINE)
+            .placeholder(R.drawable.infinitive_progressbar).into(image,object: Callback{
+                override fun onSuccess() {
+                }
+
+                override fun onError(e: Exception?) {
+                    Picasso.get().load(curImg)
+                        .resize(MainActivity.screenWidth,0)
+                        .centerCrop()
+                        .placeholder(R.drawable.infinitive_progressbar).into(image)
+                }
+
+            })
+
+
     }
 
     override fun getItemCount(): Int {
@@ -43,7 +60,7 @@ class ImagesAdapter(images: String):RecyclerView.Adapter<ImagesAdapter.ImagesHol
     }
     fun addImages(imgs: List<String>) {
         this.catImages.addAll(imgs)
-        notifyDataSetChanged()
+        notifyItemRangeInserted(1,imgs.size)
     }
 }
 

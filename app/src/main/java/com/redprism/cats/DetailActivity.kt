@@ -1,4 +1,4 @@
-package com.ed.cats
+package com.redprism.cats
 
 
 import android.content.Intent
@@ -11,7 +11,7 @@ import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
-import com.ed.cats.data.*
+import com.redprism.cats.data.*
 import com.squareup.picasso.Picasso
 
 

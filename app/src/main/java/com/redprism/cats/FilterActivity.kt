@@ -1,4 +1,4 @@
-package com.ed.cats
+package com.redprism.cats
 
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ToggleButton
-import com.ed.cats.data.DBQueries
+import com.redprism.cats.data.DBQueries
 
 
 class FilterActivity : AppCompatActivity(), View.OnClickListener {

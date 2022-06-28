@@ -1,4 +1,4 @@
-package com.ed.cats.animation
+package com.redprism.cats.animation
 
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2
