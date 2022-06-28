@@ -35,6 +35,8 @@ class DBQueries {
             "vocalisation"
         )
 
+    }
+
         internal fun cleanFilter(pref: SharedPreferences) {
             pref.edit().clear().commit()
         }
@@ -186,4 +188,3 @@ class DBQueries {
             return null
         }
     }
-}

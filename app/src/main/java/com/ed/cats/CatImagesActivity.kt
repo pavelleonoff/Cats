@@ -24,14 +24,14 @@ class CatImagesActivity : AppCompatActivity() {
         val data = getIntent()
         val id = data.getStringExtra("id")
         val image = data.getStringExtra("image")
-
+        val dbQuery = DBQueries()
         val adapter = ImagesAdapter(image!!)
         viewPager.adapter = adapter
 
         if (!viewModel.isImagesExist(id!!)) {
             val scope = CoroutineScope(Dispatchers.IO)
             scope.launch {
-                DBQueries.downloadCatImagesFromNetwork(viewModel, id, image)
+                dbQuery.downloadCatImagesFromNetwork(viewModel, id, image)
                 setImages(id,adapter)
             }
         }

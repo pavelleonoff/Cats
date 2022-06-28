@@ -43,10 +43,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         filtersButton = findViewById(R.id.filtersButton)
         filterStatus = findViewById(R.id.filterStatus)
         filtersButtonClear = findViewById(R.id.filtersButtonClear)
+        val dbQuery = DBQueries()
         if (!viewModel.isExist()) {
             val scope = CoroutineScope(Dispatchers.IO)
             scope.launch {
-                DBQueries.downloadCatsFromNetwork(viewModel)
+                dbQuery.downloadCatsFromNetwork(viewModel)
             }
         }
         catsRecyclerView = findViewById(R.id.catsRecyclerView)
@@ -57,7 +58,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         catsAdapter = CatsAdapter()
 
 
-        getCats()
+        getCats(dbQuery)
 
 
         catsRecyclerView.adapter = catsAdapter
@@ -75,19 +76,19 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         filtersButtonClear.setOnClickListener(this)
 
     }
-    private fun getCats(){
-        DBQueries.getActualCatsFromDB(pref,viewModel).let {
+    private fun getCats(dbQuery:DBQueries){
+        dbQuery.getActualCatsFromDB(pref,viewModel).let {
             it?.observe(this) { t ->
                 catsAdapter.setCats(t as ArrayList<Cat>)
             }
         }
-        filterUIChange()
+        filterUIChange(dbQuery)
     }
-    private fun filterUIChange(){
-        if(DBQueries.filterOn(pref)){
+    private fun filterUIChange(dbQuery:DBQueries){
+        if(dbQuery.filterOn(pref)){
             filtersButton.background = ContextCompat.getDrawable(this,R.drawable.toggle_on)
             filtersButtonClear.visibility = View.VISIBLE
-            filterStatus.text = DBQueries.setFilterStatus(pref)
+            filterStatus.text = dbQuery.setFilterStatus(pref)
         }
         else{
             filtersButton.background = ContextCompat.getDrawable(this,R.drawable.toggle_off)
@@ -99,7 +100,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onResume() {
         super.onResume()
-        getCats()
+        val dbQuery = DBQueries()
+        getCats(dbQuery)
     }
 
     override fun onDestroy() {
@@ -114,8 +116,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
             }
             R.id.filtersButtonClear ->{
-                DBQueries.cleanFilter(pref)
-                getCats()
+                val dbQuery = DBQueries()
+                dbQuery .cleanFilter(pref)
+                getCats(dbQuery)
             }
         }
     }
