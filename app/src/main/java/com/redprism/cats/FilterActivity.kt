@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ToggleButton
-import com.redprism.cats.data.DBQueries
+import com.redprism.cats.data.Pref
 
 
 class FilterActivity : AppCompatActivity(), View.OnClickListener {
@@ -42,40 +42,40 @@ class FilterActivity : AppCompatActivity(), View.OnClickListener {
 
 
         filterHairless = findViewById(R.id.filterHairless)
-        queryString = mutableMapOf(DBQueries.tags[0] to filterHairless)
+        queryString = mutableMapOf(Pref.tags[0] to filterHairless)
         filterNatural = findViewById(R.id.filterNatural)
-        queryString[DBQueries.tags[1]] = filterNatural
+        queryString[Pref.tags[1]] = filterNatural
         filterRare = findViewById(R.id.filterRare)
-        queryString[DBQueries.tags[2]] = filterRare
+        queryString[Pref.tags[2]] = filterRare
         filterRex = findViewById(R.id.filterRex)
-        queryString[DBQueries.tags[3]] = filterRex
+        queryString[Pref.tags[3]] = filterRex
         filterSuppressed_tail = findViewById(R.id.filterSuppressed_tail)
-        queryString[DBQueries.tags[4]] = filterSuppressed_tail
+        queryString[Pref.tags[4]] = filterSuppressed_tail
         filterShort_legs = findViewById(R.id.filterShort_legs)
-        queryString[DBQueries.tags[5]] = filterShort_legs
+        queryString[Pref.tags[5]] = filterShort_legs
         filterHypoallergenic = findViewById(R.id.filterHypoallergenic)
-        queryString[DBQueries.tags[6]] = filterHypoallergenic
+        queryString[Pref.tags[6]] = filterHypoallergenic
 
         filterAdaptability = findViewById(R.id.filterAdaptability)
-        queryString[DBQueries.sortBy[0]] = filterAdaptability
+        queryString[Pref.sortBy[0]] = filterAdaptability
         filterAffection_level = findViewById(R.id.filterAffection_level)
-        queryString[DBQueries.sortBy[1]] = filterAffection_level
+        queryString[Pref.sortBy[1]] = filterAffection_level
         filterChild_friendly = findViewById(R.id.filterChild_friendly)
-        queryString[DBQueries.sortBy[2]] = filterChild_friendly
+        queryString[Pref.sortBy[2]] = filterChild_friendly
         filterGrooming = findViewById(R.id.filterGrooming)
-        queryString[DBQueries.sortBy[3]] = filterGrooming
+        queryString[Pref.sortBy[3]] = filterGrooming
         filterHealth_issues = findViewById(R.id.filterHealth_issues)
-        queryString[DBQueries.sortBy[4]] = filterHealth_issues
+        queryString[Pref.sortBy[4]] = filterHealth_issues
         filterIntelligence = findViewById(R.id.filterIntelligence)
-        queryString[DBQueries.sortBy[5]] = filterIntelligence
+        queryString[Pref.sortBy[5]] = filterIntelligence
         filterShedding_level = findViewById(R.id.filterShedding_level)
-        queryString[DBQueries.sortBy[6]] = filterShedding_level
+        queryString[Pref.sortBy[6]] = filterShedding_level
         filterSocial_needs = findViewById(R.id.filterSocial_needs)
-        queryString[DBQueries.sortBy[7]] = filterSocial_needs
+        queryString[Pref.sortBy[7]] = filterSocial_needs
         filterStranger_friendly = findViewById(R.id.filterStranger_friendly)
-        queryString[DBQueries.sortBy[8]] = filterStranger_friendly
+        queryString[Pref.sortBy[8]] = filterStranger_friendly
         filterVocalisation = findViewById(R.id.filterVocalisation)
-        queryString[DBQueries.sortBy[9]] = filterVocalisation
+        queryString[Pref.sortBy[9]] = filterVocalisation
 
         filterButtonOk = findViewById(R.id.filterButtonOk)
         filterButtonOk.setOnClickListener(this)
@@ -97,8 +97,8 @@ class FilterActivity : AppCompatActivity(), View.OnClickListener {
             if(i.value.isChecked){pref.edit().putBoolean(i.key,true).apply();filterOn++}
             else{pref.edit().putBoolean(i.key,false).apply()}
         }
-        if(filterOn>0){pref.edit().putBoolean(DBQueries.filterOn,true).apply()}
-        else{pref.edit().putBoolean(DBQueries.filterOn,false).apply()}
+        if(filterOn>0){pref.edit().putBoolean(Pref.filterOn,true).apply()}
+        else{pref.edit().putBoolean(Pref.filterOn,false).apply()}
     }
 
     override fun onClick(v: View?) {

@@ -10,14 +10,10 @@
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/image_catId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:adjustViewBounds="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:contentDescription="@string/cat_picture"
-        android:scaleType="fitCenter"
         android:background="@color/black"
-        android:src="@drawable/placeholder"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

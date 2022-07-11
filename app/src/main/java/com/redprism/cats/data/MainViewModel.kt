@@ -1,107 +1,106 @@
 package com.redprism.cats.data
 
 import android.app.Application
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.sqlite.db.SimpleSQLiteQuery
+import com.redprism.cats.utils.JSON
+import com.redprism.cats.utils.Network
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-
+import org.json.JSONArray
+import java.util.ArrayList
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     init {
         catsDB = CatsDB.getInstance(getApplication())
-        cats = catsDB.catsDao().getAllCats()
+        //cats = catsDB.catsDao().getAllCats()
         cat = MutableLiveData<Cat>()
         images = MutableLiveData()
     }
-
-    companion object{
-
-        private lateinit var catsDB : CatsDB
-        private lateinit var cats : LiveData<List<Cat>>
-        private lateinit var cat : MutableLiveData<Cat>
-        private lateinit var images : LiveData<String>
-
-
+    var filteredCats = MutableLiveData<List<Cat>>()
+    companion object {
+        private lateinit var catsDB: CatsDB
+        private lateinit var cat: MutableLiveData<Cat>
+        private lateinit var images: LiveData<String>
     }
-    fun isImagesExist(id:String):Boolean{
-        return catsDB.catsDao().isImagesExist(id)
-    }
-    fun isExist():Boolean{
+
+    private val pref = application.getSharedPreferences("Filter", AppCompatActivity.MODE_PRIVATE)
+
+    private fun isExist(): Boolean {
         return catsDB.catsDao().isExists()
     }
 
-    fun getCatById(catId:String):LiveData<Cat>? {
+    private fun downloadCatsFromNetwork():List<Cat>{
+        val networkRequest = Network()
+        val json = JSON()
+        val catsJSON: JSONArray? = networkRequest.getCatsJSONFromNetwork()
+        val cats: List<Cat> = json.getCatsFromJSON(catsJSON)
+        catsDB.catsDao().insertCats(cats)
+        return cats
+    }
+
+    fun downloadCatImagesFromNetwork(
+        id: String,
+        image: String
+    ): String {
+        val networkRequest = Network()
+        val json = JSON()
+        val catsImagesJSON: JSONArray? = networkRequest.getCatsImagesJSONFromNetwork(id)
+        val catImages: ArrayList<String> = json.getCatImagesFromJSON(catsImagesJSON)
+        val res = Operation().cleanString(catImages, image)
+            catsDB.catsDao().updateCatImages(res, id)
+            return res
+    }
+
+
+    fun getCatById(catId: String): LiveData<Cat>? {
         try {
             viewModelScope.launch {
                 cat.postValue(catsDB.catsDao().getCatById(catId))
             }
             return cat
-        }
-        catch (e:InterruptedException){
-            e.printStackTrace()
-        }
-        return null
-    }
-    fun getCatImages(catId:String):LiveData<String>? {
-        try {
-            viewModelScope.launch {
-                images = catsDB.catsDao().getCatImages(catId)
-            }
-            return images
-        }
-        catch (e:InterruptedException){
+        } catch (e: InterruptedException) {
             e.printStackTrace()
         }
         return null
     }
 
-    fun insertCatsToDb(cats: List<Cat>) {
-        try {
+    private suspend fun getAllCatsFromDb() {
             viewModelScope.launch {
-                catsDB.catsDao().insertCats(cats)
+                if (!isExist()){
+                    val cats = CoroutineScope(Dispatchers.IO).async {
+                        return@async downloadCatsFromNetwork()
+                    }.await()
+                    filteredCats.value = cats
+                }
+                filteredCats.value = catsDB.catsDao().getAllCats()
             }
-        }
-        catch (e:InterruptedException){
-            e.printStackTrace()
-        }
     }
-    fun insertCatImagesToDb(catImages: String,id:String) {
-        try {
+
+    private fun getFilteredCats(query: SimpleSQLiteQuery) {
             viewModelScope.launch {
-                catsDB.catsDao().updateCatImages(catImages,id)
+                filteredCats.value = catsDB.catsDao().getFilteredCats(query)
             }
-        }
-        catch (e:InterruptedException){
-            e.printStackTrace()
-        }
     }
-    fun getCatsFromDb():LiveData<List<Cat>>? {
-        try {
-            viewModelScope.launch {
-                cats = catsDB.catsDao().getAllCats()
-            }
-            return cats
-        }
-        catch (e:InterruptedException){
-            e.printStackTrace()
-        }
-        return null
+    fun getActualCats():LiveData<List<Cat>>?{
+        return this.filteredCats
     }
-    fun getFilteredCats(query:SimpleSQLiteQuery):LiveData<List<Cat>>?{
-        try {
-            viewModelScope.launch {
-                cats = catsDB.catsDao().getFilteredCats(query)
-            }
-            return cats
+    suspend fun getActualCatsFromDB() {
+
+        if (pref.getBoolean(Pref.filterOn, false)) {
+            val res = Operation().queryBuilder(pref)
+            pref.edit().putString(Pref.rawQuery, res).commit()
+            return getFilteredCats(SimpleSQLiteQuery(res))
+        } else {
+            getAllCatsFromDb()
         }
-        catch (e:InterruptedException){
-            e.printStackTrace()
-        }
-        return null
     }
 }
 

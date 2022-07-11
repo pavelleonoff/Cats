@@ -1,7 +1,6 @@
 package com.redprism.cats.utils
 
 import android.net.Uri
-import android.util.Log
 import org.json.JSONArray
 import org.json.JSONException
 import java.io.BufferedReader
@@ -40,7 +39,6 @@ class Network {
                 .appendQueryParameter(LIMIT, "20")
                 .appendQueryParameter(BREEDSID, id)
                 .build()
-            Log.i("Test",url.toString())
             return URL(url.toString())
         }
         private fun jsonLoad(url:URL):JSONArray?{

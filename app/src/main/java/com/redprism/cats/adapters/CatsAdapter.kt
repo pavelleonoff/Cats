@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.redprism.cats.MainActivity
 import com.redprism.cats.R
 import com.redprism.cats.data.Cat
 import com.squareup.picasso.Callback
@@ -15,10 +14,12 @@ import com.squareup.picasso.Picasso
 import java.lang.Exception
 
 
-class CatsAdapter: RecyclerView.Adapter<CatsAdapter.CatsViewHolder>() {
+class CatsAdapter(width:Int,height:Int): RecyclerView.Adapter<CatsAdapter.CatsViewHolder>() {
+    private val width = width
+    private val height = height
+
     private var cats : ArrayList<Cat> = ArrayList()
     private var onCatClickListener: OnCatClickListener? = null
-
     interface OnCatClickListener{
         fun onCatClick(id:Int)
     }
@@ -50,22 +51,20 @@ class CatsAdapter: RecyclerView.Adapter<CatsAdapter.CatsViewHolder>() {
         val img = cats[position].image
         val imgImageView: ImageView = holder.cat_item_image
         nameTextView.text = name
-        Picasso.get().load(img).resize(MainActivity.screenWidth,0)
-            .onlyScaleDown()
-            .placeholder(R.drawable.infinitive_progressbar)
+        Picasso.get().load(img)
+            .networkPolicy(NetworkPolicy.OFFLINE)
+            .placeholder(R.drawable.infinitive_progressbar_small)
             .into(imgImageView,object: Callback {
                 override fun onSuccess() {
                 }
 
                 override fun onError(e: Exception?) {
                     Picasso.get().load(img)
-                        .resize(MainActivity.screenWidth,0)
-                        .centerCrop()
-                        .placeholder(R.drawable.infinitive_progressbar).into(imgImageView)
+                        .resize(width,height)
+                        .centerInside()
+                        .placeholder(R.drawable.infinitive_progressbar_big).into(imgImageView)
                 }
-
             })
-
     }
     override fun getItemCount(): Int {
         return cats.size
@@ -75,7 +74,7 @@ class CatsAdapter: RecyclerView.Adapter<CatsAdapter.CatsViewHolder>() {
         cats.addAll(catsArr)
         notifyDataSetChanged()
     }
-    fun getCats(): ArrayList<Cat> {
+    fun getAdapterCats(): ArrayList<Cat> {
         return cats
     }
 }

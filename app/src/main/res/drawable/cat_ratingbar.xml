@@ -9,6 +9,5 @@
         android:drawable="@drawable/cat_ratingbar_empty"/>
     <item
         android:id="@android:id/progress"
-        android:drawable="@drawable/cat_ratingbar_filled"/>
-
+        android:drawable="@drawable/cat_ratingbar_filled" />
 </layer-list>

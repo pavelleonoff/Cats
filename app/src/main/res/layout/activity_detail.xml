@@ -29,6 +29,10 @@
                     android:id="@+id/detailImage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:background="@color/white"
+                    android:cropToPadding="false"
+                    android:scaleType="fitCenter"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -294,7 +298,7 @@
                                 android:id="@+id/affection_level_rb"
                                 style="@style/CustomRatingBarStyle"
                                 android:layout_width="wrap_content"
-                                android:layout_height="24dp"
+                                android:layout_height="match_parent"
                                 android:isIndicator="true"
                                 android:numStars="5"
                                 android:progressDrawable="@drawable/cat_ratingbar"
@@ -489,6 +493,7 @@
                                 style="@style/CustomRatingBarStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="24dp"
+                                android:tint="@color/sortColor"
                                 android:isIndicator="true"
                                 android:numStars="5"
                                 android:stepSize="1.0" />
@@ -503,6 +508,7 @@
                             android:layout_marginTop="10dp"
                             android:autoLink="web"
                             android:paddingBottom="40dp"
+                            android:textColorLink="@color/sortColor"
                             android:text="" />
 
                     </LinearLayout>
