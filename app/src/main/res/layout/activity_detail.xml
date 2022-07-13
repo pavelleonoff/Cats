@@ -4,10 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
     tools:context=".DetailActivity">
 
     <LinearLayout
@@ -19,34 +15,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center">
-
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <ImageButton
                     android:id="@+id/detailImage"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
+                    android:layout_gravity="center"
                     android:background="@color/white"
                     android:cropToPadding="false"
                     android:scaleType="fitCenter"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/placeholder" />
 
                 <Button
                     android:id="@+id/catImagesButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="See more photo"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/detailImage" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:text="@string/see_more_photo"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
 
 
         </androidx.cardview.widget.CardView>
@@ -68,7 +59,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/catTagMarginLeft"
                         android:layout_marginTop="20dp"
-                        android:background="@color/tagColor"
+                        android:background="@drawable/rounded_bg"
                         android:padding="@dimen/tagPadding"
                         android:text="@string/experimental"
                         android:textColor="@color/white"
@@ -81,7 +72,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/catTagMarginLeft"
                         android:layout_marginTop="20dp"
-                        android:background="@color/tagColor"
+                        android:background="@drawable/rounded_bg"
                         android:padding="@dimen/tagPadding"
                         android:text="@string/hairless"
                         android:textColor="@color/white"
@@ -94,7 +85,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/catTagMarginLeft"
                         android:layout_marginTop="20dp"
-                        android:background="@color/tagColor"
+                        android:background="@drawable/rounded_bg"
                         android:padding="@dimen/tagPadding"
                         android:text="@string/natural"
                         android:textColor="@color/white"
@@ -107,7 +98,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/catTagMarginLeft"
                         android:layout_marginTop="20dp"
-                        android:background="@color/tagColor"
+                        android:background="@drawable/rounded_bg"
                         android:padding="@dimen/tagPadding"
                         android:text="@string/rare"
                         android:textColor="@color/white"
@@ -119,7 +110,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/catTagMarginLeft"
                         android:layout_marginTop="20dp"
-                        android:background="@color/tagColor"
+                        android:background="@drawable/rounded_bg"
                         android:padding="@dimen/tagPadding"
                         android:text="@string/rex"
                         android:textColor="@color/white"
@@ -131,7 +122,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/catTagMarginLeft"
                         android:layout_marginTop="20dp"
-                        android:background="@color/tagColor"
+                        android:background="@drawable/rounded_bg"
                         android:padding="@dimen/tagPadding"
                         android:text="@string/suppressed_tail"
                         android:textColor="@color/white"
@@ -143,7 +134,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/catTagMarginLeft"
                         android:layout_marginTop="20dp"
-                        android:background="@color/tagColor"
+                        android:background="@drawable/rounded_bg"
                         android:padding="@dimen/tagPadding"
                         android:text="@string/short_legs"
                         android:textColor="@color/white"
@@ -156,7 +147,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/catTagMarginLeft"
                         android:layout_marginTop="20dp"
-                        android:background="@color/tagColor"
+                        android:background="@drawable/rounded_bg"
                         android:padding="@dimen/tagPadding"
                         android:text="@string/hypoallergenic"
                         android:textColor="@color/white"
@@ -508,7 +499,7 @@
                             android:layout_marginTop="10dp"
                             android:autoLink="web"
                             android:paddingBottom="40dp"
-                            android:textColorLink="@color/sortColor"
+                            android:textColorLink="@color/main"
                             android:text="" />
 
                     </LinearLayout>

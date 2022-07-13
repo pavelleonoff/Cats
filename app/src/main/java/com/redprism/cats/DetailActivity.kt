@@ -116,8 +116,9 @@ class DetailActivity : AppCompatActivity(){
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         widthPixels = resources.displayMetrics.widthPixels
         heightPixels = resources.displayMetrics.heightPixels
-        val cat = viewModel.getCatById(id)
-        cat?.observe(this) { t -> putDataToFields(t as Cat)}
+        val cat = viewModel.cat
+        viewModel.getCatById(id)
+        cat.observe(this) { t -> putDataToFields(t as Cat)}
         catImagesButton.setOnClickListener {
             val intent = Intent(this, CatImagesActivity::class.java)
             intent.putExtra("id",id)

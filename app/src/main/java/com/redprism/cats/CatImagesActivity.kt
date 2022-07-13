@@ -30,29 +30,17 @@ class CatImagesActivity : AppCompatActivity() {
         val data = intent
         val id = data.getStringExtra("id")!!
         val image = data.getStringExtra("image")!!
-        val adapter = ImagesAdapter(widthPixels,heightPixels)
+        val adapter = ImagesAdapter(widthPixels, heightPixels)
         viewPager.adapter = adapter
         adapter.addImages(listOf(image))
-        val cat = viewModel.getCatById(id)
-        cat?.observe(this) { t ->
-            if (t.images.equals("")) {
-                CoroutineScope(Dispatchers.Main).launch {
-                    val res = getImages(id, image)
-                    if(res!=""){
-                        adapter.addImages(res.split(","))
-                    }
-                }
-            } else {
-                adapter.addImages(t.images.split(","))
+        val catImages = viewModel.catImages
+        catImages.observe(this) { catImages ->
+            if (!catImages.equals("")) {
+                adapter.addImages(catImages.split(","))
             }
         }
+        viewModel.getCatImages(id, image)
     }
-
-    private suspend fun getImages(id: String, image: String) =
-        CoroutineScope(Dispatchers.IO).async {
-        return@async viewModel.downloadCatImagesFromNetwork(id, image)
-    }.await()
-
 }
 
 

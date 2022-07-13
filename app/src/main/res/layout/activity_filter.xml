@@ -1,7 +1,8 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".FilterActivity">
 
@@ -9,7 +10,7 @@
         android:id="@+id/filterTagsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:text="@string/tagsText"
         android:textSize="16sp"
@@ -20,6 +21,7 @@
         android:id="@+id/flexboxLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/filtersMargin"
         app:alignContent="flex_start"
         app:alignItems="flex_start"
         app:flexWrap="wrap"
@@ -32,54 +34,50 @@
             android:id="@+id/filterHairless"
             style="@style/FiltersTagsSelected"
             android:textOff="@string/hairless"
-            android:textOn="@string/hairless"
-            />
+            android:textOn="@string/hairless" />
 
         <ToggleButton
             android:id="@+id/filterNatural"
             style="@style/FiltersTagsSelected"
             android:textOff="@string/natural"
-            android:textOn="@string/natural"
-            />
+            android:textOn="@string/natural" />
 
         <ToggleButton
             android:id="@+id/filterRare"
             style="@style/FiltersTagsSelected"
-            android:textOn="@string/rare"
             android:textOff="@string/rare"
-            />
+            android:textOn="@string/rare" />
 
         <ToggleButton
             android:id="@+id/filterRex"
             style="@style/FiltersTagsSelected"
-            android:textOn="@string/rex"
-            android:textOff="@string/rex"/>
+            android:textOff="@string/rex"
+            android:textOn="@string/rex" />
 
         <ToggleButton
             android:id="@+id/filterSuppressed_tail"
             style="@style/FiltersTagsSelected"
-            android:textOn="@string/suppressed_tail"
-            android:textOff="@string/suppressed_tail"/>
+            android:textOff="@string/suppressed_tail"
+            android:textOn="@string/suppressed_tail" />
 
         <ToggleButton
             android:id="@+id/filterShort_legs"
             style="@style/FiltersTagsSelected"
-            android:textOn="@string/short_legs"
             android:textOff="@string/short_legs"
-            />
+            android:textOn="@string/short_legs" />
 
         <ToggleButton
             android:id="@+id/filterHypoallergenic"
             style="@style/FiltersTagsSelected"
-            android:textOn="@string/hypoallergenic"
-            android:textOff="@string/hypoallergenic"/>
+            android:textOff="@string/hypoallergenic"
+            android:textOn="@string/hypoallergenic" />
     </com.google.android.flexbox.FlexboxLayout>
 
     <TextView
         android:id="@+id/filterSortBy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:text="@string/sort_by_Text"
         android:textSize="16sp"
@@ -95,96 +93,87 @@
         app:alignContent="flex_start"
         app:alignItems="flex_start"
         app:flexWrap="wrap"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/flexboxLayout"
         app:layout_constraintStart_toStartOf="@+id/flexboxLayout"
         app:layout_constraintTop_toBottomOf="@+id/filterSortBy"
         app:showDivider="beginning|middle">
 
         <ToggleButton
             android:id="@+id/filterAdaptability"
-            android:textOn="@string/adaptabilityFilter"
-            android:textOff="@string/adaptabilityFilter"
             style="@style/FiltersSortBySelected"
-             />
+            android:textOff="@string/adaptabilityFilter"
+            android:textOn="@string/adaptabilityFilter" />
 
 
         <ToggleButton
             android:id="@+id/filterAffection_level"
-            android:textOn="@string/affection_levelFilter"
-            android:textOff="@string/affection_levelFilter"
             style="@style/FiltersSortBySelected"
-             />
+            android:textOff="@string/affection_levelFilter"
+            android:textOn="@string/affection_levelFilter" />
 
 
         <ToggleButton
             android:id="@+id/filterChild_friendly"
-            android:textOn="@string/child_friendlyFilter"
-            android:textOff="@string/child_friendlyFilter"
             style="@style/FiltersSortBySelected"
-             />
+            android:textOff="@string/child_friendlyFilter"
+            android:textOn="@string/child_friendlyFilter" />
 
 
         <ToggleButton
             android:id="@+id/filterGrooming"
-            android:textOn="@string/groomingFilter"
-            android:textOff="@string/groomingFilter"
             style="@style/FiltersSortBySelected"
-             />
+            android:textOff="@string/groomingFilter"
+            android:textOn="@string/groomingFilter" />
 
 
         <ToggleButton
             android:id="@+id/filterHealth_issues"
-            android:textOn="@string/health_issuesFilter"
-            android:textOff="@string/health_issuesFilter"
             style="@style/FiltersSortBySelected"
-            />
+            android:textOff="@string/health_issuesFilter"
+            android:textOn="@string/health_issuesFilter" />
 
 
         <ToggleButton
             android:id="@+id/filterIntelligence"
-            android:textOn="@string/intelligenceFilter"
-            android:textOff="@string/intelligenceFilter"
             style="@style/FiltersSortBySelected"
-             />
+            android:textOff="@string/intelligenceFilter"
+            android:textOn="@string/intelligenceFilter" />
 
 
         <ToggleButton
             android:id="@+id/filterShedding_level"
-            android:textOn="@string/shedding_levelFilter"
+            style="@style/FiltersSortBySelected"
             android:textOff="@string/shedding_levelFilter"
-            style="@style/FiltersSortBySelected"/>
+            android:textOn="@string/shedding_levelFilter" />
 
 
         <ToggleButton
             android:id="@+id/filterSocial_needs"
-            android:textOn="@string/social_needsFilter"
-            android:textOff="@string/social_needsFilter"
             style="@style/FiltersSortBySelected"
-            />
+            android:textOff="@string/social_needsFilter"
+            android:textOn="@string/social_needsFilter" />
 
 
         <ToggleButton
             android:id="@+id/filterStranger_friendly"
-            android:textOn="@string/stranger_friendlyFilter"
-            android:textOff="@string/stranger_friendlyFilter"
             style="@style/FiltersSortBySelected"
-            />
+            android:textOff="@string/stranger_friendlyFilter"
+            android:textOn="@string/stranger_friendlyFilter" />
 
 
         <ToggleButton
             android:id="@+id/filterVocalisation"
-            android:textOn="@string/vocalisationFilter"
-            android:textOff="@string/vocalisationFilter"
             style="@style/FiltersSortBySelected"
-            />
+            android:textOff="@string/vocalisationFilter"
+            android:textOn="@string/vocalisationFilter" />
     </com.google.android.flexbox.FlexboxLayout>
 
     <Button
         android:id="@+id/filterButtonOk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/buttonOk"
-
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
         android:text="@string/ok_Text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -193,5 +182,5 @@
 
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
 

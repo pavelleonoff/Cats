@@ -15,6 +15,9 @@ interface CatsDao {
     @Query("SELECT * FROM cats WHERE id == :catId")
     fun getCatById(catId : String) : Cat
 
+    @Query("SELECT images FROM cats WHERE id == :catId")
+    fun getCatImages(catId : String) : String
+
     @RawQuery(observedEntities = [Cat::class])
     fun getFilteredCats(query: SimpleSQLiteQuery):List<Cat>
 

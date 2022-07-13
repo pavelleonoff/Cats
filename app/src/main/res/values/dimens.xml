@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="tagPadding">8dp</dimen>
+    <dimen name="marginRecuclerView">6dp</dimen>
+    <dimen name="tagItemPadding">3dp</dimen>
     <dimen name="catTagMarginLeft">8dp</dimen>
     <dimen name="catIdMarginLeft">20dp</dimen>
     <dimen name="catIdMarginTop">10dp</dimen>

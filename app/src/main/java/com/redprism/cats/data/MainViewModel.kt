@@ -20,15 +20,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     init {
         catsDB = CatsDB.getInstance(getApplication())
-        //cats = catsDB.catsDao().getAllCats()
-        cat = MutableLiveData<Cat>()
-        images = MutableLiveData()
     }
     var filteredCats = MutableLiveData<List<Cat>>()
+    var catImages = MutableLiveData<String>("")
+    var cat = MutableLiveData<Cat>()
     companion object {
         private lateinit var catsDB: CatsDB
-        private lateinit var cat: MutableLiveData<Cat>
-        private lateinit var images: LiveData<String>
     }
 
     private val pref = application.getSharedPreferences("Filter", AppCompatActivity.MODE_PRIVATE)
@@ -46,30 +43,36 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         return cats
     }
 
-    fun downloadCatImagesFromNetwork(
+    private fun downloadCatImagesFromNetwork(
         id: String,
-        image: String
-    ): String {
+    ): ArrayList<String> {
         val networkRequest = Network()
         val json = JSON()
         val catsImagesJSON: JSONArray? = networkRequest.getCatsImagesJSONFromNetwork(id)
-        val catImages: ArrayList<String> = json.getCatImagesFromJSON(catsImagesJSON)
-        val res = Operation().cleanString(catImages, image)
-            catsDB.catsDao().updateCatImages(res, id)
-            return res
+        return json.getCatImagesFromJSON(catsImagesJSON)
     }
 
-
-    fun getCatById(catId: String): LiveData<Cat>? {
-        try {
-            viewModelScope.launch {
-                cat.postValue(catsDB.catsDao().getCatById(catId))
+    fun getCatImages(id: String,image:String){
+        viewModelScope.launch {
+            val cat = catsDB.catsDao().getCatImages(id)
+            var res = cat
+            if(cat.equals("")){
+                val res = CoroutineScope(Dispatchers.IO).async {
+                    val catImagesFromNetwork = downloadCatImagesFromNetwork(id)
+                    res = Operation().cleanString(catImagesFromNetwork, image)
+                    catsDB.catsDao().updateCatImages(res, id)
+                    return@async res
+                }.await()
+                catImages.value = res
             }
-            return cat
-        } catch (e: InterruptedException) {
-            e.printStackTrace()
+            else{catImages.value = res}
         }
-        return null
+    }
+
+    fun getCatById(catId: String) {
+        viewModelScope.launch {
+            cat.value = catsDB.catsDao().getCatById(catId)
+        }
     }
 
     private suspend fun getAllCatsFromDb() {
@@ -89,9 +92,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 filteredCats.value = catsDB.catsDao().getFilteredCats(query)
             }
     }
-    fun getActualCats():LiveData<List<Cat>>?{
-        return this.filteredCats
-    }
+
     suspend fun getActualCatsFromDB() {
 
         if (pref.getBoolean(Pref.filterOn, false)) {

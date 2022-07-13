@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical">
 
 
     <androidx.cardview.widget.CardView
@@ -25,17 +26,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/marginStart"
+                android:layout_marginStart="14dp"
                 android:background="@drawable/toggle_on"
-                android:padding="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:text="@string/filters"
-                android:textStyle="bold"
-                android:textSize="16sp"/>
+                android:textSize="14sp"/>
 
             <ImageView
                 android:id="@+id/filtersButtonClear"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:visibility="invisible"
                 android:contentDescription="@string/clean_filters"
                 android:layout_gravity="center_vertical"
@@ -54,13 +55,14 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/catsRecyclerView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/catIdMarginTop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/marginRecuclerView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

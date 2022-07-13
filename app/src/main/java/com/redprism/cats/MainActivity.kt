@@ -9,9 +9,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -31,7 +28,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var catsAdapter: CatsAdapter
     private val viewModel by lazy { ViewModelProvider(this)[MainViewModel::class.java] }
     private lateinit var pref : SharedPreferences
-
     private lateinit var filtersButton : TextView
     private lateinit var filterStatus : TextView
     private lateinit var filtersButtonClear : ImageView
@@ -96,7 +92,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             filtersButtonClear.visibility = View.INVISIBLE
             filterStatus.text = ""
         }
-
     }
 
     override fun onClick(v: View?) {
