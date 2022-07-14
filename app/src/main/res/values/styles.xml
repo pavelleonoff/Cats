@@ -18,10 +18,10 @@
         <item name="android:textColor">@drawable/toggle_color</item>
     </style>
     <style name="FiltersTagsSelected" parent="@style/FiltersActivity">
-        <item name="android:background">@drawable/toggle_tag_button</item>
+        <item name="android:background">@drawable/toggle_filter_button</item>
     </style>
     <style name="FiltersSortBySelected" parent="@style/FiltersActivity">
-        <item name="android:background">@drawable/toggle_sortby_button</item>
+        <item name="android:background">@drawable/toggle_filter_button</item>
     </style>
     <style name="CustomActivityAnimation" parent="@android:style/Animation.Activity">
         <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>

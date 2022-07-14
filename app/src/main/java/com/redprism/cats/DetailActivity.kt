@@ -144,7 +144,7 @@ class DetailActivity : AppCompatActivity(){
                     }
                 })
 
-            var sortByColor=ContextCompat.getColor(this, R.color.sortColor)
+            var sortByColor=ContextCompat.getColor(this, R.color.secondColor)
 
             name.text = cat.name
             description.text = cat.description

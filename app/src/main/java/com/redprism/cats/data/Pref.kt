@@ -2,7 +2,9 @@ package com.redprism.cats.data
 
 class Pref {
     companion object {
-        internal const val rawQuery = "rawQuery"
+        internal const val prefFilterName = "Filter"
+        internal const val prefDBDownloadName = "DBDownload"
+        internal const val dataDownloads = "DataDownloads"
         internal const val filterOn = "filterOn"
         internal val tags = listOf(
             "hairless",

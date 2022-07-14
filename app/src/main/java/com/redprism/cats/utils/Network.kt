@@ -1,6 +1,12 @@
 package com.redprism.cats.utils
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.net.Uri
+import android.os.Build
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import org.json.JSONArray
 import org.json.JSONException
 import java.io.BufferedReader
@@ -14,6 +20,7 @@ import java.util.concurrent.ExecutionException
 
 class Network {
     companion object {
+
         internal const val BASE = "https://api.thecatapi.com/v1"
         internal const val BREEDS = "breeds"
         internal const val IMAGES = "images"
@@ -23,6 +30,7 @@ class Network {
         internal const val LIMIT = "limit"
         internal const val KEY = "aeecb068-4f7f-4851-91df-03a3c5b8367f"
     }
+
         private fun buildBreedsURL(): URL {
             val url = Uri.parse(BASE)
                 .buildUpon()

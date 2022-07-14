@@ -7,7 +7,7 @@ android:thickness="2dp"
 android:useLevel="false">
 <gradient
     android:startColor="#ffffff"
-    android:centerColor="@color/tagColor"
+    android:centerColor="@color/secondColor"
     android:centerY="0.8"
     android:angle="0"
     />

@@ -484,7 +484,7 @@
                                 style="@style/CustomRatingBarStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="24dp"
-                                android:tint="@color/sortColor"
+                                android:tint="@color/secondColor"
                                 android:isIndicator="true"
                                 android:numStars="5"
                                 android:stepSize="1.0" />
@@ -499,7 +499,7 @@
                             android:layout_marginTop="10dp"
                             android:autoLink="web"
                             android:paddingBottom="40dp"
-                            android:textColorLink="@color/main"
+                            android:textColorLink="@color/mainColor"
                             android:text="" />
 
                     </LinearLayout>

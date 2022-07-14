@@ -1,8 +1,11 @@
 package com.redprism.cats
 
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.net.ConnectivityManager
 import android.os.Bundle
+import android.util.Log
 
 import android.view.View
 import android.widget.ImageView
@@ -24,85 +27,88 @@ import kotlinx.coroutines.launch
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
-    private lateinit var catsRecyclerView : RecyclerView
+    private lateinit var catsRecyclerView: RecyclerView
     private lateinit var catsAdapter: CatsAdapter
     private val viewModel by lazy { ViewModelProvider(this)[MainViewModel::class.java] }
-    private lateinit var pref : SharedPreferences
-    private lateinit var filtersButton : TextView
-    private lateinit var filterStatus : TextView
-    private lateinit var filtersButtonClear : ImageView
+    private lateinit var filterPref: SharedPreferences
+    private lateinit var dBPref: SharedPreferences
+    private lateinit var filtersButton: TextView
+    private lateinit var filterStatus: TextView
+    private lateinit var filtersButtonClear: ImageView
+    private lateinit var internetError: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        pref = getSharedPreferences("Filter",MODE_PRIVATE)
+        filterPref = getSharedPreferences(Pref.prefFilterName, MODE_PRIVATE)
+        dBPref = getSharedPreferences(Pref.prefDBDownloadName, MODE_PRIVATE)
         filtersButton = findViewById(R.id.filtersButton)
         filterStatus = findViewById(R.id.filterStatus)
         filtersButtonClear = findViewById(R.id.filtersButtonClear)
         catsRecyclerView = findViewById(R.id.catsRecyclerView)
-        catsRecyclerView.layoutManager =  LinearLayoutManager(
+        internetError = findViewById(R.id.internetError)
+        catsRecyclerView.layoutManager = LinearLayoutManager(
             this,
-            LinearLayoutManager.VERTICAL ,
-            false)
-        catsAdapter = CatsAdapter(resources.displayMetrics.widthPixels,
-            resources.displayMetrics.heightPixels)
+            LinearLayoutManager.VERTICAL,
+            false
+        )
+        catsAdapter = CatsAdapter(
+            resources.displayMetrics.widthPixels,
+            resources.displayMetrics.heightPixels
+        )
         viewModel.filteredCats.observe(this) { actualCats ->
             catsAdapter.setCats(actualCats as ArrayList<Cat>)
+            filterUIChange()
         }
         catsRecyclerView.adapter = catsAdapter
         catsRecyclerView.setHasFixedSize(true);
         catsRecyclerView.setItemViewCacheSize(20);
-
         catsAdapter.setOnCatClickListener(object : CatsAdapter.OnCatClickListener {
             override fun onCatClick(id: Int) {
-                val catId:String = catsAdapter.getAdapterCats()[id].id
-                val image:String = catsAdapter.getAdapterCats()[id].image
-                val intent = Intent(this@MainActivity,DetailActivity::class.java)
-                intent.putExtra("id",catId)
-                intent.putExtra("image",image)
+                val catId: String = catsAdapter.getAdapterCats()[id].id
+                val image: String = catsAdapter.getAdapterCats()[id].image
+                val intent = Intent(this@MainActivity, DetailActivity::class.java)
+                intent.putExtra("id", catId)
+                intent.putExtra("image", image)
                 startActivity(intent)
             }
         })
         filtersButton.setOnClickListener(this)
         filtersButtonClear.setOnClickListener(this)
-
     }
 
     override fun onResume() {
         super.onResume()
-        getCats()
+        viewModel.getActualCatsFromDB()
     }
-    private fun getCats() {
-        val cats = CoroutineScope(Dispatchers.IO).async {
-            viewModel.getActualCatsFromDB()
+
+    private fun filterUIChange() {
+        if (!dBPref.getBoolean(Pref.dataDownloads, false)) {
+            internetError.visibility = View.VISIBLE
+        } else {
+            internetError.visibility = View.GONE
+            filtersButton.visibility = View.VISIBLE
         }
-        CoroutineScope(Dispatchers.Main).launch {
-            cats.await()
-            filterUIChange()
-        }
-    }
-    private fun filterUIChange(){
-        if(pref.getBoolean(Pref.filterOn, false)){
-            filtersButton.background = ContextCompat.getDrawable(this,R.drawable.toggle_on)
+        if (filterPref.getBoolean(Pref.filterOn, false)) {
+            filtersButton.background = ContextCompat.getDrawable(this, R.drawable.toggle_on)
             filtersButtonClear.visibility = View.VISIBLE
-            filterStatus.text = Operation().setFilterStatus(pref)
-        }
-        else{
-            filtersButton.background = ContextCompat.getDrawable(this,R.drawable.toggle_off)
+            filterStatus.text = Operation().setFilterStatus(filterPref)
+        } else {
+            filtersButton.background = ContextCompat.getDrawable(this, R.drawable.toggle_off)
             filtersButtonClear.visibility = View.INVISIBLE
             filterStatus.text = ""
         }
     }
 
     override fun onClick(v: View?) {
-        when(v?.id){
-            R.id.filtersButton ->{
-                val intent = Intent(this,FilterActivity::class.java)
+        when (v?.id) {
+            R.id.filtersButton -> {
+                val intent = Intent(this, FilterActivity::class.java)
                 startActivity(intent)
             }
-            R.id.filtersButtonClear ->{
-                pref.edit().clear().commit()
-                getCats()
+            R.id.filtersButtonClear -> {
+                filterPref.edit().clear().apply()
+                viewModel.getActualCatsFromDB()
             }
         }
     }
