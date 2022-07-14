@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Cats</string>
+    <string name="app_name">Cat Breeds</string>
     <string name="experimental">Experimental</string>
     <string name="hairless">Hairless</string>
     <string name="natural">Natural</string>
@@ -11,8 +11,8 @@
     <string name="name">name</string>
     <string name="description">description</string>
     <string name="origin">Origin:</string>
-    <string name="temperament">Temperament:</string>
-    <string name="life_span">Life span:</string>
+    <string name="temperament">Temperament: </string>
+    <string name="life_span">Life span: </string>
     <string name="adaptability">Adaptability:</string>
     <string name="affection_level">Affection level:</string>
     <string name="child_friendly">Child friendly:</string>

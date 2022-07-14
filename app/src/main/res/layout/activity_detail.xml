@@ -32,6 +32,7 @@
                     app:srcCompat="@drawable/placeholder" />
 
                 <Button
+                    style="@style/buttonTextViewStyle"
                     android:id="@+id/catImagesButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -175,6 +176,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:layout_marginStart="@dimen/catIdMarginLeft"
+                    android:layout_marginEnd="@dimen/detailMarginEnd"
                     android:text="@string/name"
                     android:textSize="36sp"
                     android:textStyle="bold" />
@@ -185,6 +187,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:layout_marginStart="@dimen/catIdMarginLeft"
+                    android:layout_marginEnd="@dimen/detailMarginEnd"
                     android:layout_marginTop="@dimen/catIdMarginTop"
                     android:text="@string/description" />
             </LinearLayout>
@@ -224,6 +227,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start"
+                            android:layout_marginEnd="@dimen/detailMarginEnd"
                             android:layout_marginStart="@dimen/catIdMarginLeft"
                             android:layout_marginTop="@dimen/catIdMarginTop"
                             android:text="@string/origin" />
@@ -235,6 +239,7 @@
                             android:layout_gravity="start"
                             android:layout_marginStart="@dimen/catIdMarginLeft"
                             android:layout_marginTop="@dimen/catIdMarginTop"
+                            android:layout_marginEnd="@dimen/detailMarginEnd"
                             android:text="@string/temperament" />
 
                         <TextView
@@ -242,6 +247,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start"
+                            android:layout_marginEnd="@dimen/detailMarginEnd"
                             android:layout_marginStart="@dimen/catIdMarginLeft"
                             android:layout_marginTop="@dimen/catIdMarginTop"
                             android:text="@string/life_span" />

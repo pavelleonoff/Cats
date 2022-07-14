@@ -4,7 +4,6 @@ import android.view.View
 import androidx.viewpager2.widget.ViewPager2
 import kotlin.math.abs
 
-
 class PageImageTransform : ViewPager2.PageTransformer {
     private val MIN_SCALE = 0.75f
 
@@ -12,7 +11,7 @@ class PageImageTransform : ViewPager2.PageTransformer {
         val pageWidth = view.width
         if (position < -1) {
             view.alpha = 0f
-        } else if (position <= 0) { // [-1,0]
+        } else if (position <= 0) {
             view.alpha = 1f
             view.translationX = 0f
             view.translationZ = 0f

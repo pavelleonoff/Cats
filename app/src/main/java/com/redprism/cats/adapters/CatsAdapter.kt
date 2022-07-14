@@ -13,7 +13,6 @@ import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 import java.lang.Exception
 
-
 class CatsAdapter(width:Int,height:Int): RecyclerView.Adapter<CatsAdapter.CatsViewHolder>() {
     private val width = width
     private val height = height
@@ -97,9 +96,7 @@ class CatsAdapter(width:Int,height:Int): RecyclerView.Adapter<CatsAdapter.CatsVi
             .networkPolicy(NetworkPolicy.OFFLINE)
             .placeholder(R.drawable.infinitive_progressbar_small)
             .into(imgImageView,object: Callback {
-                override fun onSuccess() {
-                }
-
+                override fun onSuccess() {}
                 override fun onError(e: Exception?) {
                     Picasso.get().load(img)
                         .resize(width,height)

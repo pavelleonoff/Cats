@@ -1,11 +1,9 @@
 package com.redprism.cats.utils
 
-
 import com.redprism.cats.data.Cat
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
-
 
 class JSON {
         private val ID = "id"

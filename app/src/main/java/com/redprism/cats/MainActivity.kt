@@ -1,12 +1,8 @@
 package com.redprism.cats
 
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.net.ConnectivityManager
 import android.os.Bundle
-import android.util.Log
-
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -20,11 +16,6 @@ import com.redprism.cats.data.Cat
 import com.redprism.cats.data.MainViewModel
 import com.redprism.cats.data.Operation
 import com.redprism.cats.data.Pref
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
-
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var catsRecyclerView: RecyclerView

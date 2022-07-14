@@ -1,12 +1,7 @@
 package com.redprism.cats
 
-
 import android.content.Intent
 import android.content.SharedPreferences
-import android.graphics.BlendMode
-import android.graphics.BlendModeColorFilter
-import android.graphics.PorterDuff
-import android.os.Build
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.view.View
@@ -15,7 +10,6 @@ import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.redprism.cats.data.*
@@ -24,11 +18,8 @@ import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 import kotlin.properties.Delegates
 
-
 class DetailActivity : AppCompatActivity(){
     private lateinit var viewModel : MainViewModel
-
-
     private lateinit var pref : SharedPreferences
     private lateinit var id : String
     private lateinit var name:TextView
@@ -148,9 +139,9 @@ class DetailActivity : AppCompatActivity(){
 
             name.text = cat.name
             description.text = cat.description
-            lifeSpan.text = getString(R.string.life_span) + cat.lifeSpan
-            temperament.text = getString(R.string.temperament) + cat.temperament
-            origin.text = getString(R.string.origin) + cat.origin
+            lifeSpan.text = getString(R.string.life_span)+" "+ cat.lifeSpan
+            temperament.text = getString(R.string.temperament)+" "+ cat.temperament
+            origin.text = getString(R.string.origin)+" "+ cat.origin
             if(pref.getBoolean(Pref.sortBy[0],false)){
                 adaptabilityText.setTextColor(sortByColor)
             }

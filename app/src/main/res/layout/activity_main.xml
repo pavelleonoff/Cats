@@ -28,12 +28,12 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="14dp"
-                android:visibility="invisible"
                 android:background="@drawable/toggle_on"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:text="@string/filters"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:visibility="invisible" />
 
             <ImageView
                 android:id="@+id/filtersButtonClear"

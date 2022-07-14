@@ -1,6 +1,5 @@
 package com.redprism.cats.adapters
 
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,11 +11,10 @@ import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 import java.lang.Exception
 
+class ImagesAdapter(val width:Int,val height:Int) :RecyclerView.Adapter<ImagesAdapter.ImagesHolder>()  {
 
-class ImagesAdapter(width:Int,height:Int) :RecyclerView.Adapter<ImagesAdapter.ImagesHolder>()  {
-    private val width = width
-    private val height = height
     private var catImages = mutableListOf<String>()
+    private var imagesDownload = false
     inner class ImagesHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
         var catDetailImages : ImageView
         init {
@@ -31,32 +29,41 @@ class ImagesAdapter(width:Int,height:Int) :RecyclerView.Adapter<ImagesAdapter.Im
     }
 
     override fun onBindViewHolder(holder: ImagesHolder, position: Int) {
-        val curImg = catImages[position]
-
-        val image = holder.catDetailImages
-        Picasso.get().load(curImg)
-            .networkPolicy(NetworkPolicy.OFFLINE)
-            .placeholder(R.drawable.infinitive_progressbar_small).into(image,object: Callback{
-                override fun onSuccess() {
-                }
-                override fun onError(e: Exception?) {
-
-                    Picasso.get().load(curImg)
-                        .resize(width ,0)
-                        .centerInside()
-                        .placeholder(R.drawable.infinitive_progressbar_small).into(image)
-                }
-            })
+        if(!imagesDownload&&position==1){
+            Picasso.get().load(R.drawable.infinitive_progressbar_small)
+        }
+        else {
+            val curImg = catImages[position]
+            val image = holder.catDetailImages
+            Picasso.get().load(curImg)
+                .networkPolicy(NetworkPolicy.OFFLINE)
+                .placeholder(R.drawable.infinitive_progressbar_small)
+                .into(image, object : Callback { override fun onSuccess() {}
+                    override fun onError(e: Exception?) {
+                        Picasso.get().load(curImg)
+                            .resize(width, 0)
+                            .centerInside()
+                            .placeholder(R.drawable.infinitive_progressbar_small).into(image)
+                    }
+                })
+        }
     }
 
     override fun getItemCount(): Int {
-        return catImages.size
+        return if(!imagesDownload){
+            2
+        } else{
+            catImages.size
+        }
+    }
+    fun addFirstImage(imgs: List<String>){
+        this.catImages.addAll(imgs)
+        notifyItemRangeInserted(0,2)
     }
     fun addImages(imgs: List<String>) {
-        val rangeStart = catImages.size
         this.catImages.addAll(imgs)
-        val rangeEnd = catImages.size
-        notifyItemRangeInserted(rangeStart,rangeEnd)
+        notifyDataSetChanged()
+        imagesDownload = true
     }
 }
 

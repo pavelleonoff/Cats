@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <style name="CustomRatingBarStyle" parent="@android:style/Widget.RatingBar">
         <item name="android:progressDrawable">@drawable/cat_ratingbar</item>
         <item name="android:minHeight">18dp</item>
         <item name="android:maxHeight">24dp</item>
         <item name="android:layout_marginLeft">20dp</item>
     </style>
+    <style name="textViewStyle">
+        <item name="android:fontFamily">@font/courgette</item>
+    </style>
+    <style name="buttonTextViewStyle">
+        <item name="android:fontFamily">@font/courgette</item>
+    </style>
     <style name="FiltersActivity">
+        <item name="android:fontFamily">@font/courgette</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">@dimen/filtersMargin</item>

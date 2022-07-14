@@ -7,10 +7,6 @@ import androidx.viewpager2.widget.ViewPager2
 import com.redprism.cats.adapters.ImagesAdapter
 import com.redprism.cats.animation.PageImageTransform
 import com.redprism.cats.data.MainViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
 import kotlin.properties.Delegates
 
 class CatImagesActivity : AppCompatActivity() {
@@ -32,11 +28,11 @@ class CatImagesActivity : AppCompatActivity() {
         val image = data.getStringExtra("image")!!
         val adapter = ImagesAdapter(widthPixels, heightPixels)
         viewPager.adapter = adapter
-        adapter.addImages(listOf(image))
+        adapter.addFirstImage(listOf(image))
         val catImages = viewModel.catImages
-        catImages.observe(this) { catImages ->
-            if (!catImages.equals("")) {
-                adapter.addImages(catImages.split(","))
+        catImages.observe(this) { cImg->
+            if (!cImg.equals("")) {
+                adapter.addImages(cImg.split(","))
             }
         }
         viewModel.getCatImages(id, image)
