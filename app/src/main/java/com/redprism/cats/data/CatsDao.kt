@@ -1,9 +1,6 @@
 package com.redprism.cats.data
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.RawQuery
+import androidx.room.*
 import androidx.sqlite.db.SimpleSQLiteQuery
 
 @Dao
@@ -20,7 +17,7 @@ interface CatsDao {
     @RawQuery(observedEntities = [Cat::class])
     fun getFilteredCats(query: SimpleSQLiteQuery):List<Cat>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertCats(cats: List<Cat>)
 
     @Query("UPDATE cats SET images = :images WHERE id =:id")

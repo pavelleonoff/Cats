@@ -4,7 +4,8 @@ class Pref {
     companion object {
         internal const val prefFilterName = "Filter"
         internal const val prefDBDownloadName = "DBDownload"
-        internal const val dataDownloads = "DataDownloads"
+        internal const val uiErrorsVisible = "uiErrorsInvisible"
+        internal const val dataNotDownloads = "DataDownloads"
         internal const val filterOn = "filterOn"
         internal val tags = listOf(
             "hairless",

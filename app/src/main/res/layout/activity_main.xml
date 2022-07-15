@@ -32,8 +32,7 @@
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:text="@string/filters"
-                android:textSize="14sp"
-                android:visibility="invisible" />
+                android:textSize="14sp" />
 
             <ImageView
                 android:id="@+id/filtersButtonClear"
@@ -83,10 +82,21 @@
             android:background="@drawable/rounded_bg"
             android:gravity="center_horizontal"
             android:layout_gravity="center"
+            android:visibility="gone"
             android:padding="@dimen/tagItemPadding"
             android:text="@string/no_internet_connection"
             android:textColor="@color/white"
             android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/downloading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:visibility="gone"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/infinitive_progressbar_big" />
     </LinearLayout>
 
 </LinearLayout>

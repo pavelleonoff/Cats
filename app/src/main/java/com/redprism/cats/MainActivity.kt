@@ -3,6 +3,7 @@ package com.redprism.cats
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var filterStatus: TextView
     private lateinit var filtersButtonClear: ImageView
     private lateinit var internetError: TextView
+    private lateinit var downloadImg : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +40,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         filtersButtonClear = findViewById(R.id.filtersButtonClear)
         catsRecyclerView = findViewById(R.id.catsRecyclerView)
         internetError = findViewById(R.id.internetError)
+        downloadImg = findViewById(R.id.downloading)
         catsRecyclerView.layoutManager = LinearLayoutManager(
             this,
             LinearLayoutManager.VERTICAL,
@@ -50,6 +53,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         viewModel.filteredCats.observe(this) { actualCats ->
             catsAdapter.setCats(actualCats as ArrayList<Cat>)
             filterUIChange()
+            errorUI()
         }
         catsRecyclerView.adapter = catsAdapter
         catsRecyclerView.setHasFixedSize(true);
@@ -66,20 +70,40 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         })
         filtersButton.setOnClickListener(this)
         filtersButtonClear.setOnClickListener(this)
+
     }
 
     override fun onResume() {
         super.onResume()
         viewModel.getActualCatsFromDB()
+        errorUI()
+    }
+
+    fun errorUI(){
+        if (dBPref.getBoolean(Pref.dataNotDownloads, true)) {
+            Log.i("Test13","data Not Downloads")
+            filtersButton.visibility = View.INVISIBLE
+            if(!viewModel.isInternetAvailable(this)){
+                Log.i("Test13"," Internet Not Available")
+                internetError.visibility = View.VISIBLE
+                downloadImg.visibility = View.GONE
+            }
+            else{
+                internetError.visibility = View.GONE
+                downloadImg.visibility = View.VISIBLE
+            }
+        } else {
+            if(dBPref.getBoolean(Pref.uiErrorsVisible, true)) {
+                Log.i("Test13","ui Errors Visible")
+                internetError.visibility = View.GONE
+                downloadImg.visibility = View.GONE
+                filtersButton.visibility = View.VISIBLE
+                dBPref.edit().putBoolean(Pref.uiErrorsVisible, false).apply()
+            }
+        }
     }
 
     private fun filterUIChange() {
-        if (!dBPref.getBoolean(Pref.dataDownloads, false)) {
-            internetError.visibility = View.VISIBLE
-        } else {
-            internetError.visibility = View.GONE
-            filtersButton.visibility = View.VISIBLE
-        }
         if (filterPref.getBoolean(Pref.filterOn, false)) {
             filtersButton.background = ContextCompat.getDrawable(this, R.drawable.toggle_on)
             filtersButtonClear.visibility = View.VISIBLE

@@ -1,6 +1,10 @@
 package com.redprism.cats.data
 
 import android.app.Application
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
@@ -13,7 +17,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import org.json.JSONArray
-import java.util.ArrayList
+
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -34,7 +38,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val dBPref = application.getSharedPreferences(
         Pref.prefDBDownloadName, AppCompatActivity.MODE_PRIVATE)
 
-    fun getActualCatsFromDB() {
+    internal fun getActualCatsFromDB() {
         viewModelScope.launch {
             if (filterPref.getBoolean(Pref.filterOn, false)) {
                 val res = Operation().queryBuilder(filterPref)
@@ -45,13 +49,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun getCatById(catId: String) {
+    internal fun getCatById(catId: String) {
         viewModelScope.launch {
             cat.value = catsDB.catsDao().getCatById(catId)
         }
     }
 
-    fun getCatImages(id: String, image: String) {
+    internal fun getCatImages(id: String, image: String) {
         viewModelScope.launch {
             val cat = catsDB.catsDao().getCatImages(id)
             if (cat == "") {
@@ -67,6 +71,34 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             }
         }
     }
+    internal fun isInternetAvailable(context: Context): Boolean {
+        var result = false
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val networkCapabilities = connectivityManager.activeNetwork ?: return false
+            val actNw =
+                connectivityManager.getNetworkCapabilities(networkCapabilities) ?: return false
+            result = when {
+                actNw.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+                actNw.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+                actNw.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
+                else -> false
+            }
+        } else {
+            connectivityManager.run {
+                connectivityManager.activeNetworkInfo?.run {
+                    result = when (type) {
+                        ConnectivityManager.TYPE_WIFI -> true
+                        ConnectivityManager.TYPE_MOBILE -> true
+                        ConnectivityManager.TYPE_ETHERNET -> true
+                        else -> false
+                    }
+                }
+            }
+        }
+        return result
+    }
 
     private fun isExist(): Boolean {
         return catsDB.catsDao().isExists()
@@ -77,7 +109,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         val json = JSON()
         val catsJSON: JSONArray? = networkRequest.getCatsJSONFromNetwork()
         if (catsJSON != null) {
-           dBPref.edit().putBoolean(Pref.dataDownloads, true).apply()
+           dBPref.edit().putBoolean(Pref.dataNotDownloads, false).apply()
         }
         val cats: List<Cat> = json.getCatsFromJSON(catsJSON)
         catsDB.catsDao().insertCats(cats)
