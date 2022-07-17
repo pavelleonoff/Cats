@@ -5,15 +5,35 @@
         <item name="android:minHeight">18dp</item>
         <item name="android:maxHeight">24dp</item>
         <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_gravity">center</item>
     </style>
     <style name="textViewStyle">
-        <item name="android:fontFamily">@font/courgette</item>
+        <item name="android:fontFamily">@font/first_font</item>
+        <item name="android:textColor">@color/black</item>
+
     </style>
+    <style name="tagDescritionTextView" parent="textViewStyle">
+        <item name="android:padding">4dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:visibility">gone</item>
+        <item name="android:background">@drawable/rounded_bg</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">4dp</item>
+
+    </style>
+    <style name="textViewStyleDescription">
+        <item name="android:fontFamily">@font/second_font</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
     <style name="buttonTextViewStyle">
-        <item name="android:fontFamily">@font/courgette</item>
+        <item name="android:fontFamily">@font/first_font</item>
     </style>
     <style name="FiltersActivity">
-        <item name="android:fontFamily">@font/courgette</item>
+        <item name="android:fontFamily">@font/first_font</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">@dimen/filtersMargin</item>

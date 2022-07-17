@@ -1,4 +1,4 @@
-package com.redprism.cats
+package com.redprism.catbreeds
 
 import android.content.Intent
 import android.content.SharedPreferences
@@ -12,7 +12,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
-import com.redprism.cats.data.*
+import com.redprism.catbreeds.data.*
 import com.squareup.picasso.Callback
 import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
@@ -22,7 +22,7 @@ class DetailActivity : AppCompatActivity(){
     private lateinit var viewModel : MainViewModel
     private lateinit var pref : SharedPreferences
     private lateinit var id : String
-    private lateinit var name:TextView
+    private lateinit var name: TextView
     private lateinit var description : TextView
     private lateinit var lifeSpan : TextView
     private lateinit var image : ImageView
@@ -135,9 +135,9 @@ class DetailActivity : AppCompatActivity(){
                     }
                 })
 
-            var sortByColor=ContextCompat.getColor(this, R.color.secondColor)
+            val sortByColor=ContextCompat.getColor(this, R.color.secondColor)
 
-            name.text = cat.name
+            name.text = "\u00A0"+cat.name+"\u00A0"
             description.text = cat.description
             lifeSpan.text = getString(R.string.life_span)+" "+ cat.lifeSpan
             temperament.text = getString(R.string.temperament)+" "+ cat.temperament

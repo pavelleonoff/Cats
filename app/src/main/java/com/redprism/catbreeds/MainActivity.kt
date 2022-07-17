@@ -1,9 +1,8 @@
-package com.redprism.cats
+package com.redprism.catbreeds
 
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -12,11 +11,11 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.redprism.cats.adapters.CatsAdapter
-import com.redprism.cats.data.Cat
-import com.redprism.cats.data.MainViewModel
-import com.redprism.cats.data.Operation
-import com.redprism.cats.data.Pref
+import com.redprism.catbreeds.adapters.CatsAdapter
+import com.redprism.catbreeds.data.Cat
+import com.redprism.catbreeds.data.MainViewModel
+import com.redprism.catbreeds.data.Operation
+import com.redprism.catbreeds.data.Pref
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var catsRecyclerView: RecyclerView
@@ -56,8 +55,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             errorUI()
         }
         catsRecyclerView.adapter = catsAdapter
-        catsRecyclerView.setHasFixedSize(true);
-        catsRecyclerView.setItemViewCacheSize(20);
+        catsRecyclerView.setHasFixedSize(true)
+        catsRecyclerView.setItemViewCacheSize(20)
         catsAdapter.setOnCatClickListener(object : CatsAdapter.OnCatClickListener {
             override fun onCatClick(id: Int) {
                 val catId: String = catsAdapter.getAdapterCats()[id].id
@@ -81,10 +80,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     fun errorUI(){
         if (dBPref.getBoolean(Pref.dataNotDownloads, true)) {
-            Log.i("Test13","data Not Downloads")
             filtersButton.visibility = View.INVISIBLE
             if(!viewModel.isInternetAvailable(this)){
-                Log.i("Test13"," Internet Not Available")
                 internetError.visibility = View.VISIBLE
                 downloadImg.visibility = View.GONE
             }
@@ -94,7 +91,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
         } else {
             if(dBPref.getBoolean(Pref.uiErrorsVisible, true)) {
-                Log.i("Test13","ui Errors Visible")
                 internetError.visibility = View.GONE
                 downloadImg.visibility = View.GONE
                 filtersButton.visibility = View.VISIBLE

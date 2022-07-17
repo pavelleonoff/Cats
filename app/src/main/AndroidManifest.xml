@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.redprism.cats">
+    package="com.redprism.catbreeds">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -18,16 +18,16 @@
         android:theme="@style/Theme.Cats"
         tools:targetApi="31">
         <activity
-            android:name="com.redprism.cats.CatImagesActivity"
+            android:name="com.redprism.catbreeds.CatImagesActivity"
             android:exported="false" />
         <activity
-            android:name="com.redprism.cats.FilterActivity"
+            android:name="com.redprism.catbreeds.FilterActivity"
             android:exported="false" />
         <activity
-            android:name="com.redprism.cats.DetailActivity"
+            android:name="com.redprism.catbreeds.DetailActivity"
             android:exported="false" />
         <activity
-            android:name="com.redprism.cats.MainActivity"
+            android:name="com.redprism.catbreeds.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,4 +1,4 @@
-package com.redprism.cats
+package com.redprism.catbreeds
 
 import org.junit.Test
 

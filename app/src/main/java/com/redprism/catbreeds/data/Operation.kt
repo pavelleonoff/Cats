@@ -1,4 +1,4 @@
-package com.redprism.cats.data
+package com.redprism.catbreeds.data
 
 import android.content.SharedPreferences
 import java.util.*
@@ -26,7 +26,7 @@ class Operation {
 
     internal fun setFilterStatus(pref: SharedPreferences): String {
         val str = StringBuilder()
-        var str2 = String()
+        var str2 : String
         var tags = false
         var sortBy = false
         pref.all.forEach { i ->

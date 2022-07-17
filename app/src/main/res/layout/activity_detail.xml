@@ -11,11 +11,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center">
-            <LinearLayout
+
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -26,19 +28,23 @@
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
                     android:layout_gravity="center"
+                    android:contentDescription="placeholder"
                     android:background="@color/white"
                     android:cropToPadding="false"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/placeholder" />
 
                 <Button
-                    style="@style/buttonTextViewStyle"
                     android:id="@+id/catImagesButton"
+                    style="@style/buttonTextViewStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="10dp"
                     android:text="@string/see_more_photo"
-                    android:layout_gravity="center"/>
-            </LinearLayout>
+                    android:textAllCaps="false" />
+
+            </FrameLayout>
 
 
         </androidx.cardview.widget.CardView>
@@ -56,172 +62,101 @@
 
                     <TextView
                         android:id="@+id/experimental"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/catTagMarginLeft"
-                        android:layout_marginTop="20dp"
-                        android:background="@drawable/rounded_bg"
-                        android:padding="@dimen/tagPadding"
-                        android:text="@string/experimental"
-                        android:textColor="@color/white"
-                        android:visibility="gone"
-                         />
+                        style="@style/tagDescritionTextView"
+                        android:text="@string/experimental"/>
 
                     <TextView
                         android:id="@+id/hairless"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/catTagMarginLeft"
-                        android:layout_marginTop="20dp"
-                        android:background="@drawable/rounded_bg"
-                        android:padding="@dimen/tagPadding"
+                        style="@style/tagDescritionTextView"
                         android:text="@string/hairless"
-                        android:textColor="@color/white"
-                        android:visibility="gone"
                          />
 
                     <TextView
                         android:id="@+id/natural"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/catTagMarginLeft"
-                        android:layout_marginTop="20dp"
-                        android:background="@drawable/rounded_bg"
-                        android:padding="@dimen/tagPadding"
+                        style="@style/tagDescritionTextView"
                         android:text="@string/natural"
-                        android:textColor="@color/white"
-                        android:visibility="gone"
                          />
 
                     <TextView
                         android:id="@+id/rare"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/catTagMarginLeft"
-                        android:layout_marginTop="20dp"
-                        android:background="@drawable/rounded_bg"
-                        android:padding="@dimen/tagPadding"
-                        android:text="@string/rare"
-                        android:textColor="@color/white"
-                        android:visibility="gone" />
+                        style="@style/tagDescritionTextView"
+                        android:text="@string/rare" />
 
                     <TextView
                         android:id="@+id/rex"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/catTagMarginLeft"
-                        android:layout_marginTop="20dp"
-                        android:background="@drawable/rounded_bg"
-                        android:padding="@dimen/tagPadding"
-                        android:text="@string/rex"
-                        android:textColor="@color/white"
-                        android:visibility="gone" />
+                        style="@style/tagDescritionTextView"
+                        android:text="@string/rex" />
 
                     <TextView
                         android:id="@+id/suppressed_tail"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/catTagMarginLeft"
-                        android:layout_marginTop="20dp"
-                        android:background="@drawable/rounded_bg"
-                        android:padding="@dimen/tagPadding"
-                        android:text="@string/suppressed_tail"
-                        android:textColor="@color/white"
-                        android:visibility="gone" />
+                        style="@style/tagDescritionTextView"
+                        android:text="@string/suppressed_tail"/>
 
                     <TextView
                         android:id="@+id/short_legs"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/catTagMarginLeft"
-                        android:layout_marginTop="20dp"
-                        android:background="@drawable/rounded_bg"
-                        android:padding="@dimen/tagPadding"
-                        android:text="@string/short_legs"
-                        android:textColor="@color/white"
-                        android:visibility="gone"
-                         />
+                        style="@style/tagDescritionTextView"
+                        android:text="@string/short_legs"/>
 
                     <TextView
                         android:id="@+id/hypoallergenic"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/catTagMarginLeft"
-                        android:layout_marginTop="20dp"
-                        android:background="@drawable/rounded_bg"
-                        android:padding="@dimen/tagPadding"
-                        android:text="@string/hypoallergenic"
-                        android:textColor="@color/white"
-                        android:visibility="gone" />
+                        style="@style/tagDescritionTextView"
+                        android:text="@string/hypoallergenic" />
                 </TableRow>
 
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginTop="20dp"
-            android:background="@color/black"
-            app:cardElevation="0dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginStart="@dimen/catIdMarginLeft"
-                    android:layout_marginEnd="@dimen/detailMarginEnd"
-                    android:text="@string/name"
-                    android:textSize="36sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/description"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginStart="@dimen/catIdMarginLeft"
-                    android:layout_marginEnd="@dimen/detailMarginEnd"
-                    android:layout_marginTop="@dimen/catIdMarginTop"
-                    android:text="@string/description" />
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:background="@color/black">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:orientation="horizontal">
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:layout_gravity="center"
+
                     android:layout_weight="1"
                     app:cardElevation="0dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
                         android:orientation="vertical">
 
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="28dp"
+                            android:orientation="horizontal">
 
+                            <TextView
+                                android:id="@+id/name"
+                                style="@style/textViewStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginEnd="@dimen/detailMarginEnd"
+                                android:text="@string/name"
+                                android:textSize="40sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/catIdMarginTop"
+                        android:orientation="horizontal">
+
+                            <TextView
+                            android:id="@+id/description"
+                            style="@style/textViewStyleDescription"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_marginStart="@dimen/catIdMarginLeft"
+                            android:layout_marginEnd="@dimen/detailMarginEnd"
+                            android:text="@string/description" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/catIdMarginTop"
+                        android:orientation="horizontal">
                         <TextView
                             android:id="@+id/origin"
                             android:layout_width="wrap_content"
@@ -229,19 +164,31 @@
                             android:layout_gravity="start"
                             android:layout_marginEnd="@dimen/detailMarginEnd"
                             android:layout_marginStart="@dimen/catIdMarginLeft"
-                            android:layout_marginTop="@dimen/catIdMarginTop"
+                            style="@style/textViewStyleDescription"
                             android:text="@string/origin" />
+                    </LinearLayout>
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/catIdMarginTop"
+                        android:orientation="horizontal">
                         <TextView
                             android:id="@+id/temperament"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start"
-                            android:layout_marginStart="@dimen/catIdMarginLeft"
-                            android:layout_marginTop="@dimen/catIdMarginTop"
                             android:layout_marginEnd="@dimen/detailMarginEnd"
+                            android:layout_marginStart="@dimen/catIdMarginLeft"
+                            style="@style/textViewStyleDescription"
                             android:text="@string/temperament" />
+                    </LinearLayout>
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/catIdMarginTop"
+                        android:orientation="horizontal">
                         <TextView
                             android:id="@+id/life_span"
                             android:layout_width="wrap_content"
@@ -249,8 +196,9 @@
                             android:layout_gravity="start"
                             android:layout_marginEnd="@dimen/detailMarginEnd"
                             android:layout_marginStart="@dimen/catIdMarginLeft"
-                            android:layout_marginTop="@dimen/catIdMarginTop"
+                            style="@style/textViewStyleDescription"
                             android:text="@string/life_span" />
+                    </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -262,9 +210,10 @@
                                 android:id="@+id/adaptability"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center|start"
+                                android:layout_gravity="center_vertical"
                                 android:layout_marginStart="@dimen/catIdMarginLeft"
-                                android:text="@string/adaptability"/>
+                                style="@style/textViewStyleDescription"
+                                android:text="@string/adaptability" />
 
                             <RatingBar
                                 android:id="@+id/adaptability_rb"
@@ -287,15 +236,16 @@
                                 android:id="@+id/affection_level"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center|start"
+                                android:layout_gravity="center_vertical"
                                 android:layout_marginStart="@dimen/catIdMarginLeft"
+                                style="@style/textViewStyleDescription"
                                 android:text="@string/affection_level" />
 
                             <RatingBar
                                 android:id="@+id/affection_level_rb"
                                 style="@style/CustomRatingBarStyle"
                                 android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
+                                android:layout_height="24dp"
                                 android:isIndicator="true"
                                 android:numStars="5"
                                 android:progressDrawable="@drawable/cat_ratingbar"
@@ -311,9 +261,10 @@
 
                             <TextView
                                 android:id="@+id/child_friendly"
+                                style="@style/textViewStyleDescription"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="start"
+                                android:layout_gravity="center_vertical"
                                 android:layout_marginStart="@dimen/catIdMarginLeft"
                                 android:text="@string/child_friendly" />
 
@@ -335,9 +286,10 @@
 
                             <TextView
                                 android:id="@+id/grooming"
+                                style="@style/textViewStyleDescription"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="start"
+                                android:layout_gravity="center_vertical"
                                 android:layout_marginStart="@dimen/catIdMarginLeft"
                                 android:text="@string/grooming" />
 
@@ -359,9 +311,10 @@
 
                             <TextView
                                 android:id="@+id/health_issues"
+                                style="@style/textViewStyleDescription"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="start"
+                                android:layout_gravity="center_vertical"
                                 android:layout_marginStart="@dimen/catIdMarginLeft"
                                 android:text="@string/health_issues" />
 
@@ -383,9 +336,10 @@
 
                             <TextView
                                 android:id="@+id/intelligence"
+                                style="@style/textViewStyleDescription"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="start"
+                                android:layout_gravity="center_vertical"
                                 android:layout_marginStart="@dimen/catIdMarginLeft"
                                 android:text="@string/intelligence" />
 
@@ -407,9 +361,10 @@
 
                             <TextView
                                 android:id="@+id/shedding_level"
+                                style="@style/textViewStyleDescription"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="start"
+                                android:layout_gravity="center_vertical"
                                 android:layout_marginStart="@dimen/catIdMarginLeft"
                                 android:text="@string/shedding_level" />
 
@@ -431,9 +386,10 @@
 
                             <TextView
                                 android:id="@+id/social_needs"
+                                style="@style/textViewStyleDescription"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="start"
+                                android:layout_gravity="center_vertical"
                                 android:layout_marginStart="@dimen/catIdMarginLeft"
                                 android:text="@string/social_needs" />
 
@@ -455,9 +411,10 @@
 
                             <TextView
                                 android:id="@+id/stranger_friendly"
+                                style="@style/textViewStyleDescription"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="start"
+                                android:layout_gravity="center_vertical"
                                 android:layout_marginStart="@dimen/catIdMarginLeft"
                                 android:text="@string/stranger_friendly" />
 
@@ -481,8 +438,9 @@
                                 android:id="@+id/vocalisation"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="start"
+                                android:layout_gravity="center_vertical"
                                 android:layout_marginStart="@dimen/catIdMarginLeft"
+                                style="@style/textViewStyleDescription"
                                 android:text="@string/vocalisation" />
 
                             <RatingBar
@@ -505,11 +463,9 @@
                             android:layout_marginTop="10dp"
                             android:autoLink="web"
                             android:paddingBottom="40dp"
+                            style="@style/textViewStyleDescription"
                             android:textColorLink="@color/mainColor"
                             android:text="" />
-
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 

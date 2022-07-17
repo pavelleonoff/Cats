@@ -1,4 +1,4 @@
-package com.redprism.cats.adapters
+package com.redprism.catbreeds.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,16 +6,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.redprism.cats.R
-import com.redprism.cats.data.Cat
+import com.redprism.catbreeds.R
+import com.redprism.catbreeds.data.Cat
 import com.squareup.picasso.Callback
 import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 import java.lang.Exception
 
-class CatsAdapter(width:Int,height:Int): RecyclerView.Adapter<CatsAdapter.CatsViewHolder>() {
-    private val width = width
-    private val height = height
+class CatsAdapter(val width:Int,val height:Int): RecyclerView.Adapter<CatsAdapter.CatsViewHolder>() {
 
     private var cats : ArrayList<Cat> = ArrayList()
     private var onCatClickListener: OnCatClickListener? = null
@@ -74,7 +72,7 @@ class CatsAdapter(width:Int,height:Int): RecyclerView.Adapter<CatsAdapter.CatsVi
         val cat_item_suppressedTail = holder.cat_item_suppressedTail
         val cat_item_shortLegs = holder.cat_item_shortLegs
         val cat_item_hypoallergenic = holder.cat_item_hypoallergenic
-        nameTextView.text = name
+        nameTextView.text = "\u00A0"+name+"\u00A0"
 
         if(cats[position].experimental==1) cat_item_experimental.visibility = View.VISIBLE
         else{cat_item_experimental.visibility = View.GONE}

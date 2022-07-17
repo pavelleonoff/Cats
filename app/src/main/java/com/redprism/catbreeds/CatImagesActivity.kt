@@ -1,12 +1,12 @@
-package com.redprism.cats
+package com.redprism.catbreeds
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
-import com.redprism.cats.adapters.ImagesAdapter
-import com.redprism.cats.animation.PageImageTransform
-import com.redprism.cats.data.MainViewModel
+import com.redprism.catbreeds.adapters.ImagesAdapter
+import com.redprism.catbreeds.animation.PageImageTransform
+import com.redprism.catbreeds.data.MainViewModel
 import kotlin.properties.Delegates
 
 class CatImagesActivity : AppCompatActivity() {

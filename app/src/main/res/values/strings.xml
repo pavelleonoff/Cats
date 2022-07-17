@@ -42,7 +42,7 @@
     <string name="clean_filters">clean filters</string>
     <string name="tagsText">Tags</string>
     <string name="sort_by_Text">Sort by:</string>
-    <string name="ok_Text">Ok</string>
+    <string name="ok_Text">OK</string>
     <string-array name="tags">
         <item>experimental</item>
         <item>hairless</item>
@@ -53,6 +53,7 @@
         <item>shortLegs</item>
         <item>hypoallergenic</item>
     </string-array>
-    <string name="see_more_photo">See more photo</string>
+    <string name="see_more_photo">Photos</string>
     <string name="no_internet_connection">Please check your internet connection, then close and open app again</string>
+    <string name="infinitive_progressbar">infinitive progressbar</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.redprism.cats.data
+package com.redprism.catbreeds.data
 
 class Pref {
     companion object {

@@ -1,4 +1,4 @@
-package com.redprism.cats.utils
+package com.redprism.catbreeds.utils
 
 import android.net.Uri
 import org.json.JSONArray
@@ -37,7 +37,7 @@ class Network {
                 .appendPath(IMAGES)
                 .appendPath(SEARCH)
                 .appendQueryParameter(ORDER, "ASC")
-                .appendQueryParameter(LIMIT, "20")
+                .appendQueryParameter(LIMIT, "100")
                 .appendQueryParameter(BREEDSID, id)
                 .build()
             return URL(url.toString())

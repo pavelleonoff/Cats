@@ -1,6 +1,6 @@
-package com.redprism.cats.utils
+package com.redprism.catbreeds.utils
 
-import com.redprism.cats.data.Cat
+import com.redprism.catbreeds.data.Cat
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject

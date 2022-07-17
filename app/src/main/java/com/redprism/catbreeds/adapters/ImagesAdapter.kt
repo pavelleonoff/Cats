@@ -1,11 +1,11 @@
-package com.redprism.cats.adapters
+package com.redprism.catbreeds.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.redprism.cats.R
+import com.redprism.catbreeds.R
 import com.squareup.picasso.Callback
 import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso

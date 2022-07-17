@@ -1,4 +1,4 @@
-package com.redprism.cats.data
+package com.redprism.catbreeds.data
 
 import androidx.room.*
 import androidx.sqlite.db.SimpleSQLiteQuery

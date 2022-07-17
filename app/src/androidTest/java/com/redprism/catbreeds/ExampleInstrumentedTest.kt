@@ -1,4 +1,4 @@
-package com.redprism.cats
+package com.redprism.catbreeds
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

@@ -9,4 +9,5 @@
     <dimen name="catIdMarginTop">10dp</dimen>
     <dimen name="marginStart">10dp</dimen>
     <dimen name="filtersMargin">10dp</dimen>
+    <dimen name="detailMarginTop">8dp</dimen>
 </resources>
