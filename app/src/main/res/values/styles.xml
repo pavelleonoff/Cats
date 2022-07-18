@@ -43,10 +43,7 @@
         <item name="android:textAllCaps">false</item>
         <item name="android:textColor">@drawable/toggle_color</item>
     </style>
-    <style name="FiltersTagsSelected" parent="@style/FiltersActivity">
-        <item name="android:background">@drawable/toggle_filter_button</item>
-    </style>
-    <style name="FiltersSortBySelected" parent="@style/FiltersActivity">
+    <style name="FiltersSelected" parent="@style/FiltersActivity">
         <item name="android:background">@drawable/toggle_filter_button</item>
     </style>
     <style name="CustomActivityAnimation" parent="@android:style/Animation.Activity">
