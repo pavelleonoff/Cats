@@ -1,4 +1,4 @@
-package com.redprism.catbreeds.data
+package com.redprism.catbreeds.utils
 
 class Pref {
     companion object {
@@ -8,6 +8,7 @@ class Pref {
         internal const val dataNotDownloads = "DataDownloads"
         internal const val filterOn = "filterOn"
         internal val tags = listOf(
+            "experimental",
             "hairless",
             "natural",
             "rare",

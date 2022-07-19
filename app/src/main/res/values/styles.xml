@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="CustomRatingBarStyle" parent="@android:style/Widget.RatingBar">
-        <item name="android:progressDrawable">@drawable/cat_ratingbar</item>
-        <item name="android:minHeight">18dp</item>
-        <item name="android:maxHeight">24dp</item>
-        <item name="android:layout_marginLeft">20dp</item>
-        <item name="android:layout_gravity">center</item>
-    </style>
     <style name="textViewStyle">
         <item name="android:fontFamily">@font/first_font</item>
         <item name="android:textColor">@color/black</item>
-
     </style>
+
+    <style name="catItemTags">
+        <item name="android:fontFamily">@font/first_font</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">@dimen/tagItemPadding</item>
+        <item name="android:background">@drawable/rounded_bg</item>
+        <item name="android:padding">@dimen/tagItemPadding</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
     <style name="tagDescritionTextView" parent="textViewStyle">
         <item name="android:padding">4dp</item>
         <item name="android:textSize">16sp</item>
@@ -21,17 +25,31 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginEnd">4dp</item>
-
     </style>
+
     <style name="textViewStyleDescription">
         <item name="android:fontFamily">@font/second_font</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">16sp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">start</item>
+        <item name="android:layout_marginStart">@dimen/detailDescriptionMarginStart</item>
+        <item name="android:layout_marginEnd">@dimen/detailDescriptionMarginEnd</item>
     </style>
 
     <style name="buttonTextViewStyle">
         <item name="android:fontFamily">@font/first_font</item>
     </style>
+
+    <style name="CustomRatingBarStyle" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/cat_ratingbar</item>
+        <item name="android:minHeight">18dp</item>
+        <item name="android:maxHeight">24dp</item>
+        <item name="android:layout_marginLeft">0dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
     <style name="FiltersActivity">
         <item name="android:fontFamily">@font/first_font</item>
         <item name="android:layout_width">wrap_content</item>
@@ -43,9 +61,11 @@
         <item name="android:textAllCaps">false</item>
         <item name="android:textColor">@drawable/toggle_color</item>
     </style>
+
     <style name="FiltersSelected" parent="@style/FiltersActivity">
         <item name="android:background">@drawable/toggle_filter_button</item>
     </style>
+
     <style name="CustomActivityAnimation" parent="@android:style/Animation.Activity">
         <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
         <item name="android:activityOpenExitAnimation">@anim/slide_out_left</item>

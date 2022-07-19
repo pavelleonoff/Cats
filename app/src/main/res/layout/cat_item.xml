@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="100dp"
+    android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -11,6 +11,7 @@
         app:cardCornerRadius="2dp"
         app:cardElevation="2dp"
         app:cardUseCompatPadding="true">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -21,13 +22,12 @@
                 style="@style/textViewStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:gravity="start|center"
-                android:layout_marginStart="1dp"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
 
             <ImageView
                 android:id="@+id/cat_item_image"
@@ -43,8 +43,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
+                android:layout_marginStart="8dp"
                 app:cardElevation="0dp"
-                android:layout_marginStart="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/cat_item_image"
                 app:layout_constraintStart_toStartOf="parent">
@@ -55,107 +55,43 @@
 
                     <TextView
                         android:id="@+id/item_experimental"
-                        style="@style/textViewStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/tagItemPadding"
-                        android:background="@drawable/rounded_bg"
-                        android:padding="@dimen/tagItemPadding"
-                        android:textSize="11sp"
-                        android:text="@string/experimental"
-                        android:textColor="@color/white"
-                        android:visibility="gone" />
+                        style="@style/catItemTags"
+                        android:text="@string/experimental" />
 
                     <TextView
                         android:id="@+id/item_hairless"
-                        style="@style/textViewStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/tagItemPadding"
-                        android:background="@drawable/rounded_bg"
-                        android:padding="@dimen/tagItemPadding"
-                        android:text="@string/hairless"
-                        android:textColor="@color/white"
-                        android:textSize="11sp"
-                        android:visibility="gone" />
+                        style="@style/catItemTags"
+                        android:text="@string/hairless" />
 
                     <TextView
                         android:id="@+id/item_natural"
-                        style="@style/textViewStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/tagItemPadding"
-                        android:background="@drawable/rounded_bg"
-                        android:padding="@dimen/tagItemPadding"
-                        android:text="@string/natural"
-                        android:textColor="@color/white"
-                        android:textSize="11sp"
-                        android:visibility="gone" />
+                        style="@style/catItemTags"
+                        android:text="@string/natural" />
 
                     <TextView
                         android:id="@+id/item_rare"
-                        style="@style/textViewStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/tagItemPadding"
-                        android:background="@drawable/rounded_bg"
-                        android:padding="@dimen/tagItemPadding"
-                        android:text="@string/rare"
-                        android:textColor="@color/white"
-                        android:textSize="11sp"
-                        android:visibility="gone" />
+                        style="@style/catItemTags"
+                        android:text="@string/rare" />
 
                     <TextView
                         android:id="@+id/item_rex"
-                        style="@style/textViewStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/tagItemPadding"
-                        android:background="@drawable/rounded_bg"
-                        android:padding="@dimen/tagItemPadding"
-                        android:text="@string/rex"
-                        android:textColor="@color/white"
-                        android:textSize="11sp"
-                        android:visibility="gone" />
+                        style="@style/catItemTags"
+                        android:text="@string/rex" />
 
                     <TextView
                         android:id="@+id/item_suppressed_tail"
-                        style="@style/textViewStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/tagItemPadding"
-                        android:background="@drawable/rounded_bg"
-                        android:padding="@dimen/tagItemPadding"
-                        android:text="@string/suppressed_tail"
-                        android:textColor="@color/white"
-                        android:textSize="11sp"
-                        android:visibility="gone" />
+                        style="@style/catItemTags"
+                        android:text="@string/suppressed_tail" />
 
                     <TextView
                         android:id="@+id/item_short_legs"
-                        style="@style/textViewStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/tagItemPadding"
-                        android:background="@drawable/rounded_bg"
-                        android:padding="@dimen/tagItemPadding"
-                        android:text="@string/short_legs"
-                        android:textColor="@color/white"
-                        android:textSize="11sp"
-                        android:visibility="gone" />
+                        style="@style/catItemTags"
+                        android:text="@string/short_legs" />
 
                     <TextView
                         android:id="@+id/item_hypoallergenic"
-                        style="@style/textViewStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/tagItemPadding"
-                        android:background="@drawable/rounded_bg"
-                        android:padding="@dimen/tagItemPadding"
-                        android:text="@string/hypoallergenic"
-                        android:textColor="@color/white"
-                        android:textSize="11sp"
-                        android:visibility="gone" />
+                        style="@style/catItemTags"
+                        android:text="@string/hypoallergenic" />
                 </TableRow>
 
             </androidx.cardview.widget.CardView>

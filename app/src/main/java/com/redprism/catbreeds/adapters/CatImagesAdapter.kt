@@ -11,7 +11,7 @@ import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 import java.lang.Exception
 
-class ImagesAdapter(val width:Int,val height:Int) :RecyclerView.Adapter<ImagesAdapter.ImagesHolder>()  {
+class CatImagesAdapter(val width:Int, val height:Int) :RecyclerView.Adapter<CatImagesAdapter.ImagesHolder>()  {
 
     private var catImages = mutableListOf<String>()
     private var imagesDownload = false

@@ -13,9 +13,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.redprism.catbreeds.adapters.CatsAdapter
 import com.redprism.catbreeds.data.Cat
-import com.redprism.catbreeds.data.MainViewModel
-import com.redprism.catbreeds.data.Operation
-import com.redprism.catbreeds.data.Pref
+import com.redprism.catbreeds.viewmodel.MainViewModel
+import com.redprism.catbreeds.viewmodel.Filtering
+import com.redprism.catbreeds.utils.Pref
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var catsRecyclerView: RecyclerView
@@ -103,7 +103,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         if (filterPref.getBoolean(Pref.filterOn, false)) {
             filtersButton.background = ContextCompat.getDrawable(this, R.drawable.toggle_on)
             filtersButtonClear.visibility = View.VISIBLE
-            filterStatus.text = Operation().setFilterStatus(filterPref)
+            val filters = resources.getStringArray(R.array.filters)
+            filterStatus.text = Filtering().setFilterStatus(filterPref,filters)
         } else {
             filtersButton.background = ContextCompat.getDrawable(this, R.drawable.toggle_off)
             filtersButtonClear.visibility = View.INVISIBLE

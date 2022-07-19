@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:text="@string/tagsText"
+        android:text="@string/tags_Text"
         style="@style/textViewStyle"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/flexboxLayout"
@@ -30,6 +30,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/filterTagsTextView"
         app:showDivider="beginning|middle">
+
+        <ToggleButton
+            android:id="@+id/filterExperimental"
+            style="@style/FiltersSelected"
+            android:textOff="@string/experimental"
+            android:textOn="@string/experimental" />
 
         <ToggleButton
             android:id="@+id/filterHairless"
@@ -103,71 +109,71 @@
         <ToggleButton
             android:id="@+id/filterAdaptability"
             style="@style/FiltersSelected"
-            android:textOff="@string/adaptabilityFilter"
-            android:textOn="@string/adaptabilityFilter" />
+            android:textOff="@string/adaptability"
+            android:textOn="@string/adaptability" />
 
 
         <ToggleButton
             android:id="@+id/filterAffection_level"
             style="@style/FiltersSelected"
-            android:textOff="@string/affection_levelFilter"
-            android:textOn="@string/affection_levelFilter" />
+            android:textOff="@string/affection_level"
+            android:textOn="@string/affection_level" />
 
 
         <ToggleButton
             android:id="@+id/filterChild_friendly"
             style="@style/FiltersSelected"
-            android:textOff="@string/child_friendlyFilter"
-            android:textOn="@string/child_friendlyFilter" />
+            android:textOff="@string/child_friendly"
+            android:textOn="@string/child_friendly" />
 
 
         <ToggleButton
             android:id="@+id/filterGrooming"
             style="@style/FiltersSelected"
-            android:textOff="@string/groomingFilter"
-            android:textOn="@string/groomingFilter" />
+            android:textOff="@string/grooming"
+            android:textOn="@string/grooming" />
 
 
         <ToggleButton
             android:id="@+id/filterHealth_issues"
             style="@style/FiltersSelected"
-            android:textOff="@string/health_issuesFilter"
-            android:textOn="@string/health_issuesFilter" />
+            android:textOff="@string/health_issues"
+            android:textOn="@string/health_issues" />
 
 
         <ToggleButton
             android:id="@+id/filterIntelligence"
             style="@style/FiltersSelected"
-            android:textOff="@string/intelligenceFilter"
-            android:textOn="@string/intelligenceFilter" />
+            android:textOff="@string/intelligence"
+            android:textOn="@string/intelligence" />
 
 
         <ToggleButton
             android:id="@+id/filterShedding_level"
             style="@style/FiltersSelected"
-            android:textOff="@string/shedding_levelFilter"
-            android:textOn="@string/shedding_levelFilter" />
+            android:textOff="@string/shedding_level"
+            android:textOn="@string/shedding_level" />
 
 
         <ToggleButton
             android:id="@+id/filterSocial_needs"
             style="@style/FiltersSelected"
-            android:textOff="@string/social_needsFilter"
-            android:textOn="@string/social_needsFilter" />
+            android:textOff="@string/social_needs"
+            android:textOn="@string/social_needs" />
 
 
         <ToggleButton
             android:id="@+id/filterStranger_friendly"
             style="@style/FiltersSelected"
-            android:textOff="@string/stranger_friendlyFilter"
-            android:textOn="@string/stranger_friendlyFilter" />
+            android:textOff="@string/stranger_friendly"
+            android:textOn="@string/stranger_friendly" />
 
 
         <ToggleButton
             android:id="@+id/filterVocalisation"
             style="@style/FiltersSelected"
-            android:textOff="@string/vocalisationFilter"
-            android:textOn="@string/vocalisationFilter" />
+            android:textOff="@string/vocalisation"
+            android:textOn="@string/vocalisation" />
     </com.google.android.flexbox.FlexboxLayout>
 
     <Button

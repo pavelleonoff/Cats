@@ -4,9 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
-import com.redprism.catbreeds.adapters.ImagesAdapter
+import com.redprism.catbreeds.adapters.CatImagesAdapter
 import com.redprism.catbreeds.animation.PageImageTransform
-import com.redprism.catbreeds.data.MainViewModel
+import com.redprism.catbreeds.viewmodel.MainViewModel
 import kotlin.properties.Delegates
 
 class CatImagesActivity : AppCompatActivity() {
@@ -26,7 +26,7 @@ class CatImagesActivity : AppCompatActivity() {
         val data = intent
         val id = data.getStringExtra("id")!!
         val image = data.getStringExtra("image")!!
-        val adapter = ImagesAdapter(widthPixels, heightPixels)
+        val adapter = CatImagesAdapter(widthPixels, heightPixels)
         viewPager.adapter = adapter
         adapter.addFirstImage(listOf(image))
         val catImages = viewModel.catImages

@@ -1,5 +1,9 @@
-<resources>
+<?xml version="1.0" encoding="utf-8" ?>
+    <resources>
     <string name="app_name">Cat Breeds</string>
+    <string name="name">name</string>
+    <string name="description">description</string>
+
     <string name="experimental">Experimental</string>
     <string name="hairless">Hairless</string>
     <string name="natural">Natural</string>
@@ -8,52 +12,51 @@
     <string name="suppressed_tail">Suppressed tail</string>
     <string name="short_legs">Short legs</string>
     <string name="hypoallergenic">Hypoallergenic</string>
-    <string name="name">name</string>
-    <string name="description">description</string>
-    <string name="origin">Origin:</string>
-    <string name="temperament">Temperament: </string>
-    <string name="life_span">Life span: </string>
-    <string name="adaptability">Adaptability:</string>
-    <string name="affection_level">Affection level:</string>
-    <string name="child_friendly">Child friendly:</string>
-    <string name="grooming">Grooming:</string>
-    <string name="health_issues">Health issues:</string>
-    <string name="intelligence">Intelligence:</string>
-    <string name="shedding_level">Shedding level:</string>
-    <string name="social_needs">Social needs:</string>
-    <string name="stranger_friendly">Stranger friendly:</string>
-    <string name="vocalisation">Vocalisation:</string>
-    <string name="cat_picture">cat picture</string>
-    <string name="originFilter">Origin</string>
-    <string name="temperamentFilter">Temperament</string>
-    <string name="life_spanFilter">Life span</string>
-    <string name="adaptabilityFilter">Adaptability</string>
-    <string name="affection_levelFilter">Affection_level</string>
-    <string name="child_friendlyFilter">Child friendly</string>
-    <string name="groomingFilter">Grooming</string>
-    <string name="health_issuesFilter">Health issues</string>
-    <string name="intelligenceFilter">Intelligence</string>
-    <string name="shedding_levelFilter">Shedding level</string>
-    <string name="social_needsFilter">Social needs</string>
-    <string name="stranger_friendlyFilter">Stranger friendly</string>
-    <string name="vocalisationFilter">Vocalisation</string>
+    <string name="adaptability">Adaptability</string>
+    <string name="affection_level">Affection level</string>
+    <string name="child_friendly">Child friendly</string>
+    <string name="grooming">Grooming</string>
+    <string name="health_issues">Health issues</string>
+    <string name="intelligence">Intelligence</string>
+    <string name="shedding_level">Shedding level</string>
+    <string name="social_needs">Social needs</string>
+    <string name="stranger_friendly">Stranger friend</string>
+    <string name="vocalisation">Vocalisation</string>
+
+    <string name="origin">Origin: %1$s</string>
+    <string name="temperament">Temperament: %1$s</string>
+    <string name="life_span">Life span: %1$s</string>
+
     <string name="filters">Filters</string>
-    <string name="tags">Tags:</string>
     <string name="clean_filters">clean filters</string>
-    <string name="tagsText">Tags</string>
+    <string name="tags_Text">Tags:</string>
     <string name="sort_by_Text">Sort by:</string>
     <string name="ok_Text">OK</string>
-    <string-array name="tags">
-        <item>experimental</item>
-        <item>hairless</item>
-        <item>natural</item>
-        <item>rare</item>
-        <item>rex</item>
-        <item>suppressedTail</item>
-        <item>shortLegs</item>
-        <item>hypoallergenic</item>
-    </string-array>
+    <string name="cat_picture">Cat picture</string>
+
     <string name="see_more_photo">Photos</string>
     <string name="no_internet_connection">Please check your internet connection, then close and open app again</string>
-    <string name="infinitive_progressbar">infinitive progressbar</string>
+    <string name="infinitive_progressbar">progressbar</string>
+    <string name="placeholder">placeholder</string>
+
+    <string-array name="filters">
+        <item>@string/experimental</item>
+        <item>@string/hairless</item>
+        <item>@string/natural</item>
+        <item>@string/rare</item>
+        <item>@string/rex</item>
+        <item>@string/suppressed_tail</item>
+        <item>@string/short_legs</item>
+        <item>@string/hypoallergenic</item>
+        <item>@string/adaptability</item>
+        <item>@string/affection_level</item>
+        <item>@string/child_friendly</item>
+        <item>@string/grooming</item>
+        <item>@string/health_issues</item>
+        <item>@string/intelligence</item>
+        <item>@string/shedding_level</item>
+        <item>@string/social_needs</item>
+        <item>@string/stranger_friendly</item>
+        <item>@string/vocalisation</item>
+    </string-array>
 </resources>

@@ -1,17 +1,19 @@
-package com.redprism.catbreeds.data
+package com.redprism.catbreeds.viewmodel
 
 import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.sqlite.db.SimpleSQLiteQuery
+import com.redprism.catbreeds.data.Cat
+import com.redprism.catbreeds.data.CatsDB
 import com.redprism.catbreeds.utils.JSON
 import com.redprism.catbreeds.utils.Network
+import com.redprism.catbreeds.utils.Pref
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -41,7 +43,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     internal fun getActualCatsFromDB() {
         viewModelScope.launch {
             if (filterPref.getBoolean(Pref.filterOn, false)) {
-                val res = Operation().queryBuilder(filterPref)
+                val res = Filtering().queryBuilder(filterPref)
                 getFilteredCats(SimpleSQLiteQuery(res))
             } else {
                 getAllCatsFromDb()
@@ -61,7 +63,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             if (cat == "") {
                 val res = CoroutineScope(Dispatchers.IO).async {
                     val catImagesFromNetwork = downloadCatImagesFromNetwork(id)
-                    val res = Operation().cleanString(catImagesFromNetwork, image)
+                    val res = Filtering().cleanString(catImagesFromNetwork, image)
                     catsDB.catsDao().updateCatImages(res, id)
                     return@async res
                 }.await()

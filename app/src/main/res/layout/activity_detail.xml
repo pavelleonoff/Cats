@@ -26,10 +26,10 @@
                     android:id="@+id/detailImage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
                     android:layout_gravity="center"
-                    android:contentDescription="placeholder"
+                    android:adjustViewBounds="true"
                     android:background="@color/white"
+                    android:contentDescription="@string/placeholder"
                     android:cropToPadding="false"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/placeholder" />
@@ -40,436 +40,357 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|end"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="4dp"
                     android:text="@string/see_more_photo"
                     android:textAllCaps="false" />
 
             </FrameLayout>
-
-
         </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
+        <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
-            android:layout_marginStart="@dimen/catIdMarginLeft"
-            app:cardElevation="0dp">
+            android:layout_marginStart="@dimen/detailDescriptionMarginStart"
+            android:layout_marginEnd="@dimen/detailDescriptionMarginEnd">
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/experimental"
+                style="@style/tagDescritionTextView"
+                android:text="@string/experimental" />
 
-                    <TextView
-                        android:id="@+id/experimental"
-                        style="@style/tagDescritionTextView"
-                        android:text="@string/experimental"/>
+            <TextView
+                android:id="@+id/hairless"
+                style="@style/tagDescritionTextView"
+                android:text="@string/hairless" />
 
-                    <TextView
-                        android:id="@+id/hairless"
-                        style="@style/tagDescritionTextView"
-                        android:text="@string/hairless"
-                         />
+            <TextView
+                android:id="@+id/natural"
+                style="@style/tagDescritionTextView"
+                android:text="@string/natural" />
 
-                    <TextView
-                        android:id="@+id/natural"
-                        style="@style/tagDescritionTextView"
-                        android:text="@string/natural"
-                         />
+            <TextView
+                android:id="@+id/rare"
+                style="@style/tagDescritionTextView"
+                android:text="@string/rare" />
 
-                    <TextView
-                        android:id="@+id/rare"
-                        style="@style/tagDescritionTextView"
-                        android:text="@string/rare" />
+            <TextView
+                android:id="@+id/rex"
+                style="@style/tagDescritionTextView"
+                android:text="@string/rex" />
 
-                    <TextView
-                        android:id="@+id/rex"
-                        style="@style/tagDescritionTextView"
-                        android:text="@string/rex" />
+            <TextView
+                android:id="@+id/suppressed_tail"
+                style="@style/tagDescritionTextView"
+                android:text="@string/suppressed_tail" />
 
-                    <TextView
-                        android:id="@+id/suppressed_tail"
-                        style="@style/tagDescritionTextView"
-                        android:text="@string/suppressed_tail"/>
+            <TextView
+                android:id="@+id/short_legs"
+                style="@style/tagDescritionTextView"
+                android:text="@string/short_legs" />
 
-                    <TextView
-                        android:id="@+id/short_legs"
-                        style="@style/tagDescritionTextView"
-                        android:text="@string/short_legs"/>
+            <TextView
+                android:id="@+id/hypoallergenic"
+                style="@style/tagDescritionTextView"
+                android:text="@string/hypoallergenic" />
+        </TableRow>
 
-                    <TextView
-                        android:id="@+id/hypoallergenic"
-                        style="@style/tagDescritionTextView"
-                        android:text="@string/hypoallergenic" />
-                </TableRow>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="vertical">
 
-        </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_gravity="center"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                    android:layout_weight="1"
-                    app:cardElevation="0dp">
+                <TextView
+                    android:id="@+id/name"
+                    style="@style/textViewStyleDescription"
+                    android:fontFamily="@font/first_font"
+                    android:text="@string/name"
+                    android:textSize="40sp" />
+            </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/catIdMarginTop"
+                android:orientation="horizontal">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="28dp"
-                            android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/description"
+                    style="@style/textViewStyleDescription"
+                    android:text="@string/description" />
+            </LinearLayout>
 
-                            <TextView
-                                android:id="@+id/name"
-                                style="@style/textViewStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="12dp"
-                                android:layout_marginEnd="@dimen/detailMarginEnd"
-                                android:text="@string/name"
-                                android:textSize="40sp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
 
-                        <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/catIdMarginTop"
-                        android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/catIdMarginTop"
+                android:orientation="horizontal">
 
-                            <TextView
-                            android:id="@+id/description"
-                            style="@style/textViewStyleDescription"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="start"
-                            android:layout_marginStart="@dimen/catIdMarginLeft"
-                            android:layout_marginEnd="@dimen/detailMarginEnd"
-                            android:text="@string/description" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/catIdMarginTop"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:id="@+id/origin"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="start"
-                            android:layout_marginEnd="@dimen/detailMarginEnd"
-                            android:layout_marginStart="@dimen/catIdMarginLeft"
-                            style="@style/textViewStyleDescription"
-                            android:text="@string/origin" />
-                    </LinearLayout>
+                <TextView
+                    android:id="@+id/origin"
+                    style="@style/textViewStyleDescription"
+                    android:text="@string/origin" />
+            </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/catIdMarginTop"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:id="@+id/temperament"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="start"
-                            android:layout_marginEnd="@dimen/detailMarginEnd"
-                            android:layout_marginStart="@dimen/catIdMarginLeft"
-                            style="@style/textViewStyleDescription"
-                            android:text="@string/temperament" />
-                    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/catIdMarginTop"
+                android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/catIdMarginTop"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:id="@+id/life_span"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="start"
-                            android:layout_marginEnd="@dimen/detailMarginEnd"
-                            android:layout_marginStart="@dimen/catIdMarginLeft"
-                            style="@style/textViewStyleDescription"
-                            android:text="@string/life_span" />
-                    </LinearLayout>
+                <TextView
+                    android:id="@+id/temperament"
+                    style="@style/textViewStyleDescription"
+                    android:text="@string/temperament" />
+            </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/catIdMarginTop"
-                            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/catIdMarginTop"
+                android:orientation="horizontal">
 
-                            <TextView
-                                android:id="@+id/adaptability"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginStart="@dimen/catIdMarginLeft"
-                                style="@style/textViewStyleDescription"
-                                android:text="@string/adaptability" />
+                <TextView
+                    android:id="@+id/life_span"
+                    style="@style/textViewStyleDescription"
+                    android:text="@string/life_span" />
+            </LinearLayout>
 
-                            <RatingBar
-                                android:id="@+id/adaptability_rb"
-                                style="@style/CustomRatingBarStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="24dp"
-                                android:isIndicator="true"
-                                android:numStars="5"
-                                android:progressDrawable="@drawable/cat_ratingbar"
-                                android:stepSize="1.0" />
-                        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/catIdMarginTop"
+                android:orientation="horizontal">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/catIdMarginTop"
-                            android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/adaptability"
+                    style="@style/textViewStyleDescription"
+                    android:text="@string/adaptability" />
 
-                            <TextView
-                                android:id="@+id/affection_level"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginStart="@dimen/catIdMarginLeft"
-                                style="@style/textViewStyleDescription"
-                                android:text="@string/affection_level" />
+                <RatingBar
+                    android:id="@+id/adaptability_rb"
+                    style="@style/CustomRatingBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:progressDrawable="@drawable/cat_ratingbar"
+                    android:stepSize="1.0" />
+            </LinearLayout>
 
-                            <RatingBar
-                                android:id="@+id/affection_level_rb"
-                                style="@style/CustomRatingBarStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="24dp"
-                                android:isIndicator="true"
-                                android:numStars="5"
-                                android:progressDrawable="@drawable/cat_ratingbar"
-                                android:stepSize="1.0" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/catIdMarginTop"
+                android:orientation="horizontal">
 
-                        </LinearLayout>
+                <TextView
+                    android:id="@+id/affection_level"
+                    style="@style/textViewStyleDescription"
+                    android:text="@string/affection_level" />
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/catIdMarginTop"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/child_friendly"
-                                style="@style/textViewStyleDescription"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginStart="@dimen/catIdMarginLeft"
-                                android:text="@string/child_friendly" />
-
-                            <RatingBar
-                                android:id="@+id/child_friendly_rb"
-                                style="@style/CustomRatingBarStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="24dp"
-                                android:isIndicator="true"
-                                android:numStars="5"
-                                android:stepSize="1.0" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/catIdMarginTop"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/grooming"
-                                style="@style/textViewStyleDescription"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginStart="@dimen/catIdMarginLeft"
-                                android:text="@string/grooming" />
-
-                            <RatingBar
-                                android:id="@+id/grooming_rb"
-                                style="@style/CustomRatingBarStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="24dp"
-                                android:isIndicator="true"
-                                android:numStars="5"
-                                android:stepSize="1.0" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/catIdMarginTop"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/health_issues"
-                                style="@style/textViewStyleDescription"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginStart="@dimen/catIdMarginLeft"
-                                android:text="@string/health_issues" />
-
-                            <RatingBar
-                                android:id="@+id/health_issues_rb"
-                                style="@style/CustomRatingBarStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="24dp"
-                                android:isIndicator="true"
-                                android:numStars="5"
-                                android:stepSize="1.0" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/catIdMarginTop"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/intelligence"
-                                style="@style/textViewStyleDescription"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginStart="@dimen/catIdMarginLeft"
-                                android:text="@string/intelligence" />
-
-                            <RatingBar
-                                android:id="@+id/intelligence_rb"
-                                style="@style/CustomRatingBarStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="24dp"
-                                android:isIndicator="true"
-                                android:numStars="5"
-                                android:stepSize="1.0" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/catIdMarginTop"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/shedding_level"
-                                style="@style/textViewStyleDescription"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginStart="@dimen/catIdMarginLeft"
-                                android:text="@string/shedding_level" />
-
-                            <RatingBar
-                                android:id="@+id/shedding_level_rb"
-                                style="@style/CustomRatingBarStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="24dp"
-                                android:isIndicator="true"
-                                android:numStars="5"
-                                android:stepSize="1.0" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/catIdMarginTop"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/social_needs"
-                                style="@style/textViewStyleDescription"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginStart="@dimen/catIdMarginLeft"
-                                android:text="@string/social_needs" />
-
-                            <RatingBar
-                                android:id="@+id/social_needs_rb"
-                                style="@style/CustomRatingBarStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="24dp"
-                                android:isIndicator="true"
-                                android:numStars="5"
-                                android:stepSize="1.0" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/catIdMarginTop"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/stranger_friendly"
-                                style="@style/textViewStyleDescription"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginStart="@dimen/catIdMarginLeft"
-                                android:text="@string/stranger_friendly" />
-
-                            <RatingBar
-                                android:id="@+id/stranger_friendly_rb"
-                                style="@style/CustomRatingBarStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="24dp"
-                                android:isIndicator="true"
-                                android:numStars="5"
-                                android:stepSize="1.0" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/catIdMarginTop"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/vocalisation"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginStart="@dimen/catIdMarginLeft"
-                                style="@style/textViewStyleDescription"
-                                android:text="@string/vocalisation" />
-
-                            <RatingBar
-                                android:id="@+id/vocalisation_rb"
-                                style="@style/CustomRatingBarStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="24dp"
-                                android:tint="@color/secondColor"
-                                android:isIndicator="true"
-                                android:numStars="5"
-                                android:stepSize="1.0" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:id="@+id/wikipedia_url"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="start"
-                            android:layout_marginStart="@dimen/catIdMarginLeft"
-                            android:layout_marginTop="10dp"
-                            android:autoLink="web"
-                            android:paddingBottom="40dp"
-                            style="@style/textViewStyleDescription"
-                            android:textColorLink="@color/mainColor"
-                            android:text="" />
+                <RatingBar
+                    android:id="@+id/affection_level_rb"
+                    style="@style/CustomRatingBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:progressDrawable="@drawable/cat_ratingbar"
+                    android:stepSize="1.0" />
 
             </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/catIdMarginTop"
+                android:orientation="horizontal">
 
+                <TextView
+                    android:id="@+id/child_friendly"
+                    style="@style/textViewStyleDescription"
+                    android:text="@string/child_friendly" />
+
+                <RatingBar
+                    android:id="@+id/child_friendly_rb"
+                    style="@style/CustomRatingBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:stepSize="1.0" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/catIdMarginTop"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/grooming"
+                    style="@style/textViewStyleDescription"
+                    android:text="@string/grooming" />
+
+                <RatingBar
+                    android:id="@+id/grooming_rb"
+                    style="@style/CustomRatingBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:stepSize="1.0" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/catIdMarginTop"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/health_issues"
+                    style="@style/textViewStyleDescription"
+                    android:text="@string/health_issues" />
+
+                <RatingBar
+                    android:id="@+id/health_issues_rb"
+                    style="@style/CustomRatingBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:stepSize="1.0" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/catIdMarginTop"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/intelligence"
+                    style="@style/textViewStyleDescription"
+                    android:text="@string/intelligence" />
+
+                <RatingBar
+                    android:id="@+id/intelligence_rb"
+                    style="@style/CustomRatingBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:stepSize="1.0" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/catIdMarginTop"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/shedding_level"
+                    style="@style/textViewStyleDescription"
+                    android:text="@string/shedding_level" />
+
+                <RatingBar
+                    android:id="@+id/shedding_level_rb"
+                    style="@style/CustomRatingBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:stepSize="1.0" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/catIdMarginTop"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/social_needs"
+                    style="@style/textViewStyleDescription"
+                    android:text="@string/social_needs" />
+
+                <RatingBar
+                    android:id="@+id/social_needs_rb"
+                    style="@style/CustomRatingBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:stepSize="1.0" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/catIdMarginTop"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/stranger_friendly"
+                    style="@style/textViewStyleDescription"
+                    android:text="@string/stranger_friendly" />
+
+                <RatingBar
+                    android:id="@+id/stranger_friendly_rb"
+                    style="@style/CustomRatingBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:stepSize="1.0" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/catIdMarginTop"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/vocalisation"
+                    style="@style/textViewStyleDescription"
+                    android:text="@string/vocalisation" />
+
+                <RatingBar
+                    android:id="@+id/vocalisation_rb"
+                    style="@style/CustomRatingBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:stepSize="1.0"
+                    android:tint="@color/secondColor" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/wikipedia_url"
+                style="@style/textViewStyleDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="@dimen/detailDescriptionMarginStart"
+                android:layout_marginTop="10dp"
+                android:autoLink="web"
+                android:paddingBottom="40dp"
+                android:text=""
+                android:textColorLink="@color/mainColor" />
+
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

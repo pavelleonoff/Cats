@@ -1,10 +1,10 @@
-package com.redprism.catbreeds.data
+package com.redprism.catbreeds.viewmodel
 
 import android.content.SharedPreferences
-import java.util.*
+import com.redprism.catbreeds.utils.Pref
 import kotlin.collections.ArrayList
 
-class Operation {
+class Filtering {
 
     fun queryBuilder(pref: SharedPreferences): String {
         val str = StringBuilder()
@@ -24,19 +24,27 @@ class Operation {
         return str.dropLast(4).toString()
     }
 
-    internal fun setFilterStatus(pref: SharedPreferences): String {
+    internal fun setFilterStatus(pref: SharedPreferences, filter: Array<String>): String {
         val str = StringBuilder()
-        var str2 : String
+        var str2: String
         var tags = false
         var sortBy = false
+        val filterMap = mutableMapOf<String, String>()
+        for (i in filter.indices) {
+            if(i< Pref.tags.size) {
+                filterMap[Pref.tags[i]] = filter[i]
+            }
+            else{
+                filterMap[Pref.sortBy[i- Pref.tags.size]] = filter[i]
+            }
+        }
         pref.all.forEach { i ->
             if (i.key in Pref.tags && i.value == true) {
                 if (!tags) {
                     str.append("Tags: ")
                     tags = true
                 }
-                str.append(i.key.toString().substring(0 until 1).uppercase(Locale.ROOT))
-                str.append(i.key.toString().substring(1 until i.key.toString().length))
+                str.append(filterMap[i.key])
                 str.append(", ")
             }
         }
@@ -55,8 +63,7 @@ class Operation {
                     }
                     sortBy = true
                 }
-                str.append(i.key.toString().substring(0 until 1).uppercase(Locale.ROOT))
-                str.append(i.key.toString().substring(1 until i.key.toString().length))
+                str.append(filterMap[i.key])
                 str.append(", ")
             }
         }
@@ -69,8 +76,8 @@ class Operation {
         return str.toString()
     }
 
-    fun cleanString(catImages:ArrayList<String>, image:String):String {
-        val res = ArrayList(catImages.distinct().filter{ i -> i.isNotEmpty() && i != image })
+    fun cleanString(catImages: ArrayList<String>, image: String): String {
+        val res = ArrayList(catImages.distinct().filter { i -> i.isNotEmpty() && i != image })
         return res.toString()
             .replace("[", "")
             .replace("]", "")
