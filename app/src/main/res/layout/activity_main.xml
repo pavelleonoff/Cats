@@ -24,11 +24,11 @@
 
             <TextView
                 android:id="@+id/filtersButton"
-                style="@style/textViewStyle"
+                style="@style/mainTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginStart="17dp"
+                android:layout_marginStart="18dp"
                 android:background="@drawable/toggle_on"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
@@ -49,9 +49,9 @@
                 android:id="@+id/filterStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/textViewStyle"
+                style="@style/mainTextStyle"
                 android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/marginStart" />
+                android:layout_marginStart="10dp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -61,8 +61,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginStart="@dimen/marginRecuclerView"
-        android:layout_marginEnd="@dimen/marginRecuclerView"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,7 +86,7 @@
             android:gravity="center_horizontal"
             android:layout_gravity="center"
             android:visibility="gone"
-            android:padding="@dimen/tagItemPadding"
+            android:padding="@dimen/tagsPadding"
             android:text="@string/no_internet_connection"
             android:textColor="@color/white"
             android:textSize="18sp" />

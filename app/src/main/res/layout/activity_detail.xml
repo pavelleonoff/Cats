@@ -15,7 +15,9 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            app:cardCornerRadius="3dp"
+            app:cardElevation="4dp">
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -36,80 +38,78 @@
 
                 <Button
                     android:id="@+id/catImagesButton"
-                    style="@style/buttonTextViewStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|end"
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="4dp"
+                    android:fontFamily="@font/first_font"
                     android:text="@string/see_more_photo"
                     android:textAllCaps="false" />
 
             </FrameLayout>
+
+
         </androidx.cardview.widget.CardView>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginStart="@dimen/detailDescriptionMarginStart"
-            android:layout_marginEnd="@dimen/detailDescriptionMarginEnd">
+            <TableRow
+                style="@style/descriptionInDetail">
+                <TextView
+                    android:id="@+id/experimental"
+                    style="@style/tagsInDetail"
+                    android:text="@string/experimental" />
 
-            <TextView
-                android:id="@+id/experimental"
-                style="@style/tagDescritionTextView"
-                android:text="@string/experimental" />
+                <TextView
+                    android:id="@+id/hairless"
+                    style="@style/tagsInDetail"
+                    android:text="@string/hairless" />
 
-            <TextView
-                android:id="@+id/hairless"
-                style="@style/tagDescritionTextView"
-                android:text="@string/hairless" />
+                <TextView
+                    android:id="@+id/natural"
+                    style="@style/tagsInDetail"
+                    android:text="@string/natural" />
 
-            <TextView
-                android:id="@+id/natural"
-                style="@style/tagDescritionTextView"
-                android:text="@string/natural" />
+                <TextView
+                    android:id="@+id/rare"
+                    style="@style/tagsInDetail"
+                    android:text="@string/rare" />
 
-            <TextView
-                android:id="@+id/rare"
-                style="@style/tagDescritionTextView"
-                android:text="@string/rare" />
+                <TextView
+                    android:id="@+id/rex"
+                    style="@style/tagsInDetail"
+                    android:text="@string/rex" />
 
-            <TextView
-                android:id="@+id/rex"
-                style="@style/tagDescritionTextView"
-                android:text="@string/rex" />
+                <TextView
+                    android:id="@+id/suppressed_tail"
+                    style="@style/tagsInDetail"
+                    android:text="@string/suppressed_tail" />
 
-            <TextView
-                android:id="@+id/suppressed_tail"
-                style="@style/tagDescritionTextView"
-                android:text="@string/suppressed_tail" />
+                <TextView
+                    android:id="@+id/short_legs"
+                    style="@style/tagsInDetail"
+                    android:text="@string/short_legs" />
 
-            <TextView
-                android:id="@+id/short_legs"
-                style="@style/tagDescritionTextView"
-                android:text="@string/short_legs" />
-
-            <TextView
-                android:id="@+id/hypoallergenic"
-                style="@style/tagDescritionTextView"
-                android:text="@string/hypoallergenic" />
-        </TableRow>
+                <TextView
+                    android:id="@+id/hypoallergenic"
+                    style="@style/tagsInDetail"
+                    android:text="@string/hypoallergenic" />
+            </TableRow>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="8dp"
             android:orientation="vertical">
 
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/descriptionsInDetailMarginTop">
 
                 <TextView
                     android:id="@+id/name"
-                    style="@style/textViewStyleDescription"
+                    style="@style/descriptionInDetail"
                     android:fontFamily="@font/first_font"
                     android:text="@string/name"
                     android:textSize="40sp" />
@@ -118,12 +118,12 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/catIdMarginTop"
+                android:layout_marginTop="@dimen/descriptionsInDetailMarginTop"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/description"
-                    style="@style/textViewStyleDescription"
+                    style="@style/descriptionInDetail"
                     android:text="@string/description" />
             </LinearLayout>
 
@@ -131,53 +131,53 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/catIdMarginTop"
+                android:layout_marginTop="@dimen/descriptionsInDetailMarginTop"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/origin"
-                    style="@style/textViewStyleDescription"
+                    style="@style/descriptionInDetail"
                     android:text="@string/origin" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/catIdMarginTop"
+                android:layout_marginTop="@dimen/descriptionsInDetailMarginTop"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/temperament"
-                    style="@style/textViewStyleDescription"
+                    style="@style/descriptionInDetail"
                     android:text="@string/temperament" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/catIdMarginTop"
+                android:layout_marginTop="@dimen/descriptionsInDetailMarginTop"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/life_span"
-                    style="@style/textViewStyleDescription"
+                    style="@style/descriptionInDetail"
                     android:text="@string/life_span" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/catIdMarginTop"
+                android:layout_marginTop="@dimen/descriptionsInDetailMarginTop"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/adaptability"
-                    style="@style/textViewStyleDescription"
+                    style="@style/descriptionInDetail"
                     android:text="@string/adaptability" />
 
                 <RatingBar
                     android:id="@+id/adaptability_rb"
-                    style="@style/CustomRatingBarStyle"
+                    style="@style/ratingBarInDetail"
                     android:layout_width="wrap_content"
                     android:layout_height="24dp"
                     android:isIndicator="true"
@@ -189,17 +189,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/catIdMarginTop"
+                android:layout_marginTop="@dimen/descriptionsInDetailMarginTop"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/affection_level"
-                    style="@style/textViewStyleDescription"
+                    style="@style/descriptionInDetail"
                     android:text="@string/affection_level" />
 
                 <RatingBar
                     android:id="@+id/affection_level_rb"
-                    style="@style/CustomRatingBarStyle"
+                    style="@style/ratingBarInDetail"
                     android:layout_width="wrap_content"
                     android:layout_height="24dp"
                     android:isIndicator="true"
@@ -212,17 +212,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/catIdMarginTop"
+                android:layout_marginTop="@dimen/descriptionsInDetailMarginTop"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/child_friendly"
-                    style="@style/textViewStyleDescription"
+                    style="@style/descriptionInDetail"
                     android:text="@string/child_friendly" />
 
                 <RatingBar
                     android:id="@+id/child_friendly_rb"
-                    style="@style/CustomRatingBarStyle"
+                    style="@style/ratingBarInDetail"
                     android:layout_width="wrap_content"
                     android:layout_height="24dp"
                     android:isIndicator="true"
@@ -233,17 +233,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/catIdMarginTop"
+                android:layout_marginTop="@dimen/descriptionsInDetailMarginTop"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/grooming"
-                    style="@style/textViewStyleDescription"
+                    style="@style/descriptionInDetail"
                     android:text="@string/grooming" />
 
                 <RatingBar
                     android:id="@+id/grooming_rb"
-                    style="@style/CustomRatingBarStyle"
+                    style="@style/ratingBarInDetail"
                     android:layout_width="wrap_content"
                     android:layout_height="24dp"
                     android:isIndicator="true"
@@ -254,17 +254,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/catIdMarginTop"
+                android:layout_marginTop="@dimen/descriptionsInDetailMarginTop"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/health_issues"
-                    style="@style/textViewStyleDescription"
+                    style="@style/descriptionInDetail"
                     android:text="@string/health_issues" />
 
                 <RatingBar
                     android:id="@+id/health_issues_rb"
-                    style="@style/CustomRatingBarStyle"
+                    style="@style/ratingBarInDetail"
                     android:layout_width="wrap_content"
                     android:layout_height="24dp"
                     android:isIndicator="true"
@@ -275,17 +275,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/catIdMarginTop"
+                android:layout_marginTop="@dimen/descriptionsInDetailMarginTop"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/intelligence"
-                    style="@style/textViewStyleDescription"
+                    style="@style/descriptionInDetail"
                     android:text="@string/intelligence" />
 
                 <RatingBar
                     android:id="@+id/intelligence_rb"
-                    style="@style/CustomRatingBarStyle"
+                    style="@style/ratingBarInDetail"
                     android:layout_width="wrap_content"
                     android:layout_height="24dp"
                     android:isIndicator="true"
@@ -296,17 +296,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/catIdMarginTop"
+                android:layout_marginTop="@dimen/descriptionsInDetailMarginTop"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/shedding_level"
-                    style="@style/textViewStyleDescription"
+                    style="@style/descriptionInDetail"
                     android:text="@string/shedding_level" />
 
                 <RatingBar
                     android:id="@+id/shedding_level_rb"
-                    style="@style/CustomRatingBarStyle"
+                    style="@style/ratingBarInDetail"
                     android:layout_width="wrap_content"
                     android:layout_height="24dp"
                     android:isIndicator="true"
@@ -317,17 +317,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/catIdMarginTop"
+                android:layout_marginTop="@dimen/descriptionsInDetailMarginTop"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/social_needs"
-                    style="@style/textViewStyleDescription"
+                    style="@style/descriptionInDetail"
                     android:text="@string/social_needs" />
 
                 <RatingBar
                     android:id="@+id/social_needs_rb"
-                    style="@style/CustomRatingBarStyle"
+                    style="@style/ratingBarInDetail"
                     android:layout_width="wrap_content"
                     android:layout_height="24dp"
                     android:isIndicator="true"
@@ -338,17 +338,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/catIdMarginTop"
+                android:layout_marginTop="@dimen/descriptionsInDetailMarginTop"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/stranger_friendly"
-                    style="@style/textViewStyleDescription"
+                    style="@style/descriptionInDetail"
                     android:text="@string/stranger_friendly" />
 
                 <RatingBar
                     android:id="@+id/stranger_friendly_rb"
-                    style="@style/CustomRatingBarStyle"
+                    style="@style/ratingBarInDetail"
                     android:layout_width="wrap_content"
                     android:layout_height="24dp"
                     android:isIndicator="true"
@@ -359,17 +359,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/catIdMarginTop"
+                android:layout_marginTop="@dimen/descriptionsInDetailMarginTop"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/vocalisation"
-                    style="@style/textViewStyleDescription"
+                    style="@style/descriptionInDetail"
                     android:text="@string/vocalisation" />
 
                 <RatingBar
                     android:id="@+id/vocalisation_rb"
-                    style="@style/CustomRatingBarStyle"
+                    style="@style/ratingBarInDetail"
                     android:layout_width="wrap_content"
                     android:layout_height="24dp"
                     android:isIndicator="true"
@@ -380,11 +380,7 @@
 
             <TextView
                 android:id="@+id/wikipedia_url"
-                style="@style/textViewStyleDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_marginStart="@dimen/detailDescriptionMarginStart"
+                style="@style/descriptionInDetail"
                 android:layout_marginTop="10dp"
                 android:autoLink="web"
                 android:paddingBottom="40dp"

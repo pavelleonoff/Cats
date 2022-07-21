@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="textViewStyle">
+    <style name="mainTextStyle">
         <item name="android:fontFamily">@font/first_font</item>
         <item name="android:textColor">@color/black</item>
     </style>
 
-    <style name="catItemTags">
+    <style name="tagsInCatItem">
         <item name="android:fontFamily">@font/first_font</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginEnd">@dimen/tagItemPadding</item>
+        <item name="android:layout_marginEnd">@dimen/tagsPadding</item>
         <item name="android:background">@drawable/rounded_bg</item>
-        <item name="android:padding">@dimen/tagItemPadding</item>
+        <item name="android:padding">@dimen/tagsPadding</item>
         <item name="android:textSize">11sp</item>
         <item name="android:textColor">@color/white</item>
+        <item name="android:visibility">gone</item>
     </style>
 
-    <style name="tagDescritionTextView" parent="textViewStyle">
+    <style name="tagsInDetail" parent="mainTextStyle">
         <item name="android:padding">4dp</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/white</item>
@@ -27,22 +28,18 @@
         <item name="android:layout_marginEnd">4dp</item>
     </style>
 
-    <style name="textViewStyleDescription">
+    <style name="descriptionInDetail">
         <item name="android:fontFamily">@font/second_font</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">16sp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">start</item>
-        <item name="android:layout_marginStart">@dimen/detailDescriptionMarginStart</item>
-        <item name="android:layout_marginEnd">@dimen/detailDescriptionMarginEnd</item>
+        <item name="android:layout_marginStart">20dp</item>
+        <item name="android:layout_marginEnd">20dp</item>
     </style>
 
-    <style name="buttonTextViewStyle">
-        <item name="android:fontFamily">@font/first_font</item>
-    </style>
-
-    <style name="CustomRatingBarStyle" parent="@android:style/Widget.RatingBar">
+    <style name="ratingBarInDetail" parent="@android:style/Widget.RatingBar">
         <item name="android:progressDrawable">@drawable/cat_ratingbar</item>
         <item name="android:minHeight">18dp</item>
         <item name="android:maxHeight">24dp</item>
@@ -50,19 +47,16 @@
         <item name="android:layout_gravity">center</item>
     </style>
 
-    <style name="FiltersActivity">
+    <style name="tagsInFilters">
         <item name="android:fontFamily">@font/first_font</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_margin">@dimen/filtersMargin</item>
-        <item name="android:padding">@dimen/tagPadding</item>
+        <item name="android:layout_margin">@dimen/tagsMargin</item>
+        <item name="android:padding">8dp</item>
         <item name="android:minWidth">0dp</item>
         <item name="android:minHeight">0dp</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:textColor">@drawable/toggle_color</item>
-    </style>
-
-    <style name="FiltersSelected" parent="@style/FiltersActivity">
         <item name="android:background">@drawable/toggle_filter_button</item>
     </style>
 

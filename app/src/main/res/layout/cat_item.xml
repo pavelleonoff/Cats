@@ -19,10 +19,10 @@
 
             <TextView
                 android:id="@+id/cat_item_name"
-                style="@style/textViewStyle"
+                style="@style/mainTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
+                android:layout_marginStart="4dp"
                 android:gravity="start|center"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -55,42 +55,42 @@
 
                     <TextView
                         android:id="@+id/item_experimental"
-                        style="@style/catItemTags"
+                        style="@style/tagsInCatItem"
                         android:text="@string/experimental" />
 
                     <TextView
                         android:id="@+id/item_hairless"
-                        style="@style/catItemTags"
+                        style="@style/tagsInCatItem"
                         android:text="@string/hairless" />
 
                     <TextView
                         android:id="@+id/item_natural"
-                        style="@style/catItemTags"
+                        style="@style/tagsInCatItem"
                         android:text="@string/natural" />
 
                     <TextView
                         android:id="@+id/item_rare"
-                        style="@style/catItemTags"
+                        style="@style/tagsInCatItem"
                         android:text="@string/rare" />
 
                     <TextView
                         android:id="@+id/item_rex"
-                        style="@style/catItemTags"
+                        style="@style/tagsInCatItem"
                         android:text="@string/rex" />
 
                     <TextView
                         android:id="@+id/item_suppressed_tail"
-                        style="@style/catItemTags"
+                        style="@style/tagsInCatItem"
                         android:text="@string/suppressed_tail" />
 
                     <TextView
                         android:id="@+id/item_short_legs"
-                        style="@style/catItemTags"
+                        style="@style/tagsInCatItem"
                         android:text="@string/short_legs" />
 
                     <TextView
                         android:id="@+id/item_hypoallergenic"
-                        style="@style/catItemTags"
+                        style="@style/tagsInCatItem"
                         android:text="@string/hypoallergenic" />
                 </TableRow>
 

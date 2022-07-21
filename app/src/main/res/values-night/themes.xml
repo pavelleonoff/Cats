@@ -1,9 +1,7 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.Cats" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="android:textViewStyle">@style/textViewStyle</item>
-        <item name="buttonStyle">@style/buttonTextViewStyle</item>
         <item name="colorPrimary">@color/mainColor</item>
         <item name="colorPrimaryDark">@color/mainColor</item>
         <item name="colorPrimaryVariant">@color/mainColor</item>
