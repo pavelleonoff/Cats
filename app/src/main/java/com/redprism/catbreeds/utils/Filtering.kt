@@ -1,7 +1,6 @@
-package com.redprism.catbreeds.viewmodel
+package com.redprism.catbreeds.utils
 
 import android.content.SharedPreferences
-import com.redprism.catbreeds.utils.Pref
 import kotlin.collections.ArrayList
 
 class Filtering {

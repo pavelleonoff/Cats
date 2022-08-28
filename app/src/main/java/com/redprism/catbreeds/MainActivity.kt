@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.redprism.catbreeds.adapters.CatsAdapter
 import com.redprism.catbreeds.data.Cat
 import com.redprism.catbreeds.viewmodel.MainViewModel
-import com.redprism.catbreeds.viewmodel.Filtering
+import com.redprism.catbreeds.utils.Filtering
 import com.redprism.catbreeds.utils.Pref
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {

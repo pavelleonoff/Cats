@@ -11,6 +11,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.sqlite.db.SimpleSQLiteQuery
 import com.redprism.catbreeds.data.Cat
 import com.redprism.catbreeds.data.CatsDB
+import com.redprism.catbreeds.utils.Filtering
 import com.redprism.catbreeds.utils.JSON
 import com.redprism.catbreeds.utils.Network
 import com.redprism.catbreeds.utils.Pref
@@ -36,9 +37,11 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     private val filterPref = application.getSharedPreferences(
-        Pref.prefFilterName, AppCompatActivity.MODE_PRIVATE)
+        Pref.prefFilterName, AppCompatActivity.MODE_PRIVATE
+    )
     private val dBPref = application.getSharedPreferences(
-        Pref.prefDBDownloadName, AppCompatActivity.MODE_PRIVATE)
+        Pref.prefDBDownloadName, AppCompatActivity.MODE_PRIVATE
+    )
 
     internal fun getActualCatsFromDB() {
         viewModelScope.launch {
@@ -73,6 +76,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             }
         }
     }
+
     internal fun isInternetAvailable(context: Context): Boolean {
         val result: Boolean
         val connectivityManager =
@@ -98,7 +102,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         val json = JSON()
         val catsJSON: JSONArray? = networkRequest.getCatsJSONFromNetwork()
         if (catsJSON != null) {
-           dBPref.edit().putBoolean(Pref.dataNotDownloads, false).apply()
+            dBPref.edit().putBoolean(Pref.dataNotDownloads, false).apply()
         }
         val cats: List<Cat> = json.getCatsFromJSON(catsJSON)
         catsDB.catsDao().insertCats(cats)
@@ -115,7 +119,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private suspend fun getAllCatsFromDb() {
         if (!isExist()) {
             val cat = CoroutineScope(Dispatchers.IO).async {
-                 return@async downloadCatsFromNetwork()
+                return@async downloadCatsFromNetwork()
             }.await()
             filteredCats.value = cat
         } else {
